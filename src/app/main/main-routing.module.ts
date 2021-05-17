@@ -16,6 +16,18 @@ const routes: Routes = [
         loadChildren: () => import('../pages/noti/noti.module').then(m => m.NotiPageModule)
       },
       {
+        path: 'course-ware',
+        loadChildren: () => import('../pages/courseware/courseware.module').then(m => m.CoursewarePageModule)
+      },
+      {
+        path: 'chat',
+        loadChildren: () => import('../pages/chat/chat.module').then(m => m.ChatPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
         path: '',
         redirectTo: '/main/home',
         pathMatch: 'full'

@@ -1,17 +1,13 @@
 <ion-tabs>
-
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
+    <ion-tab-button
+      [tab]="item.link"
+      (click)="checked=i"
+      *ngFor="let item of tabConfig; let i=index"
+      [class]="checked==i && checked!=2? 'active' : i==2? 'couser-ware-icon': ''"
+    >
       <ion-icon name="triangle"></ion-icon>
-      <ion-label>home</ion-label>
+      <ion-label *ngIf="checked==i">{{item.label}}</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="noti">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Noti</ion-label>
-    </ion-tab-button>
-
-
-   
   </ion-tab-bar>
-
 </ion-tabs>
