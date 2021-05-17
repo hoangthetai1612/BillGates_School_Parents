@@ -1,13 +1,14 @@
-<ion-tabs>
+<ion-tabs class="app-tabs-style">
   <ion-tab-bar slot="bottom">
     <ion-tab-button
+      layout="icon-center"
       [tab]="item.link"
       (click)="checked=i"
       *ngFor="let item of tabConfig; let i=index"
       [class]="checked==i && checked!=2? 'active' : i==2? 'couser-ware-icon': ''"
     >
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label *ngIf="checked==i">{{item.label}}</ion-label>
+      <img [src]="item.imgPath" alt="" />
+      <span *ngIf="checked==i">{{item.label}}</span>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

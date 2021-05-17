@@ -11,27 +11,27 @@ export class MainPage {
     {
       link: 'home',
       label: 'Trang chủ',
-      imgPath: ''
+      imgPath: 'assets/icon/home.svg'
     },
     {
       link: 'noti',
       label: 'Thông báo',
-      imgPath: ''
+      imgPath: 'assets/icon/noti.svg'
     },
     {
       link: 'course-ware',
       label: '',
-      imgPath: ''
+      imgPath: 'assets/icon/cap.svg'
     },
     {
       link: 'chat',
       label: 'Tin nhắn',
-      imgPath: ''
+      imgPath: 'assets/icon/chat.svg'
     },
     {
       link: 'profile',
       label: 'Tài khoản',
-      imgPath: ''
+      imgPath: 'assets/icon/profile.svg'
     },
   ]
   constructor() {}
