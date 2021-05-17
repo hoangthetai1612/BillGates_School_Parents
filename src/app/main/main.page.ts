@@ -33,7 +33,7 @@ export class MainPage {
       label: 'Tài khoản',
       imgPath: 'assets/icon/profile.svg'
     },
-  ]
+  ];
   constructor() {}
 
 }
