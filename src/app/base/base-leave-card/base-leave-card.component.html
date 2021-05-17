@@ -1,0 +1,26 @@
+<ion-card>
+    <div class="status" [style.backgroundColor]="'#FF9569'" *ngIf="date.isApprove">
+        Đã phê duyệt
+    </div>
+    <div class="status" [style.backgroundColor]="'#979797'" *ngIf="!date.isApprove">
+        Chờ phê duyệt
+    </div>
+    <ion-item lines="none">
+        <div class="date">{{date.currentDate}}</div>
+    </ion-item>
+    <ion-item lines="none">
+        <p>Nghỉ từ:</p>
+        <div slot="end" class="date">{{date.startDate}}</div>
+    </ion-item>
+    <ion-item lines="none">
+        <p>Đến:</p>
+        <div slot="end" class="date">{{date.startDate}}</div>
+    </ion-item>
+    <ion-item lines="none">
+        <p>Lý do:</p>
+    </ion-item>
+    <ion-item>
+        <p>{{date.content}}</p>
+    </ion-item>
+
+</ion-card>
