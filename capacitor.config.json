@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "BillGates_School_Parents",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

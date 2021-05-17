@@ -1,0 +1,7 @@
+{
+  "name": "BillGates_School_Parents",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
