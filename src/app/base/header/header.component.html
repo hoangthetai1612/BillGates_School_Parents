@@ -1,3 +1,28 @@
-<p>
-  header works!
-</p>
+<ion-grid [class]="headerStyle.cssClass">
+  <ion-row>
+    <ion-col size="3" class="header-button">
+      <div class="icon-left">
+        <img src="{{headerStyle.iconLeft}}" alt="">
+        <span class="icon-center" *ngIf="headerStyle.typecenter==='image'">Hotline</span>
+      </div>
+    </ion-col>
+
+    <ion-col size="6" class="header-center" *ngIf="headerStyle.typecenter.couple !='couple'">
+      <img class="icon-center" *ngIf="headerStyle.typecenter.image==='image'" src="{{headerStyle.iconCenter.image}}"
+        alt="">
+      <span [class]="headerStyle.classText"
+        *ngIf="headerStyle.typecenter.text==='text'">{{headerStyle.iconCenter.text}}</span>
+    </ion-col>
+
+    <ion-col size="6" class="header-center" *ngIf="headerStyle.typecenter.couple==='couple'">
+      <img class="icon-center-couple" src="{{headerStyle.iconCenter.image}}" alt="">
+      <span [class]="headerStyle.classText">{{headerStyle.iconCenter.text}}</span>
+    </ion-col>
+
+    <ion-col size="3">
+      <img class="icon-right" src="{{headerStyle.iconRight}}" alt="">
+    </ion-col>
+
+
+  </ion-row>
+</ion-grid>
