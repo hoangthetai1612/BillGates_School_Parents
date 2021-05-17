@@ -6,7 +6,8 @@ import { ContactBookPage } from './contact-book.page';
 const routes: Routes = [
   {
     path: '',
-    component: ContactBookPage
+    component: ContactBookPage,
+    children: []
   },
   {
     path: 'leave-application',

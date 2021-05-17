@@ -6,12 +6,12 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
-  },  {
+    component: HomePage,
+  },
+  {
     path: 'contact-book',
     loadChildren: () => import('./contact-book/contact-book.module').then( m => m.ContactBookPageModule)
   }
-
 ];
 
 @NgModule({
