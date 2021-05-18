@@ -1,3 +1,5 @@
-<p>
-  base-button works!
-</p>
+<button (click)="handleCallbackEvent($event)" [style.width]="buttonStyle.width" [class]="buttonStyle.cssClass"
+  [disabled]="buttonStyle.disable ? 'disabled' : null">
+  {{buttonStyle.text}}
+  <ng-content></ng-content>
+</button>

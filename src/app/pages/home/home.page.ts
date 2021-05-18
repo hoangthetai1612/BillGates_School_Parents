@@ -24,6 +24,38 @@ export class HomePage implements OnInit {
     }
 
   };
+  data = [
+    {
+      mediaURL: "assets/svg/image-post.svg",
+      title: "Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi",
+      date: "12/12/20"
+    },
+    {
+      mediaURL: "assets/svg/image-post.svg",
+      title: "Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi",
+      date: "12/12/20"
+    },
+    {
+      mediaURL: "assets/svg/image-post.svg",
+      title: "Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi",
+      date: "12/12/20"
+    },
+    {
+      mediaURL: "assets/svg/image-post.svg",
+      title: "Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi",
+      date: "12/12/20"
+    },
+    {
+      mediaURL: "assets/svg/image-post.svg",
+      title: "Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi",
+      date: "12/12/20"
+    },
+    {
+      mediaURL: "assets/svg/image-post.svg",
+      title: "Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi",
+      date: "12/12/20"
+    },
+  ]
   constructor() { }
 
   ngOnInit() {
