@@ -12,12 +12,13 @@ ion-card {
             background: #e9bc82;
             content: "";
             position: absolute;
-            left: -14px;
+            left: -14px;    
             top: 50%;
             transform: translateY(-50%);
         }
     }
     .note {
         font-weight: normal;
+        line-height: 22.4px;
     }
 }
