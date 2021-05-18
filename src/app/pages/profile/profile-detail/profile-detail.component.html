@@ -1,3 +1,44 @@
-<p>
-  profile-detail works!
-</p>
+<app-header [headerStyle]="header"></app-header>
+<ion-content>
+  <ion-grid class="profile">
+    <ion-row>
+      <ion-col size="12" class="profile-item">
+        <img *ngIf="avt != ''" class="profile-image" src="assets/svg/profile-avt.svg" alt="">
+        <img *ngIf="avt === ''" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
+        <label for="profile" (click)="changePhoto()">
+          <img src="assets/svg/icon-upload.svg" alt="">
+        </label>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <h1 class="profile-title">Thông tin cá nhân</h1>
+      <ion-col size="12">
+        <div class="profile-info">
+          <span>Họ tên</span>
+          <p>Trần Hải Linh</p>
+        </div>
+        <div class="profile-info">
+          <span>Lớp:</span>
+          <p>5A1</p>
+        </div>
+        <div class="profile-info">
+          <span>Tên PH:</span>
+          <p>Lê Thu Lan</p>
+        </div>
+        <div class="profile-info">
+          <span>SĐT học sinh:</span>
+          <p>0987458693</p>
+        </div>
+        <div class="profile-info">
+          <span>SĐT phụ huynh:</span>
+          <p>0793250398</p>
+        </div>
+        <div class="profile-info">
+          <span>Địa chỉ nhà:</span>
+          <p>125 An Dương Vương</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
