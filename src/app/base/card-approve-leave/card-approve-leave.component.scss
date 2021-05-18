@@ -1,4 +1,5 @@
-.date {
+.card-container {
+  .date {
   font-style: 14px;
   font-weight: 500;
   color: #000;
@@ -31,7 +32,7 @@ ion-card {
   margin-top: 7px;
   margin-bottom: 7px;
   font-weight: 600;
-  font-size: 0.8em;
+  font-size: 14px;
   width: 100%;
 }
 .detai-button {
@@ -46,6 +47,22 @@ ion-card {
   }
 }
 
-ion-content {
-  --padding-end: 20px;
+ion-item {
+    --min-height: 30px;
+}
+.approved-btn {
+    color: white;
+    background: #BDBDBD;
+}
+
+.approve-btn {
+  color: white;
+    background: var(--ion-color-primary);
+}
+
+.chat-btn {
+  border: 1px solid var(--ion-color-primary-tint);
+  background: var(--ion-color-primary-contrast);
+}
+
 }

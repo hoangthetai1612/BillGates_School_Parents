@@ -9,7 +9,7 @@ import * as EventEmitter from 'events';
   styleUrls: ['./card-approve-leave.component.scss'],
 })
 export class CardApproveLeaveComponent implements OnInit {
-  @Input() date;
+  @Input() data;
   @Output() callback = new EventEmitter();
 
   constructor() { }

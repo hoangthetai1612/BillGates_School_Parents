@@ -1,38 +1,47 @@
-<ion-card>
+<ion-card class="card-container" *ngFor="let card of data">
 
-  <ion-item lines="none">
-    <div class="date">15/04/2021</div>
+  <ion-item lines="none" [style.fontSize.px]="14">
+    <div class="date text">
+      {{card.createdDate}}
+    </div>
   </ion-item>
-  <ion-item lines="none">
+  <ion-item lines="none" [style.fontSize.px]="14">
     <img class="image" src="assets/images/8.jpg" alt="">
     &nbsp;
     &nbsp;
-    <div class="text">Phùng Thanh Hưng</div>
+    <div class="text">
+      {{card.name}}
+    </div>
     <div class="detai-button">
       <button (click)="handleCallbackEvent()">Chi tiết</button>
     </div>
 
   </ion-item>
-  <ion-item lines="none">
+  <ion-item lines="none" [style.fontSize.px]="14">
     <div>Nghỉ từ:</div>
-    <div slot="end" class="date">8:00 16/04/2021</div>
+    <div slot="end" class="date">
+      {{card.startDate}}
+    </div>
   </ion-item>
-  <ion-item lines="none">
+  <ion-item lines="none" [style.fontSize.px]="14">
     <div>Đến:</div>
-    <div slot="end" class="date">17:00 18/04/2021</div>
+    <div slot="end" class="date">
+      {{card.endDate}}
+    </div>
   </ion-item>
-  <ion-item lines="none">
+  <ion-item lines="none" [style.fontSize.px]="14">
     <div>Lý do:</div>
   </ion-item>
   <ion-item [style.fontSize.px]="12">
-    <div> Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, esse accusamus velit ratione cum qui dolores
-      ipsa saepe, quia error, odio minus! Ducimus ipsa facere cumque numquam, reprehenderit voluptates vitae.</div>
+    <div>
+      {{card.description}}
+    </div>
   </ion-item>
   <ion-item>
     <div class="action-btn">
-      <button>Đã phê duyệt</button>
-      <br>
-      <button>Nhắn tin</button>
+      <button *ngIf="card.status === 1" class="approved-btn large-btn">Đã phê duyệt</button>
+      <button *ngIf="card.status === 2" class="approve-btn large-btn">Phê duyệt</button>
+      <button class="chat-btn large-btn">Nhắn tin</button>
     </div>
   </ion-item>
 

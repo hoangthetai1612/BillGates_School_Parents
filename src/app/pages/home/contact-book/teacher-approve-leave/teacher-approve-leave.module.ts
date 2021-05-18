@@ -8,6 +8,7 @@ import { TeacherApproveLeavePageRoutingModule } from './teacher-approve-leave-ro
 
 import { TeacherApproveLeavePage } from './teacher-approve-leave.page';
 import { CardApproveLeaveModule } from 'src/app/base/card-approve-leave/card-approve-leave.component';
+import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CardApproveLeaveModule } from 'src/app/base/card-approve-leave/card-app
     FormsModule,
     IonicModule,
     TeacherApproveLeavePageRoutingModule,
-    CardApproveLeaveModule
+    CardApproveLeaveModule,
+    HeaderModule
   ],
   declarations: [TeacherApproveLeavePage]
 })
