@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { NotiPageRoutingModule } from './noti-routing.module';
 
 import { NotiPage } from './noti.page';
+import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotiPageRoutingModule
+    NotiPageRoutingModule,
+    HeaderModule
   ],
   declarations: [NotiPage]
 })
-export class NotiPageModule {}
+export class NotiPageModule { }
