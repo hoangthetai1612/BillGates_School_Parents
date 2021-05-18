@@ -24,22 +24,10 @@ export class HomePage implements OnInit {
       // couple: 'couple'
     }
 
-  }
+  };
   constructor() { }
 
   ngOnInit() {
   }
-
-}
-@NgModule({
-  declarations: [HomePage],
-  imports: [
-    CommonModule,
-    IonicModule,
-    HeaderModule
-  ],
-  exports: [HomePage]
-})
-export class HomeModule {
 
 }
