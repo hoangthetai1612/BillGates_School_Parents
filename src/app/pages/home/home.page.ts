@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
     iconRight: 'assets/svg/icon-avt-home.svg',
     iconCenter: {
       // text: 'Thông báo',
-      image: 'assets/svg/icon-logo.svg'
+      image: 'assets/svg/icon-logo.png'
     },
     typecenter: {
       // text: 'text',
