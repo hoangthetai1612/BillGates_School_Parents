@@ -14,22 +14,14 @@ export class ProfilePage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Tài khoản',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton'
     }
 
   };
-  buttonStyle = {
-    width: '50%',
-    cssClass: 'buttonOranges',
-    text: 'Huỷ bỏ',
-    disable: true
-  }
+
   arrImgae = [];
   avt: string;
   constructor(public photoService: PhotoService) { }
