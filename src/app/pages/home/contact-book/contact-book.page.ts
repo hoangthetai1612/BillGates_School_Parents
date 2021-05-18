@@ -13,12 +13,13 @@ export class ContactBookPage implements OnInit {
     iconRight: 'assets/svg/icon-avt-home.svg',
     iconCenter: {
       text: 'Sổ liên lạc',
-      // image: 'assets/svg/icon-logo.svg'
+      // image: 'assets/svg/icon-logo.png'
     },
-    typecenter: {
-      text: 'Sổ liên lạc',
+    type: {
+      text: 'text',
       // image: 'image',
-      couple: 'single'
+      // couple: 'couple',
+      backbutton: 'backbutton'
     }
 
   };
