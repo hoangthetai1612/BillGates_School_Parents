@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RoleGuard } from 'src/app/base/util/guards/roles.guard';
 
 import { ContactBookPage } from './contact-book.page';
 
@@ -19,6 +20,11 @@ const routes: Routes = [
   },
   {
     path: 'learning-outcomes',
+    data: {
+      role: 'teacher',
+      redirectLink: '/main/home/contact-book/list-result'
+    },
+    canLoad: [RoleGuard],
     loadChildren: () => import('./learning-outcomes/learning-outcomes.module').then( m => m.LearningOutcomesPageModule)
   }
 ];
