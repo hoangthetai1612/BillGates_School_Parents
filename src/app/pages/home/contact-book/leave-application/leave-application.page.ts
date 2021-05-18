@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CreateLeaveComponent } from './create-leave/create-leave.component';
 
 @Component({
   selector: 'app-leave-application',
@@ -6,6 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leave-application.page.scss'],
 })
 export class LeaveApplicationPage implements OnInit {
+  header = {
+    cssClass: 'header-special',
+    classText: 'text-white',
+    iconLeft: 'assets/svg/icon-phone-home.svg',
+    iconRight: 'assets/contact-book/icon-create.svg',
+    iconCenter: {
+      text: 'Đơn xin nghỉ học',
+      // image: 'assets/svg/icon-logo.png'
+    },
+    type: {
+      text: 'text',
+      // image: 'image',
+      // couple: 'couple',
+      backbutton: 'backbutton'
+    }
+
+  };
+  defaultHref = 'main/home/contact-book';
 listCard = [
   {
     currentDate: '10/10/2021',
@@ -33,9 +53,16 @@ listCard = [
   content: 'Gia đình em có kế hoạch đi du lịch vào cuối tuần tới. Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. Em xin hứa sẽ học và chép bài đầy đủ mà không làảnh hưởng đến học tập của mình.'
 }
 ];
-  constructor() { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {
+  }
+
+  async createLeave() {
+    const modal = await this.modalController.create({
+      component: CreateLeaveComponent,
+    });
+    return await modal.present();
   }
 
 }

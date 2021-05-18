@@ -20,7 +20,11 @@ const routes: Routes = [
   {
     path: 'learning-outcomes',
     loadChildren: () => import('./learning-outcomes/learning-outcomes.module').then( m => m.LearningOutcomesPageModule)
+  },  {
+    path: 'teacher-learning-outcomes',
+    loadChildren: () => import('./teacher-learning-outcomes/teacher-learning-outcomes.module').then( m => m.TeacherLearningOutcomesPageModule)
   }
+
 ];
 
 @NgModule({

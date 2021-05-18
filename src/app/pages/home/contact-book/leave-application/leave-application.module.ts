@@ -8,6 +8,8 @@ import { LeaveApplicationPageRoutingModule } from './leave-application-routing.m
 
 import { LeaveApplicationPage } from './leave-application.page';
 import { BaseLeaveCardModule } from 'src/app/base/base-leave-card/base-leave-card.component';
+import { HeaderModule } from 'src/app/base/header/header.component';
+import { CreateLeaveComponent } from './create-leave/create-leave.component';
 
 @NgModule({
   imports: [
@@ -15,8 +17,9 @@ import { BaseLeaveCardModule } from 'src/app/base/base-leave-card/base-leave-car
     FormsModule,
     IonicModule,
     LeaveApplicationPageRoutingModule,
-    BaseLeaveCardModule
+    BaseLeaveCardModule,
+    HeaderModule
   ],
-  declarations: [LeaveApplicationPage]
+  declarations: [LeaveApplicationPage, CreateLeaveComponent]
 })
 export class LeaveApplicationPageModule {}

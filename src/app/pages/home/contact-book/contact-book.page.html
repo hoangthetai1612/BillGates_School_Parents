@@ -15,7 +15,13 @@
 
             </ion-col>
             <ion-col size="12">
-                <ion-card [routerLink]="['/main/home/contact-book/learning-outcomes']">
+                <ion-card *ngIf="!isTeacher" [routerLink]="['/main/home/contact-book/learning-outcomes']">
+                    <div class="icon">
+                        <img src="assets/contact-book/result-icon.svg" alt="">
+                    </div>
+                    <div class="title">Kết quả học tập</div>
+                </ion-card>
+                <ion-card *ngIf="isTeacher" [routerLink]="['/main/home/contact-book/teacher-learning-outcomes']">
                     <div class="icon">
                         <img src="assets/contact-book/result-icon.svg" alt="">
                     </div>

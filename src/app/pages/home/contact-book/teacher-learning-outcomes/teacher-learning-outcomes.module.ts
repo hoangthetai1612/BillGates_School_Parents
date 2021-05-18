@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FeedbackPageRoutingModule } from './feedback-routing.module';
+import { TeacherLearningOutcomesPageRoutingModule } from './teacher-learning-outcomes-routing.module';
 
-import { FeedbackPage } from './feedback.page';
-import { BaseCardFeedbackModule } from 'src/app/base/base-card-feedback/base-card-feedback.component';
+import { TeacherLearningOutcomesPage } from './teacher-learning-outcomes.page';
+
 import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
@@ -15,10 +15,9 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedbackPageRoutingModule,
-    BaseCardFeedbackModule,
+    TeacherLearningOutcomesPageRoutingModule,
     HeaderModule
   ],
-  declarations: [FeedbackPage]
+  declarations: [TeacherLearningOutcomesPage]
 })
-export class FeedbackPageModule {}
+export class TeacherLearningOutcomesPageModule { }

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { LearningOutcomesPage } from './learning-outcomes.page';
+import { CreateLeaveComponent } from './create-leave.component';
 
-describe('LearningOutcomesPage', () => {
-  let component: LearningOutcomesPage;
-  let fixture: ComponentFixture<LearningOutcomesPage>;
+describe('CreateLeaveComponent', () => {
+  let component: CreateLeaveComponent;
+  let fixture: ComponentFixture<CreateLeaveComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LearningOutcomesPage ],
+      declarations: [ CreateLeaveComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LearningOutcomesPage);
+    fixture = TestBed.createComponent(CreateLeaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

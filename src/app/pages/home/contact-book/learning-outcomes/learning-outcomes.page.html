@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>learning-outcomes</ion-title>
-  </ion-toolbar>
+    <app-header [headerStyle]="header" [defaultHref]="defaultHref"></app-header>
 </ion-header>
 
 <ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <div class="prev" (click)="prev()">
+                    <img src="assets/contact-book/prev-icon.svg" alt="">
+                </div>
+                <div class="next" (click)="next()">
+                    <img src="assets/contact-book/next-icon.svg" alt="">
+                </div>
+                <ion-slides #mySlider>
 
+                    <ion-slide>
+                        Học kỳ I, năm học 2020-2021
+                    </ion-slide>
+                    <ion-slide>
+                        Học kỳ I, năm học 2020-2021
+                    </ion-slide>
+                    <ion-slide>
+                        Học kỳ I, năm học 2020-2021
+                    </ion-slide>
+                    <ion-slide>
+                        Học kỳ I, năm học 2020-2021
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" *ngFor="let item of listSubject">
+                <div class="subject" (click)="openDetail(item)">{{item.name}}</div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
