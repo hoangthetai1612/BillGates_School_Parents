@@ -7,24 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudyPage implements OnInit {
   header = {
-    cssClass: 'header-basic',
-    classText: 'text-black',
-    iconLeft: 'assets/svg/back.svg',
-    iconRight: 'assets/svg/icon-avt-home.svg',
+    cssClass: 'header-special',
+    classText: 'text-white',
+    iconLeft: 'assets/svg/icon-phone-home.svg',
+    iconRight: '',
     iconCenter: {
       text: 'Học liệu',
-      // image: 'assets/svg/icon-logo.svg'
+      // image: 'assets/svg/icon-logo.png'
     },
-    typecenter: {
-      // text: 'text',
-      image: 'image',
-      // couple: 'couple'
-    }
+    type: {
+      text: 'text',
+      // image: 'image',
+      // couple: 'couple',
+      backbutton: 'backbutton',
+    },
+  };
+  constructor() {}
 
-  }
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

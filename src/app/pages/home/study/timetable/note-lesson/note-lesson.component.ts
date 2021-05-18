@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home-work',
-  templateUrl: './home-work.page.html',
-  styleUrls: ['./home-work.page.scss'],
+  selector: 'app-note-lesson',
+  templateUrl: './note-lesson.component.html',
+  styleUrls: ['./note-lesson.component.scss'],
 })
-export class HomeWorkPage implements OnInit {
+export class NoteLessonComponent implements OnInit {
   header = {
     cssClass: 'header-special',
     classText: 'text-white',
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: '',
     iconCenter: {
-      text: 'Bài tập về nhà',
+      text: 'Ghi chú tiết học',
       // image: 'assets/svg/icon-logo.png'
     },
     type: {
@@ -22,9 +22,7 @@ export class HomeWorkPage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
