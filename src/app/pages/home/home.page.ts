@@ -12,15 +12,11 @@ export class HomePage implements OnInit {
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: 'assets/svg/icon-avt-home.svg',
     iconCenter: {
-      // text: 'Thông báo',
       image: 'assets/svg/icon-logo.png'
     },
     type: {
-      // text: 'text',
       image: 'image',
       isText: true
-      // couple: 'couple',
-      // backbutton: 'backbutton'
     }
 
   };
