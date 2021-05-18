@@ -9,6 +9,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
 import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
 import { HeaderModule } from 'src/app/base/header/header.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     IonicModule,
     ProfilePageRoutingModule,
     BaseButtonModule,
-    HeaderModule
+    HeaderModule,
+    RouterModule
   ],
   declarations: [ProfilePage]
 })

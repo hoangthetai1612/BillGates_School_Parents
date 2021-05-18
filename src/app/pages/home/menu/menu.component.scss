@@ -1,0 +1,59 @@
+.menu {
+    padding: 0 20px;
+    .menu-item {
+        border-radius: 15px;
+        border: 1px solid #ffd5c3;
+        padding: 0;
+        .menu-lunch {
+            .menu-lunch-title {
+                background-image: linear-gradient(to right, #ffd5c3, #ffebe3, #ffffff);
+                height: 30px;
+                display: flex;
+                align-items: center;
+                margin-top: 15px;
+                h3 {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #ff4c01;
+                    margin-left: 30px;
+                }
+            }
+            .menu-lunch-item {
+                display: flex;
+                margin-top: 15px;
+                .menu-lunch-text {
+                    font-size: 14px;
+                    color: #000000;
+                    margin-bottom: 15px;
+                    display: block;
+                }
+                .menu-lunch-text::after {
+                    content: "";
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: #ff763c;
+                    color: #ff763c;
+                    display: block;
+                    margin-top: -10px;
+                    margin-left: -20px;
+                }
+            }
+        }
+        .menu-snacks {
+        }
+    }
+    .menu-description {
+        h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333333;
+        }
+        span {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #333333;
+        }
+    }
+}
