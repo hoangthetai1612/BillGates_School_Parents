@@ -1,32 +1,36 @@
 <app-header [headerStyle]="header"></app-header>
+
+<div class="home">
+    <ion-row class="home-menu">
+        <ion-col size="3">
+            <div class="menu-item" [routerLink]="'contact-book'">
+                <img src="assets/svg/icon-contact.svg" alt="">
+                <span>Sổ liên lạc</span>
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div class="menu-item">
+                <img src="assets/svg/icon-bustracker.svg" alt="">
+                <span>Bustracker</span>
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div class="menu-item">
+                <img src="assets/svg/icon-lms.svg" alt="">
+                <span>Học liệu</span>
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div class="menu-item">
+                <img src="assets/svg/icon-menu.svg" alt="">
+                <span>Thực đơn</span>
+            </div>
+        </ion-col>
+    </ion-row>
+</div>
 <ion-content>
     <ion-grid class="home">
-        <ion-row class="home-menu">
-            <ion-col size="3">
-                <div class="menu-item" [routerLink]="'contact-book'">
-                    <img src="assets/svg/icon-contact.svg" alt="">
-                    <span>Sổ liên lạc</span>
-                </div>
-            </ion-col>
-            <ion-col size="3">
-                <div class="menu-item">
-                    <img src="assets/svg/icon-bustracker.svg" alt="">
-                    <span>Bustracker</span>
-                </div>
-            </ion-col>
-            <ion-col size="3">
-                <div class="menu-item">
-                    <img src="assets/svg/icon-lms.svg" alt="">
-                    <span>Học liệu</span>
-                </div>
-            </ion-col>
-            <ion-col size="3">
-                <div class="menu-item">
-                    <img src="assets/svg/icon-menu.svg" alt="">
-                    <span>Thực đơn</span>
-                </div>
-            </ion-col>
-        </ion-row>
+
         <ion-row class="home-posts">
             <h1 class="post-title">Tin tức nổi bật</h1>
             <ion-col size="12">
