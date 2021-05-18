@@ -7,18 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactBookPage implements OnInit {
   header = {
-    cssClass: 'header-basic',
-    classText: 'text-black',
+    cssClass: 'header-special',
+    classText: 'text-white',
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: 'assets/svg/icon-avt-home.svg',
     iconCenter: {
-      // text: 'Thông báo',
-      image: 'assets/svg/icon-logo.svg'
+      text: 'Sổ liên lạc',
+      // image: 'assets/svg/icon-logo.svg'
     },
     typecenter: {
-      // text: 'text',
-      image: 'image',
-      // couple: 'couple'
+      text: 'Sổ liên lạc',
+      // image: 'image',
+      couple: 'single'
     }
 
   };
