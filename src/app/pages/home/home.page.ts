@@ -1,7 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { HeaderModule } from 'src/app/base/header/header.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +13,13 @@ export class HomePage implements OnInit {
     iconRight: 'assets/svg/icon-avt-home.svg',
     iconCenter: {
       // text: 'Thông báo',
-      image: 'assets/svg/icon-logo.svg'
+      image: 'assets/svg/icon-logo.png'
     },
-    typecenter: {
+    type: {
       // text: 'text',
       image: 'image',
-      // couple: 'couple'
+      // couple: 'couple',
+      // backbutton: 'backbutton'
     }
 
   };

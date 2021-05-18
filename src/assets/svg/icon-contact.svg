@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="61.223" height="62.26" viewBox="0 0 61.223 62.26">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_454" data-name="Ellipse 454" cx="18" cy="18" r="18" transform="translate(49 160)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_2929" data-name="Rectangle 2929" width="17" height="38" transform="translate(80.704 163.671) rotate(43)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_20479" data-name="Group 20479" transform="translate(-36 -146)">
+    <g id="Group_4601" data-name="Group 4601" transform="translate(36 146)">
+      <ellipse id="Ellipse_432" data-name="Ellipse 432" cx="30.611" cy="31.13" rx="30.611" ry="31.13" transform="translate(0)" fill="#fff"/>
+    </g>
+    <g id="Mask_Group_18" data-name="Mask Group 18" clip-path="url(#clip-path)">
+      <g id="phonebook" transform="translate(-4.568 165)">
+        <g id="Group_20478" data-name="Group 20478" transform="translate(62.068)">
+          <path id="Path_18267" data-name="Path 18267" d="M79.86,0H63.276a1.208,1.208,0,0,0-1.208,1.208V4.5a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.961.961,0,0,1-.121-.008V9.221a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.96.96,0,0,1-.121-.008v2.807a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.961.961,0,0,1-.121-.008v2.807a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.962.962,0,0,1-.121-.008v3.291a1.208,1.208,0,0,0,1.208,1.208H79.86a1.208,1.208,0,0,0,1.208-1.208V1.208A1.208,1.208,0,0,0,79.86,0ZM71.568,8.466A1.869,1.869,0,1,1,69.7,10.335,1.869,1.869,0,0,1,71.568,8.466Zm2.944,8.149H68.624V14.864h0a2.14,2.14,0,0,1,2.14-2.14h1.607a2.14,2.14,0,0,1,2.14,2.14Z" transform="translate(-62.068)" fill="#ff743a"/>
+        </g>
+      </g>
+      <g id="Mask_Group_17" data-name="Mask Group 17" clip-path="url(#clip-path-2)">
+        <g id="phonebook-2" data-name="phonebook" transform="translate(-4.568 165)">
+          <g id="Group_20478-2" data-name="Group 20478" transform="translate(62.068)">
+            <path id="Path_18267-2" data-name="Path 18267" d="M79.86,0H63.276a1.208,1.208,0,0,0-1.208,1.208V4.5a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.961.961,0,0,1-.121-.008V9.221a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.96.96,0,0,1-.121-.008v2.807a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.961.961,0,0,1-.121-.008v2.807a.961.961,0,0,1,.121-.008h2.174a.966.966,0,0,1,0,1.932H62.189a.962.962,0,0,1-.121-.008v3.291a1.208,1.208,0,0,0,1.208,1.208H79.86a1.208,1.208,0,0,0,1.208-1.208V1.208A1.208,1.208,0,0,0,79.86,0ZM71.568,8.466A1.869,1.869,0,1,1,69.7,10.335,1.869,1.869,0,0,1,71.568,8.466Zm2.944,8.149H68.624V14.864h0a2.14,2.14,0,0,1,2.14-2.14h1.607a2.14,2.14,0,0,1,2.14,2.14Z" transform="translate(-62.068)" fill="#ff4b00"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
