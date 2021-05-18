@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   @Input() defaultHref = 'main/home';
   @Input() text;
   @Output() callback = new EventEmitter();
-  buttonIcon = "assets/svg/icon-backbutton.svg"
+  buttonIcon = 'assets/svg/icon-backbutton.svg';
 
   constructor(private modalController: ModalController) { }
 

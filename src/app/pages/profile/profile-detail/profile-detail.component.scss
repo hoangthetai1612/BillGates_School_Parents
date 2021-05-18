@@ -1,0 +1,42 @@
+.profile {
+    padding: 0 20px;
+    .profile-item {
+        display: flex;
+        justify-content: center;
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 20px;
+            box-shadow: 0px 2px 6px #dedede;
+            position: relative;
+        }
+
+        label {
+            position: absolute;
+            bottom: 0;
+            right: 27%;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .profile-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333333;
+    }
+    .profile-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+        span {
+            color: #808080;
+            font-size: 12px;
+        }
+        p {
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+ion-item {
+    box-shadow: 0 1px 6px rgba($color: #000000, $alpha: 0.16);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    ion-label {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    ion-datetime {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    &:focus {
+        outline: none;
+    }
+}
+
+.action {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    button {
+        width: 140px;
+        height: 36px;
+        border-radius: 10px;
+        border: none;
+        margin-right: 20px;
+        font-size: 14px;
+        color: #fff;
+    }
+}

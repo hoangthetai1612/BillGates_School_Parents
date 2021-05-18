@@ -1,9 +1,36 @@
 <app-header [headerStyle]="header"></app-header>
-<ion-content>
-    <ion-grid class="home">
+
+<div class="home">
+    <ion-row class="home-menu" *roles="'parents' else teacher">
+        <ion-col size="3">
+            <div class="menu-item" [routerLink]="'contact-book'">
+                <img src="assets/svg/icon-contact.svg" alt="">
+                <span>Sổ liên lạc</span>
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div class="menu-item">
+                <img src="assets/svg/icon-bustracker.svg" alt="">
+                <span>Bustracker</span>
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div class="menu-item">
+                <img src="assets/svg/icon-lms.svg" alt="">
+                <span>Học liệu</span>
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div class="menu-item">
+                <img src="assets/svg/icon-menu.svg" alt="">
+                <span>Thực đơn</span>
+            </div>
+        </ion-col>
+    </ion-row>
+    <ng-template #teacher>
         <ion-row class="home-menu">
-            <ion-col size="3">
-                <div class="menu-item">
+            <ion-col size="4">
+                <div *roles="'teacher'" class="menu-item" [routerLink]="'contact-book'">
                     <img src="assets/svg/icon-contact.svg" alt="">
                     <span>Sổ liên lạc</span>
                 </div>
@@ -20,13 +47,19 @@
                     <span>Học liệu</span>
                 </div>
             </ion-col>
-            <ion-col size="3">
+            <ion-col size="4">
                 <div class="menu-item">
                     <img src="assets/svg/icon-menu.svg" alt="">
                     <span>Thực đơn</span>
                 </div>
             </ion-col>
         </ion-row>
+    </ng-template>
+</div>
+<ion-content>
+    <ion-grid class="home">
+
+
         <ion-row class="home-posts">
             <h1 class="post-title">Tin tức nổi bật</h1>
             <ion-col size="12">

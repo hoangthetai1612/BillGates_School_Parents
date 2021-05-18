@@ -8,6 +8,7 @@ import { FeedbackPageRoutingModule } from './feedback-routing.module';
 
 import { FeedbackPage } from './feedback.page';
 import { BaseCardFeedbackModule } from 'src/app/base/base-card-feedback/base-card-feedback.component';
+import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { BaseCardFeedbackModule } from 'src/app/base/base-card-feedback/base-car
     FormsModule,
     IonicModule,
     FeedbackPageRoutingModule,
-    BaseCardFeedbackModule
+    BaseCardFeedbackModule,
+    HeaderModule
   ],
   declarations: [FeedbackPage]
 })

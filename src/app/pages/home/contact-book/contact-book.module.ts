@@ -9,6 +9,7 @@ import { ContactBookPageRoutingModule } from './contact-book-routing.module';
 import { ContactBookPage } from './contact-book.page';
 import { RouterModule } from '@angular/router';
 import { HeaderModule } from 'src/app/base/header/header.component';
+import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     IonicModule,
     ContactBookPageRoutingModule,
     RouterModule,
-    HeaderModule
+    HeaderModule,
+    RoleDirectiveModule
   ],
   declarations: [ContactBookPage]
 })

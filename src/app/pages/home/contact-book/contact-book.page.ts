@@ -10,7 +10,7 @@ export class ContactBookPage implements OnInit {
     cssClass: 'header-special',
     classText: 'text-white',
     iconLeft: 'assets/svg/icon-phone-home.svg',
-    iconRight: 'assets/svg/icon-avt-home.svg',
+    iconRight: '',
     iconCenter: {
       text: 'Sổ liên lạc',
       // image: 'assets/svg/icon-logo.png'

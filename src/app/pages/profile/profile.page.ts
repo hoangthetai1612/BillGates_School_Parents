@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from 'src/app/service/photo.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,15 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  buttonStyle = {
-    width: '50%',
-    cssClass: 'buttonOranges',
-    text: 'Huỷ bỏ',
-    disable: true
-  }
-  constructor() { }
+  header = {
+    cssClass: 'header-special',
+    classText: 'text-white',
+    iconLeft: 'assets/svg/icon-phone-home.svg',
+    iconRight: '',
+    iconCenter: {
+      text: 'Tài khoản',
+    },
+    type: {
+      text: 'text',
+      backbutton: 'backbutton'
+    }
+
+  };
+
+  arrImgae = [];
+  avt: string;
+  constructor(public photoService: PhotoService) { }
 
   ngOnInit() {
   }
-
+  changePhoto() {
+    this.photoService.addNewToGallery().then(() => {
+      this.arrImgae = this.photoService.photos;
+      this.avt = this.arrImgae[0].base64;
+    });
+  }
 }
