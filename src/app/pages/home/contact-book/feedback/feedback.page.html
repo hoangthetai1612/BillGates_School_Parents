@@ -1,9 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>feedback</ion-title>
-  </ion-toolbar>
+    <app-header [headerStyle]="header" [defaultHref]="defaultHref"></app-header>
 </ion-header>
 
 <ion-content>
+    <ion-card>
+        <ion-card-header>
+            <p class="title">Tiêu đề</p>
+        </ion-card-header>
+        <ion-card-content>
+            <input type="text" placeholder="Nhập tiêu đề">
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <p class="title">Nội dung</p>
+        </ion-card-header>
+        <ion-card-content>
+            <textarea [style.height.px]="100" type="text" placeholder="Nhập nội dung"></textarea>
+        </ion-card-content>
+    </ion-card>
+    <div class="action">
+        <button [style.backgroundColor]="'#D6D6D6'">Hủy bỏ</button>
+        <button [style.backgroundColor]="'#FF9569'">Lưu</button>
+    </div>
+    <ion-item lines="none">
+        <div class="title">Góp ý gần đây</div>
+    </ion-item>
+    <div class="list-feedback">
+        <app-base-card-feedback *ngFor="let item of listCard" [data]="item"></app-base-card-feedback>
+    </div>
 
 </ion-content>

@@ -1,0 +1,31 @@
+ion-card {
+    margin-top: 16px;
+    margin-bottom: 0;
+    padding-top: 35px;
+    position: relative;
+    .status {
+        position: absolute;
+        right: 0;
+        top: 5px;
+        padding: 5px 20px;
+        border-radius: 10px;
+        font-size: 12px;
+        color: #fff;
+        font-weight: 400;
+    }
+    .title {
+        font-size: 14px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 10px;
+    }
+    .content {
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .date {
+        font-size: 12px;
+        font-weight: 400;
+        text-align: right;
+    }
+}

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>contact-book</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card [routerLink]="['/main/home/study/timetable']">
+          <div class="icon">
+            <img src="assets/contact-book/donxin.svg" alt="" />
+          </div>
+          <div class="title">Thời khóa biểu</div>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card [routerLink]="['/main/home/study/home-work']">
+          <div class="icon">
+            <img src="assets/contact-book/result-icon.svg" alt="" />
+          </div>
+          <div class="title">Bài tập về nhà</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

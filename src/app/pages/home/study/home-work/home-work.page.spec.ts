@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { BaseLeaveCardComponent } from './base-leave-card.component';
+import { HomeWorkPage } from './home-work.page';
 
-describe('BaseLeaveCardComponent', () => {
-  let component: BaseLeaveCardComponent;
-  let fixture: ComponentFixture<BaseLeaveCardComponent>;
+describe('HomeWorkPage', () => {
+  let component: HomeWorkPage;
+  let fixture: ComponentFixture<HomeWorkPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaseLeaveCardComponent ],
+      declarations: [ HomeWorkPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BaseLeaveCardComponent);
+    fixture = TestBed.createComponent(HomeWorkPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
