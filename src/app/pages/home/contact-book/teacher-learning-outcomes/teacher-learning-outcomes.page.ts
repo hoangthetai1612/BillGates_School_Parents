@@ -18,9 +18,12 @@ export class TeacherLearningOutcomesPage implements OnInit {
     }
   };
 
+  data = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.data.length = 10;
   }
 
 }
