@@ -1,8 +1,5 @@
 <ion-header>
-  <app-header
-    [headerStyle]="header"
-    [defaultHref]="'main/home/study'"
-  ></app-header>
+  <app-header [headerStyle]="header" [defaultHref]="'main/home/study'"></app-header>
 </ion-header>
 <ion-content class="timetable">
   <ion-grid>
@@ -10,35 +7,22 @@
       <ion-col size="12">
         <div class="calendar">
           <div class="date">
-            <img
-              src="assets/icon/pre-btn.svg"
-              alt=""
-              class="pre-btn"
-              (click)="preWeek()"
-            />
+            <img src="assets/icon/pre-btn.svg" alt="" class="pre-btn" (click)="preWeek()" />
 
             {{startWeek | date: 'dd/MM-yyyy'}} - {{endWeek | date:
             'dd/MM-yyyy'}}
-            <img
-              src="assets/icon/next-btn.svg"
-              alt=""
-              class="next-btn"
-              (click)="nextWeek()"
-            />
+            <img src="assets/icon/next-btn.svg" alt="" class="next-btn" (click)="nextWeek()" />
           </div>
           <div class="listDate">
-            
+
             <div class="item" *ngFor="let item of listDate">
               <span
-                *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
-                >{{item | date: "EEEEEE"}}</span
-              >
+                *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()">{{item
+                | date: "EEEEEE"}}</span>
               <span
                 *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
-                class="active"
-                >Hôm nay</span
-              >
-          
+                class="active">Hôm nay</span>
+
             </div>
           </div>
         </div>
@@ -49,12 +33,8 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row
-      class="detail-session"
-      *ngFor="let item of list, let i = index"
-      [class]="i==list.length-1? 'last-session': ''"
-      (click)="openNoteLesson()"
-    >
+    <ion-row class="detail-session" *ngFor="let item of list, let i = index"
+      [class]="i==list.length-1? 'last-session': ''" (click)="openNoteLesson()">
       <ion-col size="2">
         <div class="number">{{i+1}}</div>
       </ion-col>
@@ -79,12 +59,8 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row
-      class="detail-session"
-      *ngFor="let item of list, let i = index"
-      [class]="i==list.length-1? 'last-session': ''"
-      (click)="openNoteLesson()"
-    >
+    <ion-row class="detail-session" *ngFor="let item of list, let i = index"
+      [class]="i==list.length-1? 'last-session': ''" (click)="openNoteLesson()">
       <ion-col size="2">
         <div class="number">{{i+1}}</div>
       </ion-col>
