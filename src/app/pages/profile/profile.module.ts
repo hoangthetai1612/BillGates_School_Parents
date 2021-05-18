@@ -8,6 +8,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
+import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { BaseButtonModule } from 'src/app/base/base-button/base-button.component
     FormsModule,
     IonicModule,
     ProfilePageRoutingModule,
-    BaseButtonModule
+    BaseButtonModule,
+    HeaderModule
   ],
   declarations: [ProfilePage]
 })
