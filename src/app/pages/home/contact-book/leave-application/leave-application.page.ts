@@ -10,7 +10,7 @@ import { CreateLeaveComponent } from './create-leave/create-leave.component';
 export class LeaveApplicationPage implements OnInit {
   header = {
     cssClass: 'header-special',
-    classText: 'text-white',
+    classText: 'text-white text-16',
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: 'assets/contact-book/icon-create.svg',
     iconCenter: {

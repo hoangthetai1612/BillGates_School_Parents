@@ -9,7 +9,7 @@ import { ModalController } from '@ionic/angular';
 export class CreateLeaveComponent implements OnInit {
   header = {
     cssClass: 'header-special',
-    classText: 'text-white',
+    classText: 'text-white text-15 ',
     iconLeft: 'assets/svg/icon-backbutton.svg',
     iconRight: '',
     iconCenter: {
