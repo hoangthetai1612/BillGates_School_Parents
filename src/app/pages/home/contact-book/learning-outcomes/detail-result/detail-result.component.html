@@ -1,0 +1,23 @@
+<ion-header>
+    <app-header [headerStyle]="header" (callback)="closeModal()"></app-header>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <div class="title">{{name}}</div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-list>
+        <ion-item lines="none" *ngFor="let item of listPoint">
+            <div class="point">
+                {{item.point}}
+                <div class="per">/{{item.per}}</div>
+            </div>
+            <div class="name">
+                {{item.title}}
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

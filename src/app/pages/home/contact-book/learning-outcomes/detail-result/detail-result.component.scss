@@ -1,0 +1,51 @@
+.title {
+    width: 100%;
+    border: 1px solid #FFD5C3;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba($color: #000000, $alpha: 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: #454545;
+}
+
+ion-item {
+    margin-bottom: 16px;
+    .name {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000000;
+    }
+    .point {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        border: 2px solid #FF9569;
+        margin-right: 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        font-weight: 400;
+        color: #FF9569;
+        .per {
+            position: absolute;
+            right: -5px;
+            bottom: -2px;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            border: 1px solid #CACACA;
+            font-size: 9px;
+            color: #CACACA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+    }
+}

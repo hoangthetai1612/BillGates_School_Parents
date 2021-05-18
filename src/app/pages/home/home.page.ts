@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
     type: {
       // text: 'text',
       image: 'image',
+      isText: true
       // couple: 'couple',
       // backbutton: 'backbutton'
     }
