@@ -37,7 +37,15 @@ ion-row {
     margin-left: 30px;
 }
 .icon-left {
-    display: flex;
+    .icon-home-left {
+        display: flex;
+    }
+    .back-button {
+        margin-left: 10px;
+        ion-back-button {
+            width: 15px;
+        }
+    }
     img {
         margin-left: 10px;
         margin-right: 10px;

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FeedbackPageRoutingModule } from './feedback-routing.module';
 
 import { FeedbackPage } from './feedback.page';
+import { BaseCardFeedbackModule } from 'src/app/base/base-card-feedback/base-card-feedback.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedbackPageRoutingModule
+    FeedbackPageRoutingModule,
+    BaseCardFeedbackModule
   ],
   declarations: [FeedbackPage]
 })

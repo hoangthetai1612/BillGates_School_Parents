@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 interface HeaderStyle {
@@ -8,7 +8,7 @@ interface HeaderStyle {
   iconLeft: any;
   iconRight: any;
   iconCenter: any;
-  typecenter: any;
+  type: any;
 
 
 }
@@ -19,11 +19,19 @@ interface HeaderStyle {
 })
 export class HeaderComponent implements OnInit {
   @Input() headerStyle: HeaderStyle;
+  @Input() defaultHref = 'main/home';
+  @Input() text;
+  @Output() callback = new EventEmitter();
+  buttonIcon = "assets/svg/icon-backbutton.svg"
 
   constructor() { }
 
   ngOnInit() {
+
   }
+  handleCallbackEvent = (type) => {
+    this.callback.emit(type);
+  };
 
 }
 

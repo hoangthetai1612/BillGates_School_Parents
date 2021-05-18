@@ -8,6 +8,7 @@ import { ContactBookPageRoutingModule } from './contact-book-routing.module';
 
 import { ContactBookPage } from './contact-book.page';
 import { RouterModule } from '@angular/router';
+import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IonicModule,
     ContactBookPageRoutingModule,
-    RouterModule
+    RouterModule,
+    HeaderModule
   ],
   declarations: [ContactBookPage]
 })

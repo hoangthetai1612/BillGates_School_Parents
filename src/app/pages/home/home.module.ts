@@ -14,8 +14,8 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    HeaderModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    HeaderModule
   ],
   declarations: [HomePage]
 })
