@@ -1,0 +1,115 @@
+.timetable {
+    .calendar {
+        border: 2px solid #ffd5c3;
+        box-shadow: 0px 0px 9px -5px var(--ion-color-custom-grey);
+        border-radius: 15px;
+        .date {
+            text-align: center;
+            position: relative;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #454545;
+            font-weight: 600;
+            .next-btn {
+                margin-left: 10px;
+            }
+            .pre-btn {
+                margin-right: 10px;
+            }
+        }
+        .listDate {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 20px;
+            height: 35px;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            .item {
+                span {
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #000000;
+                }
+                .active {
+                    color: var(--ion-color-primary-contrast);
+                    padding: 10px;
+                    border-radius: 25px;
+                    background-color: var(--ion-color-text-normal);
+                    display: block;
+                }
+            }
+        }
+    }
+    .session {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        .session-item {
+            position: relative;
+            border-bottom: 1px dashed var(--ion-color-text-normal);
+        }
+        span {
+            width: 111px;
+            height: 35px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--ion-color-text-normal);
+            background: #ffffff;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--ion-color-text-normal);
+            top: -20px;
+        }
+    }
+    .detail-session {
+        border-bottom: 1px dashed #b7b7b7;
+        margin-top: 10px;
+        .number {
+            width: 42px;
+            height: 42px;
+            border-radius: 100%;
+            background-color: #ffd5c3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ion-color-text-normal);
+        }
+        .lesson {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            .label {
+                font-size: 14px;
+                color: var(--ion-color-warning-contrast);
+                font-weight: 500;
+            }
+            .subject {
+                font-size: 14px;
+                color: var(--ion-color-warning-contrast);
+                font-weight: 600;
+            }
+            .room {
+                font-size: 14px;
+                color: var(--ion-color-text-normal);
+                font-weight: 500;
+            }
+            img {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    .last-session {
+        border-bottom: unset !important;
+    }
+}

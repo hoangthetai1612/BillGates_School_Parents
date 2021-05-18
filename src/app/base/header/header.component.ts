@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 interface HeaderStyle {
   cssClass: string;
   classText: string;
@@ -24,10 +24,13 @@ export class HeaderComponent implements OnInit {
   @Output() callback = new EventEmitter();
   buttonIcon = 'assets/svg/icon-backbutton.svg';
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
 
+  }
+  closeModal() {
+    this.modalController.dismiss();
   }
   handleCallbackEvent = (type) => {
     this.callback.emit(type);

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { HomeWorkPageRoutingModule } from './home-work-routing.module';
 
 import { HomeWorkPage } from './home-work.page';
+import { HeaderModule } from 'src/app/base/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeWorkPageRoutingModule
+    HomeWorkPageRoutingModule,
+    HeaderModule
   ],
   declarations: [HomeWorkPage]
 })

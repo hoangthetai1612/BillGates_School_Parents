@@ -1,0 +1,24 @@
+ion-card {
+    padding: 16px 14px;
+    color: var(--ion--colorwarning-contrast);
+    font-size: 14px;
+    .title {
+        font-weight: 600;
+        margin-bottom: 18px;
+        position: relative;
+        &::after {
+            width: 4px;
+            height: 12px;
+            background: #e9bc82;
+            content: "";
+            position: absolute;
+            left: -14px;    
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .note {
+        font-weight: normal;
+        line-height: 22.4px;
+    }
+}
