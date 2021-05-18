@@ -23,6 +23,10 @@ const routes: Routes = [
   },  {
     path: 'teacher-learning-outcomes',
     loadChildren: () => import('./teacher-learning-outcomes/teacher-learning-outcomes.module').then( m => m.TeacherLearningOutcomesPageModule)
+  },
+  {
+    path: 'teacher-approve-leave',
+    loadChildren: () => import('./teacher-approve-leave/teacher-approve-leave.module').then( m => m.TeacherApproveLeavePageModule)
   }
 
 ];

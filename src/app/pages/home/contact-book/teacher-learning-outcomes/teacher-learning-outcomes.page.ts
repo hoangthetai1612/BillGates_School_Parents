@@ -15,10 +15,13 @@ export class TeacherLearningOutcomesPage implements OnInit {
     },
     type: {
       text: 'text',
+      backbutton: 'backbutton'
     }
   };
 
   data = [];
+
+  defaultHref = 'main/home/contact-book';
 
   constructor() { }
 

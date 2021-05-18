@@ -10,6 +10,7 @@ import { ContactBookPage } from './contact-book.page';
 import { RouterModule } from '@angular/router';
 import { HeaderModule } from 'src/app/base/header/header.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,4 +22,4 @@ import { HeaderModule } from 'src/app/base/header/header.component';
   ],
   declarations: [ContactBookPage]
 })
-export class ContactBookPageModule {}
+export class ContactBookPageModule { }
