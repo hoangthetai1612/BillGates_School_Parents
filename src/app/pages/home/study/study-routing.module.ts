@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: StudyPage
+  },
+  {
+    path: 'home-work',
+    loadChildren: () => import('./home-work/home-work.module').then( m => m.HomeWorkPageModule)
+  },
+  {
+    path: 'timetable',
+    loadChildren: () => import('./timetable/timetable.module').then( m => m.TimetablePageModule)
   }
 ];
 

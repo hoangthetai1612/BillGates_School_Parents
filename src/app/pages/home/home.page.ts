@@ -31,15 +31,3 @@ export class HomePage implements OnInit {
   }
 
 }
-@NgModule({
-  declarations: [HomePage],
-  imports: [
-    CommonModule,
-    IonicModule,
-    HeaderModule
-  ],
-  exports: [HomePage]
-})
-export class HomeModule {
-
-}
