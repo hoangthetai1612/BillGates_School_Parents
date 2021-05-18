@@ -18,23 +18,25 @@ export class RoleGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private readonly redirectService: RedirectService) {}
 
   canActivate(next: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.hasPermission(next.data.role);
+    return this.hasPermission(next.data.permission);
   }
 
   canActivateChild(next: ActivatedRouteSnapshot): Observable<boolean> {
     const permissionData =
       next.data.permission || next.parent?.data?.permission;
-    return this.hasPermission(next.data.role);
+    return this.hasPermission(next.data.permission);
   }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.hasPermission(route.data.role);
+    return this.hasPermission(route.data.permission);
   }
 
   private hasPermission(data): Observable<boolean> {
+    console.log(data);
     if (data) {
-      return of(localStorage.getItem('role') === data).pipe(
+      return of(localStorage.getItem('role') === data.roles).pipe(
         tap((isPer) => {
+          console.log(isPer);
           if (!isPer && data.redirectLink) {
             this.redirectService.redirectToLink(data.redirectLink);
           }

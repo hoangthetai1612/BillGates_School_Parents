@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RoleGuard } from 'src/app/base/util/guards/roles.guard';
-
 import { ContactBookPage } from './contact-book.page';
 
 const routes: Routes = [
@@ -12,6 +11,13 @@ const routes: Routes = [
   },
   {
     path: 'leave-application',
+    data: {
+      permission: {
+        roles: 'parents',
+        redirectLink: '/main/home/contact-book/leave-application-teacher',
+      },
+    },
+    canLoad: [RoleGuard],
     loadChildren: () => import('./leave-application/leave-application.module').then( m => m.LeaveApplicationPageModule)
   },
   {
@@ -21,8 +27,10 @@ const routes: Routes = [
   {
     path: 'learning-outcomes',
     data: {
-      role: 'teacher',
-      redirectLink: '/main/home/contact-book/list-result'
+      permission: {
+        roles: 'parents',
+        redirectLink: '/main/home/contact-book/list-result',
+      },
     },
     canLoad: [RoleGuard],
     loadChildren: () => import('./learning-outcomes/learning-outcomes.module').then( m => m.LearningOutcomesPageModule)
