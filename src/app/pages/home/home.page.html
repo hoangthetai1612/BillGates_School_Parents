@@ -49,13 +49,15 @@
             </ion-col>
         </ion-row>
     </ng-template>
+    <h1 class="post-title">Tin tức nổi bật</h1>
 </div>
+
 <ion-content>
     <ion-grid class="home">
 
 
         <ion-row class="home-posts">
-            <h1 class="post-title">Tin tức nổi bật</h1>
+
             <ion-col size="12">
                 <div class="post-item" *ngFor="let item of data">
                     <img src="{{item.mediaURL}}" alt="">

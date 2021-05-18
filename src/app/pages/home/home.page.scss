@@ -19,13 +19,13 @@
             }
         }
     }
+    .post-title {
+        color: #404040;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
     .home-posts {
-        .post-title {
-            color: #404040;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
         .post-item {
             display: flex;
             padding: 10px;
@@ -43,7 +43,6 @@
                     font-size: 14px;
                     color: #171717;
                     letter-spacing: 1px;
-                    
                 }
                 span {
                     color: #707070;
