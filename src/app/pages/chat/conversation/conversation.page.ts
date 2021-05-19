@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BaseChatComponent } from '@consult-indochina/websocket';
+import {
+  BaseChatComponent,
+  CiSocketService,
+} from '@consult-indochina/websocket';
 import { merge, Observable, Subject } from 'rxjs';
 import { map, scan, shareReplay } from 'rxjs/operators';
 import { MessageService } from 'src/app/service/message.service';
@@ -12,9 +15,16 @@ import { MessageService } from 'src/app/service/message.service';
 })
 export class ConversationPage extends BaseChatComponent implements OnInit {
   his: Observable<any>;
-  deleteSubject: Subject<any>;
+  deleteSubject: Subject<any> = new Subject();
   reciverId;
-  constructor(private messageService: MessageService, private activatedRoute: ActivatedRoute) {
+  defaultHref = 'main/chat';
+  currentUserId = JSON.parse(localStorage.getItem('access_token'))
+    .UserProfileId;
+  constructor(
+    private messageService: MessageService,
+    private activatedRoute: ActivatedRoute,
+    private socketService: CiSocketService
+  ) {
     super();
     this.reciverId = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -22,12 +32,11 @@ export class ConversationPage extends BaseChatComponent implements OnInit {
   ngOnInit() {
     this.getHistory(this.reciverId);
   }
-  delRandomScan(a, v){
-  }
+  delRandomScan(a, v) {}
 
-  getHistory(reciveid){
+  getHistory(reciveid) {
     this.his = merge(
-      this.messageService.getListMessage(reciveid).pipe(
+      this.messageService.getListMessage(2053).pipe(
         map((res: any) => {
           console.log(res);
           return res.body.Payload.reverse();
@@ -35,9 +44,14 @@ export class ConversationPage extends BaseChatComponent implements OnInit {
       ),
       this.deleteSubject
     ).pipe(
-      scan((products: any[], product: any) => this.delRandomScan(products, product)),
+      scan((products: any[], product: any) =>
+        this.delRandomScan(products, product)
+      ),
       shareReplay(1)
     );
   }
-}
 
+  swendMessage() {
+    this.socketService.sendMessage({});
+  }
+}

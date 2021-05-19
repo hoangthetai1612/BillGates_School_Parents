@@ -24,6 +24,10 @@ export class MessageService {
         pageNumber: '1',
         pageSize: '50',
       },
+	  headers: new HttpHeaders({
+		Authorization:
+		  'Bearer ' + loginUser.access_token,
+	  }),
     });
   }
 

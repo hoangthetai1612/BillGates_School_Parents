@@ -10,50 +10,94 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
+
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
+
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 ion-searchbar {
-    --background: #fff0ea !important;
-    --border-radius: 10px;
-    .searchbar-input-container {
-        border: 2px solid #ffbea2;
-        border-radius: 13px;
-        input {
-            font-size: 12px !important;
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--ion-color-custom-grey);
-            font-weight: 600;
-
-            &::placeholder {
-                font-size: 12px !important;
-                font-family: Arial, Helvetica, sans-serif;
-                color: var(--ion-color-custom-grey);
-                font-weight: 700;
-            }
-        }
-        ion-icon {
-            left: unset !important;
-            right: 10px !important;
-            // background-image: url("assets/icon/search-bar.svg") !important;
-        }
+  --background: #fff0ea !important;
+  --border-radius: 10px;
+  .searchbar-input-container {
+    border: 2px solid #ffbea2;
+    border-radius: 13px;
+    input {
+      font-size: 12px !important;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ion-color-custom-grey);
+      font-weight: 600;
+      &::placeholder {
+        font-size: 12px !important;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--ion-color-custom-grey);
+        font-weight: 700;
+      }
     }
+    ion-icon {
+      left: unset !important;
+      right: 10px !important;
+      // background-image: url("assets/icon/search-bar.svg") !important;
+    }
+  }
 }
 
 .large-btn {
-    width: 75vw;
-    padding: 8px;
-    border-radius: 7px;
-    margin: 7px auto;
+  width: 75vw;
+  padding: 8px;
+  border-radius: 7px;
+  margin: 7px auto;
+}
+
+.ci_mes_list {
+  height: auto !important;
+}
+.test_receive-fb {
+  background-color: #f0f0f5;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 27px 27px 27px 0;
+  max-width: 90% !important;
+  padding-left: 0 !important;
+  margin-top: 20px;
+}
+.ci_message_box p {
+  background: transparent !important;
+  width: 100%;
+}
+.ci_mes_list {
+  .date {
+    font-size: 10px;
+  }
+  .sender-time {
+    text-align: right;
+    margin-right: 16px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+  .recieve-time {
+    margin-left: 16px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+}
+.test_sended-fb {
+  font-size: 13px;
+  font-weight: 500;
+  background-color: #ff9569;
+  border-radius: 27px 27px 0 27px;
+  max-width: 90% !important;
+  padding-left: 0 !important;
+  margin-top: 20px;
 }

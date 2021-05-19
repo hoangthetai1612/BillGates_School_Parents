@@ -12,49 +12,46 @@ export class HomePage implements OnInit {
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: 'assets/svg/icon-avt-home.svg',
     iconCenter: {
-      image: 'assets/svg/icon-logo.png'
+      image: 'assets/svg/icon-logo.png',
     },
     type: {
       image: 'image',
-      isText: true
-    }
-
+      isText: true,
+    },
   };
   data = [
     {
       mediaURL: 'assets/svg/image-post.svg',
       title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      date: '12/12/20'
+      date: '12/12/20',
     },
     {
       mediaURL: 'assets/svg/image-post.svg',
       title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      date: '12/12/20'
+      date: '12/12/20',
     },
     {
       mediaURL: 'assets/svg/image-post.svg',
       title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      date: '12/12/20'
+      date: '12/12/20',
     },
     {
       mediaURL: 'assets/svg/image-post.svg',
       title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      date: '12/12/20'
+      date: '12/12/20',
     },
     {
       mediaURL: 'assets/svg/image-post.svg',
       title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      date: '12/12/20'
+      date: '12/12/20',
     },
     {
       mediaURL: 'assets/svg/image-post.svg',
       title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      date: '12/12/20'
+      date: '12/12/20',
     },
   ];
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
