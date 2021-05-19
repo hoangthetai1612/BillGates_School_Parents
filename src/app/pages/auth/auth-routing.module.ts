@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './auth.component';
+import { LoginComponent } from './login/login.component';
 
-import { IndexPage } from './index.page';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexPage,
+    component: AuthComponent,
     children: [
       {
-        path: 'auth',
-        loadChildren: () =>
-          import('../pages/auth/auth.module').then((m) => m.AuthPageModule)
-
+        path: 'login',
+        component: LoginComponent
       },
       {
         path: '',
-        redirectTo: 'auth',
+        redirectTo: 'login',
         pathMatch: 'full'
       }
     ]
@@ -27,4 +27,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class IndexPageRoutingModule { }
+export class AuthPageRoutingModule { }

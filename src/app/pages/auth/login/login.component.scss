@@ -1,0 +1,57 @@
+.login {
+    padding: 0 20px;
+    .login-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        margin-bottom: 30px;
+        img {
+            width: 177px;
+            height: 66px;
+        }
+    }
+    .login-form {
+        .login-form-item {
+            width: 100%;
+            margin-bottom: 20px;
+            input {
+                position: relative;
+                border: none;
+                border-bottom: 1px solid #e8e8e8;
+                width: 100%;
+                height: 45px;
+                outline: none;
+                padding-left: 30px;
+            }
+            img {
+                position: absolute;
+                z-index: 1;
+                margin-top: 5px;
+            }
+        }
+        .login-forgot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            .login-forgot-item {
+                display: flex;
+                align-items: center;
+                .ion-color-danger {
+                    --ion-color-base: #ff4c01 !important;
+                }
+                ion-label {
+                    margin-left: 10px;
+                }
+            }
+
+            h3 {
+                color: #ff4c01;
+                font-size: 14px;
+                font-weight: 600;
+                margin: 0;
+            }
+        }
+    }
+}
