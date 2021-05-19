@@ -28,7 +28,7 @@ export class LearningOutcomesPage implements OnInit {
     }
 
   };
-  defaultHref = 'main/home/contact-book';
+  // defaultHref = 'main/home/contact-book';
   listSubject=[{name: 'Toán 10'},{name: 'Ngữ Văn 10'},{name: 'Toán 10'},{name: 'Ngữ Văn 10'},{name: 'Toán 10'},{name: 'Ngữ Văn 10'}];
 
   constructor(private modalController: ModalController) { }
