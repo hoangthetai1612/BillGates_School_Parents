@@ -5,6 +5,29 @@ ion-content {
     background: #FCFCFD !important;
 }
 
+.status {
+    ion-grid {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    ion-row {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    ion-col {
+        padding-bottom: 0;
+    }
+    .status-item {
+        p {
+            margin-bottom: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4D4D56;
+        }
+    }
+}
+
 .container_message {
     height: 70vh;
 }

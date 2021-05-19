@@ -2,6 +2,27 @@
     <app-header *roles="'parents'" [headerStyle]="header"></app-header>
     <app-header *roles="'teacher'" [headerStyle]="headerTeacher" (callback)="openAddPerson()"></app-header>
 </ion-header>
+<div class="status">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4" class="flex-center">
+                <div class="status-item">
+                    <p>Tất cả</p>
+                </div>
+            </ion-col>
+            <ion-col size="4" class="flex-center">
+                <div class="status-item">
+                    <p>Chưa đọc</p>
+                </div>
+            </ion-col>
+            <ion-col size="4" class="flex-center">
+                <div class="status-item">
+                    <p>Đã đọc</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
 
 <ion-content class="container_message">
     <!-- (ionRefresh)="showListSearch('%00', $event)"
