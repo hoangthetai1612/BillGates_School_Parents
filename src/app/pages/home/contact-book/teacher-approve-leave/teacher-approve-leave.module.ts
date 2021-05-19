@@ -9,6 +9,7 @@ import { TeacherApproveLeavePageRoutingModule } from './teacher-approve-leave-ro
 import { TeacherApproveLeavePage } from './teacher-approve-leave.page';
 import { CardApproveLeaveModule } from 'src/app/base/card-approve-leave/card-approve-leave.component';
 import { HeaderModule } from 'src/app/base/header/header.component';
+import { LeaveDetailComponent } from './leave-detail/leave-detail.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     CardApproveLeaveModule,
     HeaderModule
   ],
-  declarations: [TeacherApproveLeavePage]
+  declarations: [TeacherApproveLeavePage, LeaveDetailComponent]
 })
 export class TeacherApproveLeavePageModule { }

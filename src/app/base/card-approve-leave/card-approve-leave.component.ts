@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, NgModule, OnInit, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import * as EventEmitter from 'events';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card-approve-leave',
@@ -11,6 +12,7 @@ import * as EventEmitter from 'events';
 export class CardApproveLeaveComponent implements OnInit {
   @Input() data;
   @Output() callback = new EventEmitter();
+
 
   constructor() { }
 
@@ -24,7 +26,7 @@ export class CardApproveLeaveComponent implements OnInit {
 
 @NgModule({
   declarations: [CardApproveLeaveComponent],
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, RouterModule],
   exports: [CardApproveLeaveComponent]
 })
 

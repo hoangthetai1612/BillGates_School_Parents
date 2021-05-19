@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-teacher-approve-leave',
-  templateUrl: './teacher-approve-leave.page.html',
-  styleUrls: ['./teacher-approve-leave.page.scss'],
+  selector: 'app-leave-detail',
+  templateUrl: './leave-detail.component.html',
+  styleUrls: ['./leave-detail.component.scss'],
 })
-export class TeacherApproveLeavePage implements OnInit {
+export class LeaveDetailComponent implements OnInit {
   header = {
     cssClass: 'header-special',
     classText: 'text-white-small',
     iconLeft: 'assets/svg/icon-backbutton.svg',
     iconCenter: {
-      text: 'Danh sách đơn xin nghỉ học',
+      text: 'Phùng Thanh Hưng',
     },
     type: {
       text: 'text',
@@ -29,7 +29,7 @@ export class TeacherApproveLeavePage implements OnInit {
       Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. 
       Em xin hứa sẽ học và chép bài đầy đủ mà không làm ảnh hưởng đến việc học tập của mình`,
       status: 1,
-      isDetail: false
+      isDetail: true
     },
     {
       createdDate: '15/05/2021',
@@ -40,13 +40,12 @@ export class TeacherApproveLeavePage implements OnInit {
       Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. 
       Em xin hứa sẽ học và chép bài đầy đủ mà không làm ảnh hưởng đến việc học tập của mình`,
       status: 2,
-      isDetail: false
+      isDetail: true
     }
   ]
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

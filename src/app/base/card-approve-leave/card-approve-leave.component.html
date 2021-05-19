@@ -5,7 +5,7 @@
       {{card.createdDate}}
     </div>
   </ion-item>
-  <ion-item lines="none" [style.fontSize.px]="14">
+  <ion-item *ngIf="!card.isDetail" lines="none" [style.fontSize.px]="14">
     <img class="image" src="assets/images/8.jpg" alt="">
     &nbsp;
     &nbsp;
@@ -13,7 +13,7 @@
       {{card.name}}
     </div>
     <div class="detai-button">
-      <button (click)="handleCallbackEvent()">Chi tiết</button>
+      <button [routerLink]="['/main/home/contact-book/teacher-approve-leave/leave-detail']">Chi tiết</button>
     </div>
 
   </ion-item>
