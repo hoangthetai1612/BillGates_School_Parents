@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CreateChatComponent } from './create-chat/create-chat.component';
 
@@ -56,7 +57,8 @@ export class ChatPage implements OnInit {
 
     }
   ];
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController) {
+   }
 
   ngOnInit() {
   }

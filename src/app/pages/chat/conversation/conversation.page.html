@@ -1,9 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>conversation</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>conversation</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ng-container *ngIf="his">
+        <ci-message-list [messageList$]="his | async">
+            <ng-template #item let-item="item" let-checked="checked">
+                <ci-message-text [item]="item" [currentUserId]="currentUserId" [messageWrapCss]="{
+            sendedClass: 'test_sended-fb',
+            receiveClass: 'test_receive-fb'
+          }" (messageTextButton)="chatButtonEvent.emit($event)"></ci-message-text>
+                <!-- {{ checked }} -->
+                <!-- <button
+          (click)="callback.emit(item)"
+          *ngIf="item.SenderUserProfileId == currentUserId"
+          class="chat-fb-button"
+        ></button> -->
+            </ng-template>
+        </ci-message-list>
+    </ng-container>
 
 </ion-content>

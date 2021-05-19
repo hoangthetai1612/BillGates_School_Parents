@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConversationPageRoutingModule } from './conversation-routing.module';
 
 import { ConversationPage } from './conversation.page';
+import { CiMessageListModule, CiMessageTextModule } from '@consult-indochina/websocket';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConversationPageRoutingModule
+    ConversationPageRoutingModule,
+    CiMessageListModule, CiMessageTextModule
   ],
   declarations: [ConversationPage]
 })
