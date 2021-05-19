@@ -3,8 +3,11 @@
         <ion-col size="3" class="header-button">
             <div class="icon-left">
                 <ion-buttons class="back-button" slot="start" *ngIf="headerStyle.type.backbutton ==='backbutton'">
-                    <ion-back-button text="" icon="assets/svg/icon-backbutton.svg" [defaultHref]="defaultHref"
-                        (click)="closeModal()">
+                    <ion-back-button *ngIf="headerStyle.type.blackBackButtonColor !=='black'" text=""
+                        icon="assets/svg/icon-backbutton.svg" [defaultHref]="defaultHref" (click)="closeModal()">
+                    </ion-back-button>
+                    <ion-back-button *ngIf="headerStyle.type.blackBackButtonColor ==='black'" text=""
+                        icon="assets/svg/arrow-back-outline.svg" [defaultHref]="defaultHref" (click)="closeModal()">
                     </ion-back-button>
                 </ion-buttons>
                 <div class="icon-home-left" *ngIf="headerStyle.type.backbutton !='backbutton'">

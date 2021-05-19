@@ -9,6 +9,8 @@ import { ChatPageRoutingModule } from './chat-routing.module';
 import { ChatPage } from './chat.page';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
+import { CreateChatComponent } from './create-chat/create-chat.component';
+import { BaseListItemModule } from 'src/app/base/base-list-item/base-list-item.component';
 
 @NgModule({
   imports: [
@@ -17,8 +19,9 @@ import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive
     IonicModule,
     ChatPageRoutingModule,
     HeaderModule,
-    RoleDirectiveModule
+    RoleDirectiveModule,
+    BaseListItemModule
   ],
-  declarations: [ChatPage]
+  declarations: [ChatPage, CreateChatComponent]
 })
-export class ChatPageModule {}
+export class ChatPageModule { }

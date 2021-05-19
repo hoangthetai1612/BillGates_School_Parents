@@ -24,18 +24,16 @@ export class TeacherLearningOutcomesPage implements OnInit {
 
   data = [];
 
-  defaultHref = 'main/home/contact-book';
-
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
     this.data.length = 10;
   }
 
-  async  openDetailResult(item) {
+  async openDetailResult(item) {
     const modal = await this.modalController.create({
       component: LearningOutcomesPage,
-      componentProps: {data: item}
+      componentProps: { data: item }
     });
     return await modal.present();
   }
