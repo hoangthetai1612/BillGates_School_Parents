@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { LearningOutcomesPage } from '../learning-outcomes/learning-outcomes.page';
 
 @Component({
   selector: 'app-teacher-learning-outcomes',
@@ -24,10 +26,18 @@ export class TeacherLearningOutcomesPage implements OnInit {
 
   defaultHref = 'main/home/contact-book';
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
     this.data.length = 10;
+  }
+
+  async  openDetailResult(item) {
+    const modal = await this.modalController.create({
+      component: LearningOutcomesPage,
+      componentProps: {data: item}
+    });
+    return await modal.present();
   }
 
 }

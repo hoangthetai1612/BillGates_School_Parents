@@ -9,6 +9,7 @@ import { TeacherLearningOutcomesPageRoutingModule } from './teacher-learning-out
 import { TeacherLearningOutcomesPage } from './teacher-learning-outcomes.page';
 
 import { HeaderModule } from 'src/app/base/header/header.component';
+import { LearningOutcomesPageModule } from '../learning-outcomes/learning-outcomes.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     FormsModule,
     IonicModule,
     TeacherLearningOutcomesPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    LearningOutcomesPageModule
   ],
   declarations: [TeacherLearningOutcomesPage]
 })

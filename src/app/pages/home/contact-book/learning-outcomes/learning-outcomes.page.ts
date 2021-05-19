@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, ModalController } from '@ionic/angular';
 import { DetailResultComponent } from './detail-result/detail-result.component';
 
@@ -9,6 +9,7 @@ import { DetailResultComponent } from './detail-result/detail-result.component';
 })
 export class LearningOutcomesPage implements OnInit {
   @ViewChild('mySlider')  slides: IonSlides;
+  @Input() data;
 
   header = {
     cssClass: 'header-special',
