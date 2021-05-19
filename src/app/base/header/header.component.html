@@ -3,20 +3,24 @@
         <ion-col size="3" class="header-button">
             <div class="icon-left">
                 <ion-buttons class="back-button" slot="start" *ngIf="headerStyle.type.backbutton ==='backbutton'">
-                    <ion-back-button text="" icon="assets/svg/icon-backbutton.svg" [defaultHref]="defaultHref" (click)="closeModal()">
+                    <ion-back-button text="" icon="assets/svg/icon-backbutton.svg" [defaultHref]="defaultHref"
+                        (click)="closeModal()">
                     </ion-back-button>
                 </ion-buttons>
                 <div class="icon-home-left" *ngIf="headerStyle.type.backbutton !='backbutton'">
                     <img src="{{headerStyle.iconLeft}}" alt="" (click)="handleCallbackEvent($event)">
-                    <span class="icon-center" *ngIf="headerStyle.type.image==='image' && headerStyle.type.isText">Hotline</span>
+                    <span class="icon-center"
+                        *ngIf="headerStyle.type.image==='image' && headerStyle.type.isText">Hotline</span>
                 </div>
 
             </div>
         </ion-col>
 
         <ion-col size="6" class="header-center" *ngIf="headerStyle.type.couple !='couple'">
-            <img class="icon-center" *ngIf="headerStyle.type.image==='image'" src="{{headerStyle.iconCenter.image}}" alt="">
-            <span [class]="headerStyle.classText" *ngIf="headerStyle.type.text==='text'">{{headerStyle.iconCenter.text}}</span>
+            <img class="icon-center" *ngIf="headerStyle.type.image==='image'" src="{{headerStyle.iconCenter.image}}"
+                alt="">
+            <span [class]="headerStyle.classText"
+                *ngIf="headerStyle.type.text==='text'">{{headerStyle.iconCenter.text}}</span>
         </ion-col>
 
         <ion-col size="6" class="header-center" *ngIf="headerStyle.type.couple==='couple'">
