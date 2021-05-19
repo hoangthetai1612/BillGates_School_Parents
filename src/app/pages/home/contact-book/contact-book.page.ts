@@ -23,6 +23,9 @@ export class ContactBookPage implements OnInit {
     }
 
   };
+
+  // isTeacher = true;
+
   constructor() { }
 
   ngOnInit() {

@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor() {
-    localStorage.setItem('role', 'parents');
+    localStorage.setItem('role', 'teacher');
   }
 }
