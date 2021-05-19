@@ -7,7 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { ConversationPageRoutingModule } from './conversation-routing.module';
 
 import { ConversationPage } from './conversation.page';
-import { CiMessageListModule, CiMessageTextModule } from '@consult-indochina/websocket';
+import {
+  CiMessageListModule,
+  CiMessageTextModule,
+} from '@consult-indochina/websocket';
+import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 
 @NgModule({
   imports: [
@@ -15,8 +19,10 @@ import { CiMessageListModule, CiMessageTextModule } from '@consult-indochina/web
     FormsModule,
     IonicModule,
     ConversationPageRoutingModule,
-    CiMessageListModule, CiMessageTextModule
+    CiMessageListModule,
+    CiMessageTextModule,
+    RoleDirectiveModule,
   ],
-  declarations: [ConversationPage]
+  declarations: [ConversationPage],
 })
 export class ConversationPageModule {}

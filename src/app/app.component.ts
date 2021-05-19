@@ -8,6 +8,6 @@ import { TabsService } from './service/tab.service';
 })
 export class AppComponent {
   constructor(private tabService: TabsService) {
-    localStorage.setItem('role', 'teacher');
+    localStorage.setItem('role', 'parents');
   }
 }

@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *roles="'teacher' else parents">
     <ion-grid class="header">
         <ion-row>
             <ion-col size="3"
@@ -26,6 +26,33 @@
         </ion-row>
     </ion-grid>
 </ion-header>
+<ng-template #parents>
+    <ion-header>
+        <ion-grid class="header">
+            <ion-row>
+                <ion-col size="3"
+                         class="header-button">
+                    <div class="icon-left">
+                        <ion-buttons class="back-button"
+                                     slot="start">
+                            <ion-back-button text=""
+                                             icon="assets/icon/icon-back.svg"
+                                             [defaultHref]="defaultHref">
+                            </ion-back-button>
+                        </ion-buttons>
+                    </div>
+                </ion-col>
+                <ion-col size="6"
+                         class="header-center">
+                    <span class="classText">Tin nhắn</span>
+                </ion-col>
+                <ion-col size="3">
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-header>
+</ng-template>
+
 
 <ion-content>
 

@@ -9,36 +9,45 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule)
+        loadChildren: () =>
+          import('../pages/home/home.module').then((m) => m.HomePageModule),
       },
       {
         path: 'noti',
-        loadChildren: () => import('../pages/noti/noti.module').then(m => m.NotiPageModule)
+        loadChildren: () =>
+          import('../pages/noti/noti.module').then((m) => m.NotiPageModule),
       },
       {
         path: 'course-ware',
-        loadChildren: () => import('../pages/courseware/courseware.module').then(m => m.CoursewarePageModule)
+        loadChildren: () =>
+          import('../pages/courseware/courseware.module').then(
+            (m) => m.CoursewarePageModule
+          ),
       },
       {
         path: 'chat',
-        loadChildren: () => import('../pages/chat/chat.module').then(m => m.ChatPageModule)
+        loadChildren: () =>
+          import('../pages/chat/chat.module').then((m) => m.ChatPageModule),
       },
       {
         path: 'profile',
-        loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
+        loadChildren: () =>
+          import('../pages/profile/profile.module').then(
+            (m) => m.ProfilePageModule
+          ),
       },
       {
         path: '',
         redirectTo: '/main/home',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/main/home',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

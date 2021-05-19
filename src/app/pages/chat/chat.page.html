@@ -5,7 +5,8 @@
                 [headerStyle]="headerTeacher"
                 (callback)="openAddPerson()"></app-header>
 </ion-header>
-<div class="status">
+<div class="status"
+     *roles="'teacher'">
     <ion-grid>
         <ion-row>
             <ion-col size="4"
