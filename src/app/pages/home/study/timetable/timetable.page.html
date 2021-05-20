@@ -24,14 +24,19 @@
       />
     </div>
     <div class="listDate">
-      <div class="item" *ngFor="let item of listDate">
+      <div
+        class="item"
+        *ngFor="let item of listDate; let i = index"
+        (click)="checkActive = i"
+      >
         <span
           *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
+          [class]="checkActive==i? 'active': ''"
           >{{item | date: "EEEEEE"}}</span
         >
         <span
           *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
-          class="active"
+          class="today"
           >Hôm nay</span
         >
       </div>

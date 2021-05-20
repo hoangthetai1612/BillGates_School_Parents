@@ -1,0 +1,25 @@
+<ion-header>
+  <app-header
+    [headerStyle]="header"
+    [defaultHref]="'main/home/study/timetable'"
+    (callback)="editNote($event)"
+  ></app-header>
+</ion-header>
+<ion-content class="tc-note-lesson">
+  <ion-card>
+    <div class="title">Nội dung</div>
+    <div class="note">
+      <ion-textarea
+        placeholder="Nhập nội dung"
+        [formControl]="note"
+        (keyup)="noteKeyUp()"
+      ></ion-textarea>
+    </div>
+  </ion-card>
+  <app-base-button
+    *ngIf="showSaveBtn"
+    [buttonStyle]="{ width: '156px', cssClass: 'buttonDarkOrange br-20' }"
+  >
+    Lưu
+  </app-base-button>
+</ion-content>

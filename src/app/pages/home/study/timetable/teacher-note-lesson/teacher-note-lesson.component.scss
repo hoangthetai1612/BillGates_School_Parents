@@ -1,8 +1,10 @@
-.note-lesson {
+.tc-note-lesson {
+    text-align: center;
     ion-card {
         padding: 16px 14px;
         color: var(--ion--colorwarning-contrast);
         font-size: 14px;
+        text-align: left;
         .title {
             font-weight: 600;
             margin-bottom: 18px;
