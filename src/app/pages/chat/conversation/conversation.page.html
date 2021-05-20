@@ -94,16 +94,18 @@
                     <input type="text"
                            name=""
                            id=""
+                           [(ngModel)]="msgText"
                            placeholder="Nhập nội dung">
                     <label for="file"> <img src="assets/icon/input-file.svg"
-                             alt=""></label>
+                             alt=""> </label>
                     <input type="file"
                            name=""
                            id="file"
                            hidden>
                 </div>
             </ion-col>
-            <ion-col size="2"><img src="assets/icon/icon-send.svg"
+            <ion-col size="2"><img (click)="sendMessage()"
+                     src="assets/icon/icon-send.svg"
                      alt=""></ion-col>
         </ion-row>
     </ion-grid>
