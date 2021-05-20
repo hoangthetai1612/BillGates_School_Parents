@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-grid class="forgot">
+    <ion-row>
+      <ion-col size=12 class="forgot-form">
+        <img class="close" (click)="backToStep()" src="assets/svg/icon-close.svg" alt="">
+        <div class="forgot-form-logo">
+          <img src="assets/svg/icon-logo.png" alt="">
+        </div>
+        <div>
+          <div class="login-form-item">
+            <h3>Nhập mật khẩu mới </h3>
+            <img src="assets/svg/icon-pass-login.svg" alt="">
+            <input type="number" placeholder="Mật khẩu mới">
+          </div>
+          <div class="login-form-item">
+            <img src="assets/svg/icon-pass-login.svg" alt="">
+            <input type="number" placeholder="Xác nhận mật khẩu mới ">
+          </div>
+          <app-base-button [buttonStyle]="buttonStyle" (callback)="openConfirm()"></app-base-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
