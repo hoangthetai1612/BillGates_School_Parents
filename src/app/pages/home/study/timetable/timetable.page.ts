@@ -4,6 +4,7 @@ import { Step } from 'ionic2-calendar/calendar';
 import { NoteLessonComponent } from './note-lesson/note-lesson.component';
 import startOfWeek from 'date-fns/startOfWeek';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
+import { TeacherNoteLessonComponent } from './teacher-note-lesson/teacher-note-lesson.component';
 
 @Component({
   selector: 'app-timetable',
@@ -28,7 +29,7 @@ export class TimetablePage implements OnInit {
     },
   };
   list = [0, 1, 2, 3, 4];
-
+  checkActive: number;
   startWeek: Date;
   endWeek: Date;
   currentDate = new Date();
@@ -37,54 +38,56 @@ export class TimetablePage implements OnInit {
 
   ngOnInit() {
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
-    this.endWeek = new Date(
-      this.startWeek.getFullYear(),
-      this.startWeek.getMonth(),
-      this.startWeek.getDate() + 5
-    );
+    this.setEndWeek(this.startWeek, 5);
     this.listDate = eachDayOfInterval({
       start: this.startWeek,
       end: this.endWeek,
     });
   }
-  nextWeek() {
+  setStartWeek(dateFrom: Date, number: number) {
     this.startWeek = new Date(
-      this.startWeek.getFullYear(),
-      this.startWeek.getMonth(),
-      this.startWeek.getDate() + 7
+      dateFrom.getFullYear(),
+      dateFrom.getMonth(),
+      dateFrom.getDate() + number
     );
+  }
+  setEndWeek(dateFrom: Date, number: number) {
     this.endWeek = new Date(
-      this.startWeek.getFullYear(),
-      this.startWeek.getMonth(),
-      this.startWeek.getDate() + 5
+      dateFrom.getFullYear(),
+      dateFrom.getMonth(),
+      dateFrom.getDate() + number
     );
+  }
+  nextWeek() {
+    this.setStartWeek(this.startWeek, 7);
+    this.setEndWeek(this.endWeek, 7);
     this.listDate = eachDayOfInterval({
       start: this.startWeek,
       end: this.endWeek,
     });
   }
   preWeek() {
-    this.startWeek = new Date(
-      this.startWeek.getFullYear(),
-      this.startWeek.getMonth(),
-      this.startWeek.getDate() - 7
-    );
-    this.endWeek = new Date(
-      this.startWeek.getFullYear(),
-      this.startWeek.getMonth(),
-      this.startWeek.getDate() + 5
-    );
+    this.setStartWeek(this.startWeek, -7);
+    this.setEndWeek(this.endWeek, -7);
     this.listDate = eachDayOfInterval({
       start: this.startWeek,
       end: this.endWeek,
     });
-    console.log(this.listDate);
   }
   async openNoteLesson() {
-    const modal = await this.modalController.create({
-      component: NoteLessonComponent,
-      cssClass: 'note-lesson-wrap',
-    });
-    return await modal.present();
+    const role = localStorage.getItem('role');
+    if (role === 'parents') {
+      const modal = await this.modalController.create({
+        component: NoteLessonComponent,
+        cssClass: 'note-lesson-wrap',
+      });
+      return await modal.present();
+    } else {
+      const modal = await this.modalController.create({
+        component: TeacherNoteLessonComponent,
+        cssClass: 'note-lesson-wrap',
+      });
+      return await modal.present();
+    }
   }
 }

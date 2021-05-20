@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
     this.modalController.dismiss();
   }
   handleCallbackEvent = (type) => {
-    this.callback.emit(type);
+    this.callback.emit(type);    
   };
 
 }
