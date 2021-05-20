@@ -28,8 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CiWebsocketModule.forRoot(
       {
-        ACCESS_TOKEN: JSON.parse(localStorage.getItem('access_token'))
-          .access_token,
         RECONNECT_INTERVAL: 10000,
         WS_ENDPOINT:
           'wss://7o5p7mfv40.execute-api.ap-southeast-1.amazonaws.com/production',

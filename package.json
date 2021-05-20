@@ -21,7 +21,7 @@
     "@angular/router": "~11.2.0",
     "@capacitor/core": "2.4.7",
     "@consult-indochina/auth": "^1.2.0",
-    "@consult-indochina/websocket": "^1.1.9",
+    "@consult-indochina/websocket": "^1.2.2",
     "@ionic/angular": "^5.5.2",
     "@rx-angular/state": "^1.4.3",
     "date-fns": "^2.21.3",

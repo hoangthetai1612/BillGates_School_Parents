@@ -47,7 +47,7 @@ export class ChatPage implements OnInit {
 
   messageList = [
     {
-      SenderUserId: 1,
+      SenderUserId: 2053,
       SenderName: 'Phùng Thanh Hằng',
       SenderMediaURL: 'assets/icon/avatar.svg',
       UnreadCount: 2,

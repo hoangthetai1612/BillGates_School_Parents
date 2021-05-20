@@ -54,10 +54,9 @@
 </ng-template>
 
 
-<ion-content>
+<ion-content #ionContent>
     <ng-container *ngIf="his">
-        <ci-message-list [messageList$]="his | async"
-                         #listMessageParent>
+        <ci-message-list [messageList$]="his | async">
             <ng-template #item
                          let-item="item"
                          let-checked="checked">

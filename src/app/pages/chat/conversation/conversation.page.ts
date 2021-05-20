@@ -11,9 +11,9 @@ import {
   BaseChatComponent,
   CiSocketService,
 } from '@consult-indochina/websocket';
-import { IonContent } from '@ionic/angular';
+import { IonContent, ViewDidEnter } from '@ionic/angular';
 import { merge, Observable, Subject } from 'rxjs';
-import { map, scan, shareReplay } from 'rxjs/operators';
+import { map, scan, shareReplay, tap } from 'rxjs/operators';
 import { MessageService } from 'src/app/service/message.service';
 
 export interface MessageInterface {
@@ -46,7 +46,7 @@ export enum TypeMessageEnum {
 })
 export class ConversationPage
   extends BaseChatComponent
-  implements OnInit, OnDestroy
+  implements OnInit, OnDestroy, ViewDidEnter
 {
   his: Observable<any>;
   messageSubject: Subject<any> = new Subject();
@@ -57,11 +57,6 @@ export class ConversationPage
   currentMsg: Partial<MessageInterface>;
   msgText: string;
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  @ViewChild('listMessageParent', { read: ViewContainerRef })
-  listMessageParent: any;
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  @ViewChild(IonContent) messageContainer: any;
-  private mutationObserver: MutationObserver;
   constructor(
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
@@ -83,25 +78,11 @@ export class ConversationPage
   }
 
   ionViewDidEnter() {
-    this.socketService.connect();
-    setTimeout(() => {
-      this.messageContainer.scrollToBottom(300);
-    }, 500);
-
-    //Mutation Observer xem sử thay đổi của DOM trong component. Auto scroll khi render tin nhắn mới
-    this.mutationObserver = new MutationObserver((res: any) => {
-      this.messageContainer.scrollToBottom(300);
-    });
-
-    this.mutationObserver.observe(
-      this.listMessageParent.element.nativeElement,
-      {
-        childList: true,
-      }
-    );
+    this.triggerScrollToBottom();
   }
 
   ngOnDestroy() {
+    console.log(this.messageContainer);
     this.socketService.close();
   }
 
@@ -119,7 +100,7 @@ export class ConversationPage
 
   getHistory(reciveid) {
     this.his = merge(
-      this.messageService.getListMessage(2053).pipe(
+      this.messageService.getListMessage(reciveid).pipe(
         map((res: any) => {
           console.log(res);
           return res.body.Payload.reverse();
@@ -127,6 +108,9 @@ export class ConversationPage
       ),
       this.messageSubject
     ).pipe(
+      tap(() => {
+        this.scrollToBottom();
+      }),
       scan((products: any[], product: any) =>
         this.updateListMessage(products, product)
       ),
