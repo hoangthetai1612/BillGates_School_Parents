@@ -1,0 +1,32 @@
+<app-header [headerStyle]="header"></app-header>
+<ion-content>
+  <ion-grid class="login">
+    <ion-row>
+      <ion-col size="12" class="login-logo">
+        <img src="../../../../assets/svg/icon-logo.png" alt="">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="login-form">
+        <form action="">
+          <div class="login-form-item">
+            <img src="../../../../assets/svg/icon-user-login.svg" alt="">
+            <input type="number" placeholder="Số điện thoại">
+          </div>
+          <div class="login-form-item">
+            <img src="../../../../assets/svg/Icon-pass-login.svg" alt="">
+            <input type="password" placeholder="Mật khẩu">
+          </div>
+          <div class="login-forgot">
+            <div class="login-forgot-item">
+              <ion-checkbox color="danger"></ion-checkbox>
+              <ion-label>Nhớ mật khẩu</ion-label>
+            </div>
+            <h3>Quên mật khẩu?</h3>
+          </div>
+          <app-base-button [buttonStyle]="buttonStyle" (callback)="login($event)"></app-base-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,5 +1,6 @@
 <ion-header>
-    <app-header [headerStyle]="header" [defaultHref]="defaultHref"></app-header>
+    <app-header [headerStyle]="header" *roles="'parents'" [defaultHref]="'main/home/contact-book'"></app-header>
+    <app-header [headerStyle]="header" *roles="'teacher'" [defaultHref]="'main/home/contact-book/teacher-learning-outcomes'"></app-header>
 </ion-header>
 
 <ion-content>

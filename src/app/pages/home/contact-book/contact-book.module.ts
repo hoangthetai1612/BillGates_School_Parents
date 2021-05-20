@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,4 +24,4 @@ import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive
   ],
   declarations: [ContactBookPage]
 })
-export class ContactBookPageModule {}
+export class ContactBookPageModule { }

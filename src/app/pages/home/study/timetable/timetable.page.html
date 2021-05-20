@@ -5,39 +5,39 @@
   ></app-header>
 </ion-header>
 
-    <ion-item lines="none">
-      <div class="calendar">
-        <div class="date">
-          <img
-            src="assets/icon/pre-btn.svg"
-            alt=""
-            class="pre-btn"
-            (click)="preWeek()"
-          />
+<ion-item lines="none">
+  <div class="calendar">
+    <div class="date">
+      <img
+        src="assets/icon/pre-btn.svg"
+        alt=""
+        class="pre-btn"
+        (click)="preWeek()"
+      />
 
-          {{startWeek | date: 'dd/MM-yyyy'}} - {{endWeek | date: 'dd/MM-yyyy'}}
-          <img
-            src="assets/icon/next-btn.svg"
-            alt=""
-            class="next-btn"
-            (click)="nextWeek()"
-          />
-        </div>
-        <div class="listDate">
-          <div class="item" *ngFor="let item of listDate">
-            <span
-              *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
-              >{{item | date: "EEEEEE"}}</span
-            >
-            <span
-              *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
-              class="active"
-              >Hôm nay</span
-            >
-          </div>
-        </div>
+      {{startWeek | date: 'dd/MM-yyyy'}} - {{endWeek | date: 'dd/MM-yyyy'}}
+      <img
+        src="assets/icon/next-btn.svg"
+        alt=""
+        class="next-btn"
+        (click)="nextWeek()"
+      />
+    </div>
+    <div class="listDate">
+      <div class="item" *ngFor="let item of listDate">
+        <span
+          *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
+          >{{item | date: "EEEEEE"}}</span
+        >
+        <span
+          *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
+          class="active"
+          >Hôm nay</span
+        >
       </div>
-    </ion-item>
+    </div>
+  </div>
+</ion-item>
 
 <ion-content class="timetable">
   <ion-grid>

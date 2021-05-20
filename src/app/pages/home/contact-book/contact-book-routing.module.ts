@@ -1,6 +1,8 @@
+/* eslint-disable max-len */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RoleGuard } from 'src/app/base/util/guards/roles.guard';
+
 import { ContactBookPage } from './contact-book.page';
 
 const routes: Routes = [
@@ -14,7 +16,7 @@ const routes: Routes = [
     data: {
       permission: {
         roles: 'parents',
-        redirectLink: '/main/home/contact-book/leave-application-teacher',
+        redirectLink: '/main/home/contact-book/teacher-approve-leave',
       },
     },
     canLoad: [RoleGuard],
@@ -29,12 +31,21 @@ const routes: Routes = [
     data: {
       permission: {
         roles: 'parents',
-        redirectLink: '/main/home/contact-book/list-result',
+        redirectLink: '/main/home/contact-book/teacher-learning-outcomes',
       },
     },
     canLoad: [RoleGuard],
     loadChildren: () => import('./learning-outcomes/learning-outcomes.module').then( m => m.LearningOutcomesPageModule)
+  },
+  {
+    path: 'teacher-learning-outcomes',
+    loadChildren: () => import('./teacher-learning-outcomes/teacher-learning-outcomes.module').then( m => m.TeacherLearningOutcomesPageModule)
+  },
+  {
+    path: 'teacher-approve-leave',
+    loadChildren: () => import('./teacher-approve-leave/teacher-approve-leave.module').then( m => m.TeacherApproveLeavePageModule)
   }
+
 ];
 
 @NgModule({

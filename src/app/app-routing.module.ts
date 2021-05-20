@@ -8,8 +8,8 @@ const routes: Routes = [
   },
   {
     path: 'index',
-    loadChildren: () => import('./index/index.module').then( m => m.IndexPageModule)
-  },
+    loadChildren: () => import('./index/index.module').then(m => m.IndexPageModule)
+  }
 ];
 @NgModule({
   imports: [
@@ -17,4 +17,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

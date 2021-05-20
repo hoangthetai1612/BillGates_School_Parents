@@ -1,61 +1,61 @@
 .profile {
-    padding: 0 20px;
-    .profile-item {
-        .profile-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 20px;
-            box-shadow: 0px 2px 6px #dedede;
-            position: relative;
-        }
+  padding: 0 20px;
+  .profile-item {
+    .profile-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 20px;
+      box-shadow: 0px 2px 6px #dedede;
+      position: relative;
+    }
 
-        label {
-            position: absolute;
-            bottom: 0;
-            right: 15px;
-            width: 24px;
-            height: 24px;
-        }
+    label {
+      position: absolute;
+      bottom: 0;
+      right: 15px;
+      width: 24px;
+      height: 24px;
     }
-    .profile-title {
-        display: flex;
-        flex-direction: column;
-        h1 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-        span {
-            color: #626262;
-            font-size: 14px;
-            img {
-                margin-left: 25px;
-            }
-        }
+  }
+  .profile-title {
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
     }
-    .profile-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .profile-button-forgot {
-            width: 156px;
-            height: 40px;
-            background-color: #ffe5da;
-            border-radius: 20px;
-            color: #ff4c01;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 30px;
-        }
-        .profile-button-logout {
-            width: 156px;
-            height: 40px;
-            background-color: white;
-            border-radius: 20px;
-            color: #ff4c01;
-            border: 1px solid #ff4c01;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
+    span {
+      color: #626262;
+      font-size: 14px;
+      img {
+        margin-left: 25px;
+      }
     }
+  }
+  .profile-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .profile-button-forgot {
+      width: 156px;
+      height: 40px;
+      background-color: #ffe5da;
+      border-radius: 20px;
+      color: #ff4c01;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 30px;
+    }
+    .profile-button-logout {
+      width: 156px;
+      height: 40px;
+      background-color: white;
+      border-radius: 20px;
+      color: #ff4c01;
+      border: 1px solid #ff4c01;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+  }
 }
