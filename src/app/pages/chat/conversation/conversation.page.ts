@@ -89,12 +89,13 @@ export class ConversationPage
   updateListMessage(a: any[], v) {
     const result = [...a];
     const isRender = a.some((val) => val.CreatedOn !== v.CreatedOn);
-    console.log(isRender);
+    console.log(isRender, v.Action);
 
-    if (isRender && v.MessageId) {
+    if (isRender && v.Action === 'receiveMessage') {
       return result;
     }
     result.push(v);
+    console.log(result);
     return result;
   }
 
