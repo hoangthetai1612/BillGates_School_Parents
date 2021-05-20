@@ -10,6 +10,7 @@ export class LeaveDetailComponent implements OnInit {
     cssClass: 'header-special',
     classText: 'text-white-small',
     iconLeft: 'assets/svg/icon-backbutton.svg',
+    iconRight: '',
     iconCenter: {
       text: 'Phùng Thanh Hưng',
     },

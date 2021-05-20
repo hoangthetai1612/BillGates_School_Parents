@@ -11,7 +11,7 @@
       <div class="title">Tới:</div>
       &nbsp;
       &nbsp;
-      <ion-input (input)="searchAccount($event.target.value)" placeholder="Nhập tên người dùng"></ion-input>
+      <ion-input (keyup)="searchAccount($event)" placeholder="Nhập tên người dùng"></ion-input>
       <img src="assets/svg/icon-search.svg" alt="">
     </div>
     &nbsp;
@@ -27,7 +27,7 @@
       <div>
         <div *ngIf="!isHidden" class="recent-text">Gần đây</div>
         <ion-list>
-          <ion-item *ngFor="let item of data" (click)="openDetailResult(item)">
+          <ion-item *ngFor="let item of data">
             <img class="image" src="assets/images/8.jpg" alt=""> &nbsp; &nbsp;
             <div class="text">Phùng Thanh Hằng</div>
           </ion-item>

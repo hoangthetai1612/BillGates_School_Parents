@@ -45,8 +45,8 @@ export class CreateChatComponent implements OnInit {
     this.data.length = 5;
   }
 
-  searchAccount(searchValue: string) {
-    if (searchValue.length !== 0) {
+  searchAccount(event: any) {
+    if (event.target.value.length !== 0) {
       this.isHidden = true;
     } else this.isHidden = false;
   }

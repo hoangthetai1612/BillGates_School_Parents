@@ -10,6 +10,7 @@ export class TeacherApproveLeavePage implements OnInit {
     cssClass: 'header-special',
     classText: 'text-white-small',
     iconLeft: 'assets/svg/icon-backbutton.svg',
+    iconRight: '',
     iconCenter: {
       text: 'Danh sách đơn xin nghỉ học',
     },
