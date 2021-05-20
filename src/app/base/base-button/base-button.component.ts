@@ -17,7 +17,7 @@ export class BaseButtonComponent implements OnInit {
   @Input() data: any;
   @Output() callback = new EventEmitter();
   constructor() { }
-
+  
   ngOnInit() { }
   handleCallbackEvent = (type) => {
     this.callback.emit(type);

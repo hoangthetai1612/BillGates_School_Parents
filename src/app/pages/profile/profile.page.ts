@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { IonRouterOutlet } from '@ionic/angular';
+import { ModalService } from 'src/app/service/modal.service';
 import { PhotoService } from 'src/app/service/photo.service';
+import { ForgotComponent } from '../auth/forgot/forgot.component';
+import { InputUsernameComponent } from '../auth/forgot/input-username/input-username.component';
 
 @Component({
   selector: 'app-profile',
@@ -24,9 +28,26 @@ export class ProfilePage implements OnInit {
 
   arrImgae = [];
   avt: string;
-  constructor(public photoService: PhotoService) { }
+  constructor(
+    public photoService: PhotoService,
+    private modalService: ModalService,
+    private routerOutlet: IonRouterOutlet
+
+  ) { }
 
   ngOnInit() {
+  }
+  presentModal() {
+    this.modalService
+      .presentModal({
+        presentingElement: this.routerOutlet.nativeEl,
+        component: ForgotComponent,
+        cssClass: "modal-full-height",
+        mode: 'md',
+        componentProps: {
+          rootPage: InputUsernameComponent,
+        },
+      })
   }
   changePhoto() {
     this.photoService.addNewToGallery().then(() => {

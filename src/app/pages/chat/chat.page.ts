@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { LoginService } from 'src/app/service/login.service';
 import { CreateChatComponent } from './create-chat/create-chat.component';
 
 @Component({
@@ -23,8 +25,7 @@ export class ChatPage implements OnInit {
       // image: 'image',
       // couple: 'couple',
       // backbutton: 'backbutton'
-    }
-
+    },
   };
 
   headerTeacher = {
@@ -41,25 +42,27 @@ export class ChatPage implements OnInit {
       // image: 'image',
       // couple: 'couple',
       // backbutton: 'backbutton'
-    }
-
+    },
   };
 
   messageList = [
     {
-      SenderUserId: 1,
+      SenderUserId: 2053,
       SenderName: 'Phùng Thanh Hằng',
-      SenderMediaURL:'assets/icon/avatar.svg',
+      SenderMediaURL: 'assets/icon/avatar.svg',
       UnreadCount: 2,
       UpdatedOn: '12/12/2020',
-      Content: 'Chào cô'
-
-    }
+      Content: 'Chào cô',
+    },
   ];
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private loginService: LoginService
+  ) {}
 
-  ngOnInit() {
-  }
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+
+  ngOnInit() {}
 
   async openAddPerson() {
     const modal = await this.modalController.create({
@@ -67,5 +70,4 @@ export class ChatPage implements OnInit {
     });
     return await modal.present();
   }
-
 }

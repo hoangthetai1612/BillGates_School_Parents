@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['main.page.scss']
 })
 export class MainPage {
-  checked = 1;
+  checked = 0;
   tabConfig= [
     {
       link: 'home',

@@ -1,0 +1,18 @@
+<ion-content>
+  <ion-grid class="forgot">
+    <ion-row>
+      <ion-col size=12 class="forgot-form">
+        <img class="close" (click)="closeModal()" src="assets/svg/icon-close.svg" alt="">
+        <div class="forgot-form-logo">
+          <img src="assets/svg/icon-logo.png" alt="">
+        </div>
+        <div>
+          <div class="login-form-item">
+            <h3>Lưu mật khẩu thành công </h3>
+            <app-base-button [buttonStyle]="buttonStyle" (callback)="closeModal()"></app-base-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -8,27 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'index',
-    loadChildren: () => import('./index/index.module').then( m => m.IndexPageModule)
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'noti',
-    loadChildren: () => import('./pages/noti/noti.module').then( m => m.NotiPageModule)
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  {
-    path: 'courseware',
-    loadChildren: () => import('./pages/courseware/courseware.module').then( m => m.CoursewarePageModule)
-  },
-  {
-    path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+    loadChildren: () => import('./index/index.module').then(m => m.IndexPageModule)
   }
 ];
 @NgModule({
@@ -37,4 +17,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

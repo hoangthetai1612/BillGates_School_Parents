@@ -1,21 +1,28 @@
 <ion-header>
-    <app-header *roles="'parents'" [headerStyle]="header"></app-header>
-    <app-header *roles="'teacher'" [headerStyle]="headerTeacher" (callback)="openAddPerson()"></app-header>
+    <app-header *roles="'parents'"
+                [headerStyle]="header"></app-header>
+    <app-header *roles="'teacher'"
+                [headerStyle]="headerTeacher"
+                (callback)="openAddPerson()"></app-header>
 </ion-header>
-<div class="status">
+<div class="status"
+     *roles="'teacher'">
     <ion-grid>
         <ion-row>
-            <ion-col size="4" class="flex-center">
+            <ion-col size="4"
+                     class="flex-center">
                 <div class="status-item">
                     <p>Tất cả</p>
                 </div>
             </ion-col>
-            <ion-col size="4" class="flex-center">
+            <ion-col size="4"
+                     class="flex-center">
                 <div class="status-item">
                     <p>Chưa đọc</p>
                 </div>
             </ion-col>
-            <ion-col size="4" class="flex-center">
+            <ion-col size="4"
+                     class="flex-center">
                 <div class="status-item">
                     <p>Đã đọc</p>
                 </div>
@@ -30,30 +37,37 @@
         <ion-refresher-content refreshingSpinner="circles"> </ion-refresher-content>
     </ion-refresher> -->
     <ion-list>
-        <ion-item [class.bg-active]="item.UnreadCount > 0" *ngFor="let item of messageList; let i = index" [routerLink]="['conversation', item.SenderUserId]" [state]="{
+        <ion-item [class.bg-active]="item.UnreadCount > 0"
+                  *ngFor="let item of messageList; let i = index"
+                  [routerLink]="['conversation', item.SenderUserId]"
+                  [state]="{
         senderName: item.SenderName,
         senderAvatar: item.SenderMediaURL,
         unread: item.UnreadCount
       }">
             <ion-grid>
                 <ion-row>
-                    <ion-col size="3" class="avatar">
+                    <ion-col size="3"
+                             class="avatar">
                         <ion-label>
                             <ion-avatar slot="start">
                                 <img [src]="item.SenderMediaURL" />
                             </ion-avatar>
                         </ion-label>
                     </ion-col>
-                    <ion-col size="6" class="flex-center">
+                    <ion-col size="6"
+                             class="flex-center">
                         <ion-label>
                             <p class="name">{{ item.SenderName }}</p>
                             <p class="content">{{ item.Content }}</p>
                         </ion-label>
                     </ion-col>
-                    <ion-col size="3" class="message-time">
+                    <ion-col size="3"
+                             class="message-time">
                         <ion-label>
                             <p class="time">{{ item.UpdatedOn | date: "hh:mm" }}</p>
-                            <span class="new-message" *ngIf="item.UnreadCount > 0">{{ item.UnreadCount }}</span>
+                            <span class="new-message"
+                                  *ngIf="item.UnreadCount > 0">{{ item.UnreadCount }}</span>
                         </ion-label>
                     </ion-col>
                 </ion-row>

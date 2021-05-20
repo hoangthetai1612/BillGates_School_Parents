@@ -6,7 +6,20 @@ import { IndexPage } from './index.page';
 const routes: Routes = [
   {
     path: '',
-    component: IndexPage
+    component: IndexPage,
+    children: [
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('../pages/auth/auth.module').then((m) => m.AuthPageModule)
+
+      },
+      {
+        path: '',
+        redirectTo: 'auth',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 
@@ -14,4 +27,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class IndexPageRoutingModule {}
+export class IndexPageRoutingModule { }

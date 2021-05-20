@@ -1,28 +1,36 @@
 <app-header [headerStyle]="header"></app-header>
 
 <div class="home">
-    <ion-row class="home-menu" *roles="'parents' else teacher">
+    <ion-row class="home-menu"
+             *roles="'parents' else teacher">
         <ion-col size="3">
-            <div class="menu-item" [routerLink]="'contact-book'">
-                <img src="assets/svg/icon-contact.svg" alt="">
+            <div class="menu-item"
+                 [routerLink]="'contact-book'">
+                <img src="assets/svg/icon-contact.svg"
+                     alt="">
                 <span>Sổ liên lạc</span>
             </div>
         </ion-col>
         <ion-col size="3">
             <div class="menu-item">
-                <img src="assets/svg/icon-bustracker.svg" alt="">
+                <img src="assets/svg/icon-bustracker.svg"
+                     alt="">
                 <span>Bustracker</span>
             </div>
         </ion-col>
         <ion-col size="3">
-            <div class="menu-item" [routerLink]="'study'">
-                <img src="assets/svg/icon-lms.svg" alt="">
+            <div class="menu-item"
+                 [routerLink]="'study'">
+                <img src="assets/svg/icon-lms.svg"
+                     alt="">
                 <span>Học liệu</span>
             </div>
         </ion-col>
         <ion-col size="3">
-            <div class="menu-item" [routerLink]="'menu'">
-                <img src="assets/svg/icon-menu.svg" alt="">
+            <div class="menu-item"
+                 [routerLink]="'menu'">
+                <img src="assets/svg/icon-menu.svg"
+                     alt="">
                 <span>Thực đơn</span>
             </div>
         </ion-col>
@@ -30,20 +38,26 @@
     <ng-template #teacher>
         <ion-row class="home-menu">
             <ion-col size="4">
-                <div *roles="'teacher'" class="menu-item" [routerLink]="'contact-book'">
-                    <img src="assets/svg/icon-contact.svg" alt="">
+                <div *roles="'teacher'"
+                     class="menu-item"
+                     [routerLink]="'contact-book'">
+                    <img src="assets/svg/icon-contact.svg"
+                         alt="">
                     <span>Sổ liên lạc</span>
                 </div>
             </ion-col>
             <ion-col size="4">
-                <div class="menu-item" [routerLink]="'study'">
-                    <img src="assets/svg/icon-lms.svg" alt="">
+                <div class="menu-item"
+                     [routerLink]="'study'">
+                    <img src="assets/svg/icon-lms.svg"
+                         alt="">
                     <span>Học liệu</span>
                 </div>
             </ion-col>
             <ion-col size="4">
                 <div class="menu-item">
-                    <img src="assets/svg/icon-menu.svg" alt="">
+                    <img src="assets/svg/icon-menu.svg"
+                         alt="">
                     <span>Thực đơn</span>
                 </div>
             </ion-col>
@@ -54,13 +68,12 @@
 
 <ion-content>
     <ion-grid class="home">
-
-
         <ion-row class="home-posts">
-
             <ion-col size="12">
-                <div class="post-item" *ngFor="let item of data">
-                    <img src="{{item.mediaURL}}" alt="">
+                <div class="post-item"
+                     *ngFor="let item of data">
+                    <img src="{{item.mediaURL}}"
+                         alt="">
                     <div class="post-item-text">
                         <h3>{{item.title}}</h3>
                         <span>{{item.date}}</span>

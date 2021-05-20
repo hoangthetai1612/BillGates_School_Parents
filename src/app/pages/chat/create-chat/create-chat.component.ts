@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-chat',
@@ -17,10 +18,9 @@ export class CreateChatComponent implements OnInit {
     type: {
       text: 'text',
       backbutton: 'backbutton',
-      blackBackButtonColor: 'black'
-    }
-
-  }
+      blackBackButtonColor: 'black',
+    },
+  };
 
   fakeData = [
     {
@@ -77,7 +77,7 @@ export class CreateChatComponent implements OnInit {
 
   isHidden = false;
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
 
@@ -86,8 +86,15 @@ export class CreateChatComponent implements OnInit {
   searchAccount(event: any) {
     if (event.target.value.length !== 0) {
       this.isHidden = true;
-    } else this.isHidden = false;
+    } else {
+      this.isHidden = false;
+    }
   }
-
+  closeModal() {
+    this.modalController.dismiss({
+      // dismissed: true
+    });
+  }
+  openDetailResult(item) { }
 }
 
