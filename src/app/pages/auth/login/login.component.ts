@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     text: "Đăng nhập",
   }
   rootPage: any;
-  constructor(public modalController: ModalController, private modalService: ModalService, private routerOutlet: IonRouterOutlet) { }
+  constructor(private modalService: ModalService, private routerOutlet: IonRouterOutlet) { }
   ngOnInit() { }
 
   login = (ev) => {
