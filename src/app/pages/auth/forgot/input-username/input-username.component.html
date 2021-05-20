@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-grid class="forgot">
+    <ion-row>
+      <ion-col size=12 class="forgot-form">
+        <img class="close" (click)="closeModal()" src="assets/svg/icon-close.svg" alt="">
+        <div class="forgot-form-logo">
+          <img src="assets/svg/icon-logo.png" alt="">
+        </div>
+        <div>
+          <div class="login-form-item">
+            <h3>Vui lòng nhập tên đăng nhập</h3>
+            <img src="assets/svg/icon-user-login.svg" alt="">
+            <input type="number" placeholder="Số điện thoại">
+          </div>
+          <app-base-button [buttonStyle]="buttonStyle" (callback)="openInputOtp()"></app-base-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
