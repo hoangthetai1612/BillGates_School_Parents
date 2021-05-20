@@ -25,8 +25,7 @@ export class ChatPage implements OnInit {
       // image: 'image',
       // couple: 'couple',
       // backbutton: 'backbutton'
-    }
-
+    },
   };
 
   headerTeacher = {
@@ -43,51 +42,27 @@ export class ChatPage implements OnInit {
       // image: 'image',
       // couple: 'couple',
       // backbutton: 'backbutton'
-    }
-
+    },
   };
 
   messageList = [
     {
       SenderUserId: 1,
       SenderName: 'Phùng Thanh Hằng',
-      SenderMediaURL:'assets/icon/avatar.svg',
+      SenderMediaURL: 'assets/icon/avatar.svg',
       UnreadCount: 2,
       UpdatedOn: '12/12/2020',
-      Content: 'Chào cô'
-
-    }
+      Content: 'Chào cô',
+    },
   ];
-  constructor(private modalController: ModalController, private loginService: LoginService) {
-   }
+  constructor(
+    private modalController: ModalController,
+    private loginService: LoginService
+  ) {}
 
-   // eslint-disable-next-line @typescript-eslint/member-ordering
-   data = {
-    password: '123456aA',
-    username: '0964554300',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    grant_type: ['password']
-  };
+  // eslint-disable-next-line @typescript-eslint/member-ordering
 
-  ngOnInit() {
-    this.login();
-  }
-
-  login() {
-    this.loginService.login(this.data).subscribe(
-      (res) => {
-        // this.storage.userToken.next(res);
-        // this.noti.showSuccess("Đăng nhập thành công!");JSON.parse(
-        localStorage.setItem('access_token', JSON.stringify(res));
-        // this.loading.closeLoading();
-        // this.router.navigate(['']);
-      },
-      (err) => {
-        // this.loading.closeLoading();
-        // this.noti.showError(`Đăng nhập thất bại! ${err.message}`);
-      }
-    );
-  }
+  ngOnInit() {}
 
   async openAddPerson() {
     const modal = await this.modalController.create({
@@ -95,5 +70,4 @@ export class ChatPage implements OnInit {
     });
     return await modal.present();
   }
-
 }

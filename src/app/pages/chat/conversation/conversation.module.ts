@@ -7,11 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { ConversationPageRoutingModule } from './conversation-routing.module';
 
 import { ConversationPage } from './conversation.page';
+import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 import {
   CiMessageListModule,
   CiMessageTextModule,
 } from '@consult-indochina/websocket';
-import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 
 @NgModule({
   imports: [

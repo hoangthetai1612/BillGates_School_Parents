@@ -7,7 +7,14 @@ import { ModalController } from '@ionic/angular';
 import { ForgotComponent } from '../forgot/forgot.component';
 import { ModalService } from 'src/app/service/modal.service';
 import { InputUsernameComponent } from '../forgot/input-username/input-username.component';
-
+import { LoginService } from 'src/app/service/login.service';
+import { Router } from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -25,34 +32,61 @@ export class LoginComponent implements OnInit {
     },
     type: {
       image: 'image',
-      isText: true
-    }
-
+      isText: true,
+    },
+  };
+  data = {
+    password: '123456aA',
+    username: '0964554300',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    grant_type: ['password'],
   };
   buttonStyle = {
-    width: "100%",
-    cssClass: "buttonDarkOrange",
-    text: "Đăng nhập",
-  }
+    width: '100%',
+    cssClass: 'buttonDarkOrange',
+    text: 'Đăng nhập',
+  };
   rootPage: any;
-  constructor(public modalController: ModalController, private modalService: ModalService, private routerOutlet: IonRouterOutlet) { }
-  ngOnInit() { }
+  formLogin = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+  constructor(
+    public modalController: ModalController,
+    private modalService: ModalService,
+    private routerOutlet: IonRouterOutlet,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
+  ngOnInit() {}
 
-  login = (ev) => {
+  login() {
+    this.loginService
+      .login({
+        username: this.formLogin.get('username').value,
+        password: this.formLogin.get('password').value,
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        grant_type: ['password'],
+      })
+      .subscribe(
+        (res) => {
+          localStorage.setItem('access_token', JSON.stringify(res));
+          this.router.navigate(['/main/home']);
+        },
+        (err) => {}
+      );
   }
   presentModal() {
-    this.modalService
-      .presentModal({
-        presentingElement: this.routerOutlet.nativeEl,
-        component: ForgotComponent,
-        cssClass: "modal-full-height",
-        mode: 'md',
-        componentProps: {
-          rootPage: InputUsernameComponent,
-        },
-      })
+    this.modalService.presentModal({
+      presentingElement: this.routerOutlet.nativeEl,
+      component: ForgotComponent,
+      cssClass: 'modal-full-height',
+      mode: 'md',
+      componentProps: {
+        rootPage: InputUsernameComponent,
+      },
+    });
   }
-
 }
 @NgModule({
   declarations: [LoginComponent],
@@ -60,10 +94,10 @@ export class LoginComponent implements OnInit {
     IonicModule,
     CommonModule,
     HeaderModule,
-    BaseButtonModule
+    BaseButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  exports: [LoginComponent]
+  exports: [LoginComponent],
 })
-export class LoginModule {
-
-}
+export class LoginModule {}

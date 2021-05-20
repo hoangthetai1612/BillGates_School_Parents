@@ -6,15 +6,8 @@ import { IonicModule } from '@ionic/angular';
 import { AuthComponent } from './auth.component';
 import { AuthPageRoutingModule } from './auth-routing.module';
 
-
-
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        AuthPageRoutingModule,
-    ],
-    declarations: [AuthComponent]
+  imports: [CommonModule, FormsModule, IonicModule, AuthPageRoutingModule],
+  declarations: [AuthComponent],
 })
-export class AuthPageModule { }
+export class AuthPageModule {}
