@@ -10,6 +10,7 @@ import { TeacherLearningOutcomesPage } from './teacher-learning-outcomes.page';
 
 import { HeaderModule } from 'src/app/base/header/header.component';
 import { LearningOutcomesPageModule } from '../learning-outcomes/learning-outcomes.module';
+import { BaseListItemModule } from 'src/app/base/base-list-item/base-list-item.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { LearningOutcomesPageModule } from '../learning-outcomes/learning-outcom
     IonicModule,
     TeacherLearningOutcomesPageRoutingModule,
     HeaderModule,
-    LearningOutcomesPageModule
+    LearningOutcomesPageModule,
+    BaseListItemModule
   ],
   declarations: [TeacherLearningOutcomesPage]
 })
