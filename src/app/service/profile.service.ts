@@ -12,7 +12,19 @@ export class ProfileService {
     constructor(
         protected http: HttpClient
     ) { }
-    getProfile(): Observable<ProfileModel> {
+    getProfileParent(): Observable<ProfileModel> {
         return this.http.get(`api/teacher/username`).pipe(map((res: any) => res.Payload));
+    }
+    getProfileTeacher(): Observable<ProfileModel> {
+        return this.http.get(`api/teacher/username/parent`).pipe(map((res: any) => res.Payload));
+    }
+    getDetailProfileTeacher(): Observable<ProfileModel> {
+        return this.http.get(`api/teacher/username`).pipe(map((res: any) => res.Payload));
+    }
+    updateProfileParent(data): Observable<ProfileModel> {
+        return this.http.put(`api/parent/username`, data).pipe(map((res: any) => res))
+    }
+    updateProfileTeacher(data): Observable<ProfileModel> {
+        return this.http.put(`api/teacher/username`, data).pipe(map((res: any) => res))
     }
 }
