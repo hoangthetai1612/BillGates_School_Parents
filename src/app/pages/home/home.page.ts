@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NewModel } from 'src/app/models/new.model';
-import { ApiService } from 'src/app/service/api.service';
+import { NewsService } from 'src/app/service/news.service';
 
 @Component({
   selector: 'app-home',
@@ -22,36 +21,33 @@ export class HomePage implements OnInit {
       isText: true,
     },
   };
-  data: NewModel[] = [];
-  recv: any;
-  constructor(private router: Router, private apiService: ApiService) { }
+  news;
+  constructor(private router: Router, private newsService: NewsService) { }
 
   ngOnInit() {
     this.setNews();
   }
-  setNews() {
-    const dataObject: NewModel = new NewModel();
-    dataObject.Title = 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi';
-    dataObject.CreatedByName = 'Anh';
-    dataObject.MediaURL = 'assets/svg/image-post.svg';
-    dataObject.Description = 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi';
-    dataObject.URLLink = 'contact-book';
-    dataObject.CreatedOn = new Date();
-    for (let i = 0; i < 10; i++) {
-      this.data.push(dataObject);
-    }
-    let paramReq = {
+  getNews() {
+    let req = {
       pageNumber: 1,
       pageSize: 20
     }
-    this.apiService.get('news', paramReq)
-      .subscribe(n => this.recv = n, null, () => {
-        this.data = this.recv;
-      });
+    this.newsService.getNews(req).subscribe(res => {
+      this.news = res;
+    })
   }
-  open() {
-    console.log("đs");
-
-    this.router.navigateByUrl('');
+  setNews() {
+    const dataObject = {
+      Title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
+      CreatedByName:  'Anh',
+      MediaURL:  'assets/svg/image-post.svg',
+      Description:  'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
+      URLLink:  'contact-book',
+      CreatedOn:  new Date()
+    }
+    this.news = [];
+    for (let i = 0; i < 10; i++) {
+      this.news.push(dataObject);
+    }
   }
 }

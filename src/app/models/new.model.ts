@@ -1,4 +1,4 @@
-export class NewModel {
+export interface NewModel {
   NewsId: string;
   Title: string;
   Description: string;

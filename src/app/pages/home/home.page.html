@@ -56,7 +56,7 @@
     <ion-grid class="home">
         <ion-row class="home-posts">
             <ion-col size="12">
-                <ng-container *ngFor="let item of data">
+                <ng-container *ngFor="let item of news">
                     <div class="post-item" [routerLink]="item.URLLink">
                         <img src="{{item.MediaURL}}" alt="">
                         <div class="post-item-text">
