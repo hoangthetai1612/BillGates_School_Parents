@@ -17,7 +17,7 @@ export class NewsService {
         return this.http.get(`/api/news?${paramReq}`).pipe(map((res: any) => res.Payload));
     }
     postNews(data): Observable<NewModel> {
-        return this.http.post(`/api/news?`, data).pipe(map((res: any) => res));
+        return this.http.post(`/api/news`, data).pipe(map((res: any) => res));
     }
     editNews(data): Observable<NewModel> {
         return this.http.put(`/api/news/{{NewsId:intt}`, data).pipe(map((res: any) => res));
