@@ -27,7 +27,7 @@
       <div
         class="item"
         *ngFor="let item of listDate; let i = index"
-        (click)="checkActive = i"
+        (click)="checkActive = i; listTimeTableByService(i)"
       >
         <span
           *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
@@ -55,24 +55,25 @@
     </ion-row>
     <ion-row
       class="detail-session"
-      *ngFor="let item of list, let i = index"
-      [class]="i==list.length-1? 'last-session': ''"
+      *ngFor="let item of listTimeTable, let i = index"
       (click)="openNoteLesson()"
     >
-      <ion-col size="2">
-        <div class="number">{{i+1}}</div>
-      </ion-col>
-      <ion-col size="10">
-        <div class="lesson">
-          <div class="label">Tiết 1:</div>
-          <div class="subject">Toán 6</div>
-          <img src="assets/icon/arrow-forward.svg" alt="" />
-        </div>
-        <div class="lesson">
-          <div class="label">Phòng học:</div>
-          <div class="room">Lớp 6A1</div>
-        </div>
-      </ion-col>
+      <div class="lesson-component" *ngIf="item.LessonType == 1">
+        <ion-col size="2">
+          <div class="number">{{i+1}}</div>
+        </ion-col>
+        <ion-col size="10">
+          <div class="lesson">
+            <div class="label">Tiết 1:</div>
+            <div class="subject">{{item.SubjectName}}</div>
+            <img src="assets/icon/arrow-forward.svg" alt="" />
+          </div>
+          <div class="lesson">
+            <div class="label">Phòng học:</div>
+            <div class="room">Lớp {{item.RoomName}}</div>
+          </div>
+        </ion-col>
+      </div>
     </ion-row>
   </ion-grid>
   <ion-grid>
@@ -85,24 +86,25 @@
     </ion-row>
     <ion-row
       class="detail-session"
-      *ngFor="let item of list, let i = index"
-      [class]="i==list.length-1? 'last-session': ''"
+      *ngFor="let item of listTimeTable, let i = index"
       (click)="openNoteLesson()"
     >
-      <ion-col size="2">
-        <div class="number">{{i+1}}</div>
-      </ion-col>
-      <ion-col size="10">
-        <div class="lesson">
-          <div class="label">Tiết 1:</div>
-          <div class="subject">Toán 6</div>
-          <img src="assets/icon/arrow-forward.svg" alt="" />
-        </div>
-        <div class="lesson">
-          <div class="label">Phòng học:</div>
-          <div class="room">Lớp 6A1</div>
-        </div>
-      </ion-col>
+      <div class="lesson-component" *ngIf="item.LessonType == 2">
+        <ion-col size="2">
+          <div class="number">{{i+1}}</div>
+        </ion-col>
+        <ion-col size="10">
+          <div class="lesson">
+            <div class="label">Tiết 1:</div>
+            <div class="subject">{{item.SubjectName}}</div>
+            <img src="assets/icon/arrow-forward.svg" alt="" />
+          </div>
+          <div class="lesson">
+            <div class="label">Phòng học:</div>
+            <div class="room">Lớp {{item.RoomName}}</div>
+          </div>
+        </ion-col>
+      </div>
     </ion-row>
   </ion-grid>
 </ion-content>

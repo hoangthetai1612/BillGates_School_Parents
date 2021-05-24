@@ -4,7 +4,11 @@ import { Step } from 'ionic2-calendar/calendar';
 import { NoteLessonComponent } from './note-lesson/note-lesson.component';
 import startOfWeek from 'date-fns/startOfWeek';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
+import getDay from 'date-fns/getDay';
 import { TeacherNoteLessonComponent } from './teacher-note-lesson/teacher-note-lesson.component';
+import { TimeTableService } from 'src/app/service/timetable.service';
+import { DatePipe } from '@angular/common';
+import { TimeTableLesson } from 'src/app/models/timetable.model';
 
 @Component({
   selector: 'app-timetable',
@@ -28,13 +32,19 @@ export class TimetablePage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-  list = [0, 1, 2, 3, 4];
+  listTimeTable: TimeTableLesson[];
   checkActive: number;
   startWeek: Date;
   endWeek: Date;
   currentDate = new Date();
   listDate = [];
-  constructor(private modalController: ModalController) {}
+  classId: number;
+  valueToday: number;
+  constructor(
+    private modalController: ModalController,
+    private timetableService: TimeTableService,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit() {
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
@@ -43,6 +53,8 @@ export class TimetablePage implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
+    this.valueToday = getDay(this.currentDate);
+    this.listTimeTableByService(this.valueToday);
   }
   setStartWeek(dateFrom: Date, number: number) {
     this.startWeek = new Date(
@@ -65,6 +77,7 @@ export class TimetablePage implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
+    this.checkActive = -1;
   }
   preWeek() {
     this.setStartWeek(this.startWeek, -7);
@@ -73,6 +86,16 @@ export class TimetablePage implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
+    this.checkActive = -1;
+  }
+  listTimeTableByService(valueDay) {
+    const fromDate = this.datePipe.transform(this.startWeek, 'yyyy-MM-dd');
+    const toDate = this.datePipe.transform(this.endWeek, 'yyyy-MM-dd');
+    this.timetableService
+      .getTimeTable(valueDay, 25, fromDate, toDate)
+      .subscribe((res: any) => {
+        this.listTimeTable = res;
+      });
   }
   async openNoteLesson() {
     const role = localStorage.getItem('role');
