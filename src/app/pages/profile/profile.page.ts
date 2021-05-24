@@ -32,7 +32,6 @@ export class ProfilePage implements OnInit {
     public photoService: PhotoService,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet
-
   ) { }
 
   ngOnInit() {

@@ -57,8 +57,8 @@ export class LoginComponent implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private loginService: LoginService,
     private router: Router
-  ) {}
-  ngOnInit() {}
+  ) { }
+  ngOnInit() { }
 
   login() {
     this.loginService
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('access_token', JSON.stringify(res));
           this.router.navigate(['/main/home']);
         },
-        (err) => {}
+        (err) => { }
       );
   }
   presentModal() {
@@ -100,4 +100,4 @@ export class LoginComponent implements OnInit {
   ],
   exports: [LoginComponent],
 })
-export class LoginModule {}
+export class LoginModule { }
