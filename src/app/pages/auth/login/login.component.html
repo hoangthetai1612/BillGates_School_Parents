@@ -2,39 +2,29 @@
 <ion-content>
   <ion-grid class="login">
     <ion-row>
-      <ion-col size="12"
-               class="login-logo">
-        <img src="../../../../assets/svg/icon-logo.png"
-             alt="">
+      <ion-col size="12" class="login-logo">
+        <img src="../../../../assets/svg/icon-logo.png" alt="">
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12"
-               class="login-form">
+      <ion-col size="12" class="login-form">
         <form [formGroup]="formLogin">
           <div class="login-form-item">
-            <img src="assets/svg/icon-user-login.svg"
-                 alt="">
-            <input type="text"
-                   placeholder="Số điện thoại"
-                   formControlName="username">
+            <img src="assets/svg/icon-user-login.svg" alt="">
+            <input type="text" placeholder="Số điện thoại" formControlName="username">
           </div>
           <div class="login-form-item">
-            <img src="assets/svg/Icon-pass-login.svg"
-                 alt="">
-            <input type="password"
-                   placeholder="Mật khẩu"
-                   formControlName="password">
+            <img src="assets/svg/Icon-pass-login.svg" alt="">
+            <input type="password" placeholder="Mật khẩu" formControlName="password">
           </div>
           <div class="login-forgot">
             <div class="login-forgot-item">
               <ion-checkbox color="danger"></ion-checkbox>
               <ion-label>Nhớ mật khẩu</ion-label>
             </div>
-            <h3 (click)="presentModal()">Quên mật khẩu?</h3>
+            <!-- <h3 (click)="presentModal()">Quên mật khẩu?</h3> -->
           </div>
-          <app-base-button [buttonStyle]="buttonStyle"
-                           (callback)="login()"></app-base-button>
+          <app-base-button [buttonStyle]="buttonStyle" (callback)="login()"></app-base-button>
         </form>
       </ion-col>
     </ion-row>

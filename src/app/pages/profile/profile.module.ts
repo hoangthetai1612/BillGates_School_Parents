@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePageRoutingModule } from './profile-routing.module';
-
+import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 import { ProfilePage } from './profile.page';
 import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
 import { HeaderModule } from 'src/app/base/header/header.component';
@@ -19,8 +19,9 @@ import { RouterModule } from '@angular/router';
     ProfilePageRoutingModule,
     BaseButtonModule,
     HeaderModule,
-    RouterModule
+    RouterModule,
+    RoleDirectiveModule,
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage],
 })
 export class ProfilePageModule { }

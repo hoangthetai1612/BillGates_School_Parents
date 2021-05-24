@@ -1,10 +1,10 @@
 <app-header [headerStyle]="header"></app-header>
 <ion-content>
-  <ion-grid class="profile">
+  <ion-grid class="profile" *roles="'parents' else teacher">
     <ion-row>
       <ion-col size="12" class="profile-item">
-        <img *ngIf="avt != ''" class="profile-image" src="assets/svg/profile-avt.svg" alt="">
-        <img *ngIf="avt === ''" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
+        <img *ngIf="avt == null" class="profile-image" src="{{profileParent.StudentMediaURL}}" alt="">
+        <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
         <label for="profile" (click)="changePhoto()">
           <img src="assets/svg/icon-upload.svg" alt="">
         </label>
@@ -16,29 +16,71 @@
       <ion-col size="12">
         <div class="profile-info">
           <span>Họ tên</span>
-          <p>Trần Hải Linh</p>
+          <p>{{profileParent?.StudentLastName}}</p>
         </div>
         <div class="profile-info">
           <span>Lớp:</span>
-          <p>5A1</p>
+          <p>{{profileParent?.ClassName}}</p>
         </div>
         <div class="profile-info">
           <span>Tên PH:</span>
-          <p>Lê Thu Lan</p>
-        </div>
-        <div class="profile-info">
-          <span>SĐT học sinh:</span>
-          <p>0987458693</p>
+          <input type="text" [(ngModel)]="profileParent.LastName" />
         </div>
         <div class="profile-info">
           <span>SĐT phụ huynh:</span>
-          <p>0793250398</p>
+          <p>{{profileParent?.Phone}}</p>
+        </div>
+        <div class="profile-info">
+          <span>SĐT học sinh:</span>
+          <input type="text" [(ngModel)]="profileParent.StudentPhone" />
         </div>
         <div class="profile-info">
           <span>Địa chỉ nhà:</span>
-          <p>125 An Dương Vương</p>
+          <input type="text" [(ngModel)]="profileParent.LocationAddress" />
+        </div>
+        <div class="profile-button">
+          <app-base-button (callback)="updateProfileParent()" [buttonStyle]="buttonStyle"></app-base-button>
         </div>
       </ion-col>
+
     </ion-row>
   </ion-grid>
+  <ng-template #teacher>
+    <ion-grid class="profile">
+      <ion-row>
+        <ion-col size="12" class="profile-item">
+          <img *ngIf="avt == null" class="profile-image" src="{{profileTeacher.MediaURL}}" alt="">
+          <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
+          <label for="profile" (click)="changePhoto()">
+            <img src="assets/svg/icon-upload.svg" alt="">
+          </label>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <h1 class="profile-title">Thông tin cá nhân</h1>
+        <ion-col size="12">
+          <div class="profile-info">
+            <span>Họ tên giáo viên:</span>
+            <input type="text" [(ngModel)]="profileTeacher.LastName" />
+          </div>
+          <div class="profile-info">
+            <span>Chủ nhiệm lớp:</span>
+            <p>{{profileTeacher.ClassName}}</p>
+          </div>
+          <div class="profile-info">
+            <span>SĐT giáo viên:</span>
+            <input type="text" [(ngModel)]="profileTeacher.Phone" />
+          </div>
+          <div class="profile-info">
+            <span>Địa chỉ nhà:</span>
+            <input type="text" [(ngModel)]="profileTeacher.LocationAddress" />
+          </div>
+          <div class="profile-button">
+            <app-base-button (callback)="updateProfileTeacher()" [buttonStyle]="buttonStyle"></app-base-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
 </ion-content>
