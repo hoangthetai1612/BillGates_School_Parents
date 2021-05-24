@@ -3,7 +3,7 @@
   <ion-grid class="profile">
     <ion-row>
       <ion-col size="12" class="profile-item">
-        <img *ngIf="avt == null" class="profile-image" src="assets/svg/profile-avt.svg" alt="">
+        <img *ngIf="avt == null" class="profile-image" src="{{profileInfo.StudentMediaURL}}" alt="">
         <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
         <label for="profile" (click)="changePhoto()">
           <img src="assets/svg/icon-upload.svg" alt="">
@@ -16,27 +16,27 @@
       <ion-col size="12">
         <div class="profile-info">
           <span>Họ tên</span>
-          <p>Trần Hải Linh</p>
+          <p>{{profileInfo.StudentPhone}}</p>
         </div>
         <div class="profile-info">
           <span>Lớp:</span>
-          <p>5A1</p>
+          <p>{{profileInfo.ClassName}}</p>
         </div>
         <div class="profile-info">
           <span>Tên PH:</span>
-          <p>Lê Thu Lan</p>
+          <p>{{profileInfo.LastName}}</p>
         </div>
         <div class="profile-info">
           <span>SĐT học sinh:</span>
-          <p>0987458693</p>
+          <p>{{profileInfo.StudentPhone}}</p>
         </div>
         <div class="profile-info">
           <span>SĐT phụ huynh:</span>
-          <p>0793250398</p>
+          <p>{{profileInfo.Phone}}</p>
         </div>
         <div class="profile-info">
           <span>Địa chỉ nhà:</span>
-          <p>125 An Dương Vương</p>
+          <p>{{profileInfo.LocationAddress}}</p>
         </div>
       </ion-col>
     </ion-row>

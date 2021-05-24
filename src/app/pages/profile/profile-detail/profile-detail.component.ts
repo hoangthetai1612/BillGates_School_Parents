@@ -3,6 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import { PhotoService } from 'src/app/service/photo.service';
+import { ProfileService } from 'src/app/service/profile.service';
 
 @Component({
   selector: 'app-profile-detail',
@@ -26,11 +27,31 @@ export class ProfileDetailComponent implements OnInit {
   };
   arrImgae = [];
   avt: string;
+  profileInfo = {
+    ParentId: 1,
+    StudentId: 2,
+    LastName: " Trần Huyền Diệu",
+    Phone: "0968744046",
+    StudentLastName: " Trần duy",
+    StudentPhone: "09687421561",
+    StudentMediaURL: "https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512",
+    LocationAddress: " 193 phú diẽn",
+    ClassName: "5A",
+    ClassId: 3
+  }
   constructor(
-    public photoService: PhotoService
+    public photoService: PhotoService,
+    private profileService: ProfileService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getProfile()
+  }
+  getProfile() {
+    this.profileService.getProfile().subscribe(res => {
+      this.profileInfo = res
+    })
+  }
   changePhoto() {
     this.photoService.addNewToGallery().then(() => {
       this.arrImgae = this.photoService.photos;
