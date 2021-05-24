@@ -29,6 +29,14 @@
         justify-content: space-between;
         align-items: center;
         height: 40px;
+        input {
+            border: none;
+            text-align: end;
+            outline: none;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+        }
         span {
             color: #808080;
             font-size: 12px;
@@ -38,5 +46,10 @@
             font-size: 14px;
             font-weight: 600;
         }
+    }
+    .profile-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
     }
 }
