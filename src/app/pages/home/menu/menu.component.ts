@@ -33,6 +33,9 @@ export class MenuComponent implements OnInit {
   endWeek: Date;
   currentDate = new Date();
   listDate = [];
+  dayValue = -1;
+  indexWeek = 0;
+  focusWeek = 0;
   dishMenus = [
     {
       "DishMenuId": 1,
@@ -131,6 +134,7 @@ export class MenuComponent implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
+    this.indexWeek++;
   }
   preWeek() {
     this.startWeek = new Date(
@@ -147,13 +151,16 @@ export class MenuComponent implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
+    this.indexWeek--;
   }
-  getDishMenu() {
+  getDishMenu(dayValue) {
+    this.dayValue = dayValue;
+    this.focusWeek = this.indexWeek;
     let req = {
       FromDate: this.datepipe.transform(this.startWeek, "yyyy-MM-dd'T'HH:mm:ss"),
       ToDate: this.datepipe.transform(this.endWeek, "yyyy-MM-dd'T'HH:mm:ss"),
       ClassId: 25,
-      DayValue: 3
+      DayValue: dayValue
     }
     this.menuService.getDishMenuByTimePeriod(req).subscribe(res => {
       this.dishMenus = res

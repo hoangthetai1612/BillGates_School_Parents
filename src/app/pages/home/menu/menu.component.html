@@ -5,18 +5,18 @@
       <ion-col size="12">
         <div class="calendar">
           <div class="date">
-            <img src="assets/icon/pre-btn.svg" alt="" class="pre-btn" (click)="preWeek(); getDishMenu();" />
+            <img src="assets/icon/pre-btn.svg" alt="" class="pre-btn" (click)="preWeek()" />
 
             {{startWeek | date: 'dd/MM-yyyy'}} - {{endWeek | date:
             'dd/MM-yyyy'}}
-            <img src="assets/icon/next-btn.svg" alt="" class="next-btn" (click)="nextWeek(); getDishMenu();" />
+            <img src="assets/icon/next-btn.svg" alt="" class="next-btn" (click)="nextWeek()" />
           </div>
           <div class="listDate">
 
-            <div class="item" *ngFor="let item of listDate">
+            <div class="item" *ngFor="let item of listDate; let i = index" (click)="getDishMenu(i);">
               <span
-                *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()">{{item
-                | date: "EEEEEE"}}</span>
+                *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
+                [ngClass]="{'active': dayValue !== -1 && i == dayValue && indexWeek == focusWeek }" >{{i}}{{item | date: "EEEEEE"}}</span>
               <span
                 *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
                 class="active">Hôm nay</span>
