@@ -1,6 +1,6 @@
-import { HttpClient, HttpEvent, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export abstract class BaseApiService<T> {
   public httpOptions;
