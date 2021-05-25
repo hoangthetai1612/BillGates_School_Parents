@@ -1,111 +1,105 @@
 <ion-header *roles="'teacher' else parents">
-    <ion-grid class="header">
-        <ion-row>
-            <ion-col size="3"
-                     class="header-button">
-                <div class="icon-left">
-                    <ion-buttons class="back-button"
-                                 slot="start">
-                        <ion-back-button text=""
-                                         icon="assets/icon/icon-back.svg"
-                                         [defaultHref]="defaultHref">
-                        </ion-back-button>
-                    </ion-buttons>
-                </div>
-            </ion-col>
-            <ion-col size="6"
-                     class="header-center">
-                <img class="icon-center-couple"
-                     src="assets/icon/avatar.svg"
-                     alt="">
-                <span class="classText">Trần Gia Huy</span>
-            </ion-col>
-            <ion-col size="3">
-            </ion-col>
-
-        </ion-row>
-    </ion-grid>
+  <ion-grid class="header">
+    <ion-row>
+      <ion-col size="3" class="header-button">
+        <div class="icon-left">
+          <ion-buttons class="back-button" slot="start">
+            <ion-back-button
+              text=""
+              icon="assets/icon/icon-back.svg"
+              [defaultHref]="defaultHref"
+            >
+            </ion-back-button>
+          </ion-buttons>
+        </div>
+      </ion-col>
+      <ion-col size="6" class="header-center">
+        <img class="icon-center-couple" src="assets/icon/avatar.svg" alt="" />
+        <span class="classText">Trần Gia Huy</span>
+      </ion-col>
+      <ion-col size="3"> </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
 <ng-template #parents>
-    <ion-header>
-        <ion-grid class="header">
-            <ion-row>
-                <ion-col size="3"
-                         class="header-button">
-                    <div class="icon-left">
-                        <ion-buttons class="back-button"
-                                     slot="start">
-                            <ion-back-button text=""
-                                             icon="assets/icon/icon-back.svg"
-                                             [defaultHref]="defaultHref">
-                            </ion-back-button>
-                        </ion-buttons>
-                    </div>
-                </ion-col>
-                <ion-col size="6"
-                         class="header-center">
-                    <span class="classText">Tin nhắn</span>
-                </ion-col>
-                <ion-col size="3">
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-header>
+  <ion-header>
+    <ion-grid class="header">
+      <ion-row>
+        <ion-col size="3" class="header-button">
+          <div class="icon-left">
+            <ion-buttons class="back-button" slot="start">
+              <ion-back-button
+                text=""
+                icon="assets/icon/icon-back.svg"
+                [defaultHref]="defaultHref"
+              >
+              </ion-back-button>
+            </ion-buttons>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="header-center">
+          <span class="classText">Tin nhắn</span>
+        </ion-col>
+        <ion-col size="3"> </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-header>
 </ng-template>
 
-
 <ion-content #ionContent>
-    <ng-container *ngIf="his">
-        <ci-message-list [messageList$]="his | async">
-            <ng-template #item
-                         let-item="item"
-                         let-checked="checked">
-
-                <ci-message-text [item]="item"
-                                 [currentUserId]="currentUserId"
-                                 [messageWrapCss]="{
+  <ng-container *ngIf="his">
+    <ci-message-list [messageList$]="his | async">
+      <ng-template #item let-item="item" let-checked="checked">
+        <ci-message-text
+          [item]="item"
+          [currentUserId]="currentUserId"
+          [messageWrapCss]="{
             sendedClass: 'test_sended-fb',
             receiveClass: 'test_receive-fb'
           }"
-                                 (messageTextButton)="chatButtonEvent.emit($event)"></ci-message-text>
-                <div class="date"
-                     [class]="
+          (messageTextButton)="chatButtonEvent.emit($event)"
+        ></ci-message-text>
+        <div
+          class="date"
+          [class]="
                 item.SenderUserProfileId == currentUserId
                   ? 'sender-time'
                   : 'recieve-time'
-              ">{{item.CreatedOn | date : 'hh:mm a'}}</div>
-                <!-- {{ checked }} -->
-                <!-- <button
+              "
+        >
+          {{item.CreatedOn | date : 'hh:mm a'}}
+        </div>
+        <!-- {{ checked }} -->
+        <!-- <button
           (click)="callback.emit(item)"
           *ngIf="item.SenderUserProfileId == currentUserId"
           class="chat-fb-button"
         ></button> -->
-            </ng-template>
-        </ci-message-list>
-    </ng-container>
-
+      </ng-template>
+    </ci-message-list>
+  </ng-container>
 </ion-content>
 <ion-footer>
-    <ion-grid>
-        <ion-row>
-            <ion-col size="10">
-                <div class="input">
-                    <input type="text"
-                           name=""
-                           id=""
-                           [(ngModel)]="msgText"
-                           placeholder="Nhập nội dung">
-                    <label for="file"> <img src="assets/icon/input-file.svg"
-                             alt=""> </label>
-                    <input type="file"
-                           name=""
-                           id="file"
-                           hidden>
-                </div>
-            </ion-col>
-            <ion-col size="2"><img (click)="sendMessage()"
-                     src="assets/icon/icon-send.svg"
-                     alt=""></ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10">
+        <div class="input">
+          <input
+            type="text"
+            name=""
+            id=""
+            [(ngModel)]="msgText"
+            placeholder="Nhập nội dung"
+          />
+          <label for="file">
+            <img src="assets/icon/input-file.svg" alt="" />
+          </label>
+          <input type="file" name="" id="file" hidden />
+        </div>
+      </ion-col>
+      <ion-col size="2"
+        ><img (click)="sendMessage()" src="assets/icon/icon-send.svg" alt=""
+      /></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>

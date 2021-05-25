@@ -32,7 +32,6 @@ export class RoleGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   private hasPermission(data): Observable<boolean> {
-    console.log(data);
     if (data) {
       return of(localStorage.getItem('role') === data.roles).pipe(
         tap((isPer) => {

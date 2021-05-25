@@ -1,4 +1,4 @@
-<app-header [headerStyle]="header"></app-header>
+<app-header (callback)="presentPopover($event)" [headerStyle]="header"></app-header>
 <div class="noti">
   <ion-col size="12">
     <div class="noti-search">
@@ -16,7 +16,6 @@
           <h3>{{item.title}}</h3>
           <p>{{item.content}}</p>
           <span>{{item.date}}</span>
-
         </div>
       </div>
     </ion-col>

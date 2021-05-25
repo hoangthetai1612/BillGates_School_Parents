@@ -1,0 +1,10 @@
+.filter {
+    flex-direction: column;
+    height: 100px;
+    padding: 5px;
+    .filter-item {
+        color: #333333;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

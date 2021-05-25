@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { title } from 'process';
+import { PopoverController } from '@ionic/angular';
+import { FilterNotiComponent } from './filter-noti/filter-noti.component';
+
 
 @Component({
   selector: 'app-noti',
@@ -69,9 +71,21 @@ export class NotiPage implements OnInit {
       date: '13:30, hôm nay'
     },
   ]
-  constructor() { }
+  constructor(
+    public popoverController: PopoverController
+  ) { }
 
   ngOnInit() {
+  }
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: FilterNotiComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    await popover.present();
+    const { role } = await popover.onDidDismiss();
   }
 
 }

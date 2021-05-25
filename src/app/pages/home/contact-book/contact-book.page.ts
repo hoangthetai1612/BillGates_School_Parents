@@ -20,16 +20,13 @@ export class ContactBookPage implements OnInit {
       text: 'text',
       // image: 'image',
       // couple: 'couple',
-      backbutton: 'backbutton'
-    }
-
+      backbutton: 'backbutton',
+    },
   };
 
   // isTeacher = true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
