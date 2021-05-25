@@ -16,6 +16,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -50,13 +51,14 @@ export class LoginComponent implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private loginService: LoginService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastService: ToastService
   ) {
     this.loginForm = this.fb.group({
       grant_type: ['password'],
       username: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   ngOnInit() { }
@@ -67,7 +69,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', JSON.stringify(res));
         this.router.navigate(['/main/home']);
       },
-      (err) => { }
+      (err) => {
+        if (err.status === 400) {
+          this.toastService.showError("Sai tên tài khoản hoặc mật khẩu!");
+        }
+      }
     );
   }
   presentModal() {

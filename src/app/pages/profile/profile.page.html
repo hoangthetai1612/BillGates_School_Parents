@@ -35,7 +35,7 @@
     <ion-row>
       <ion-col size="12" class="profile-button">
         <button class="profile-button-forgot" (click)="presentModal()">Đổi mật khẩu</button>
-        <button class="profile-button-logout" [routerLink]="'/index/auth/login'">Đăng xuất?</button>
+        <button class="profile-button-logout" (click)="logOut()">Đăng xuất?</button>
       </ion-col>
     </ion-row>
   </ion-grid>

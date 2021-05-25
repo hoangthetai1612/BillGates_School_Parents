@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalService } from 'src/app/service/modal.service';
 import { PhotoService } from 'src/app/service/photo.service';
@@ -57,6 +58,7 @@ export class ProfilePage implements OnInit {
     public photoService: PhotoService,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet,
+    private router: Router
     // private profileService: ProfileService
   ) { }
 
@@ -89,5 +91,10 @@ export class ProfilePage implements OnInit {
       this.arrImgae = this.photoService.photos;
       this.avt = this.arrImgae[0].base64;
     });
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['index/auth/login']);
   }
 }
