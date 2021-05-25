@@ -150,8 +150,8 @@ export class MenuComponent implements OnInit {
   }
   getDishMenu() {
     let req = {
-      FromDate: this.datepipe.transform(this.startWeek, 'yyyy-MM-dd'),
-      ToDate: this.datepipe.transform(this.endWeek, 'yyyy-MM-dd'),
+      FromDate: this.datepipe.transform(this.startWeek, "yyyy-MM-dd'T'HH:mm:ss"),
+      ToDate: this.datepipe.transform(this.endWeek, "yyyy-MM-dd'T'HH:mm:ss"),
       ClassId: 25,
       DayValue: 3
     }
