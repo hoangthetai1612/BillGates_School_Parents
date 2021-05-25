@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { HomeWork } from 'src/app/models/homework.model';
@@ -27,21 +28,20 @@ export class HomeWorkPage implements OnInit {
     },
   };
   listHomeWork$!: Observable<HomeWork[]>;
+  search = new FormControl('');
   private searchTerms = new Subject<string>();
 
   constructor(private homeworkService: HomeWorkService) {}
 
   ngOnInit() {
-    this.listHomeWork$ = this.homeworkService.getListHomeWork(25, '');
-    this.listHomeWork$ = this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((term: string) =>
-        this.homeworkService.getListHomeWork(25, term)
+    this.search.valueChanges
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(500),
+        switchMap((term: string) => {
+          return this.homeworkService.getListHomeWork(25, term);
+        })
       )
-    );
-  }
-  search(term: string): void {
-    this.searchTerms.next(term);
+      .subscribe();
   }
 }

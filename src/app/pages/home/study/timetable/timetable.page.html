@@ -55,7 +55,7 @@
     </ion-row>
     <ion-row
       class="detail-session"
-      *ngFor="let item of listTimeTable, let i = index"
+      *ngFor="let item of listTimeTable$ | async, let i = index"
       (click)="openNoteLesson()"
     >
       <div class="lesson-component" *ngIf="item.LessonType == 1">
@@ -86,7 +86,7 @@
     </ion-row>
     <ion-row
       class="detail-session"
-      *ngFor="let item of listTimeTable, let i = index"
+      *ngFor="let item of listTimeTable$ | async, let i = index"
       (click)="openNoteLesson()"
     >
       <div class="lesson-component" *ngIf="item.LessonType == 2">
