@@ -13,7 +13,7 @@ import { LocalStorageService } from 'src/app/services/localstorage.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private allowed = ['/assets', '/api/token'];
-  constructor(private storage: LocalStorageService, private router: Router) { }
+  constructor(private storage: LocalStorageService, private router: Router) {}
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler) {
     if (this.allowed.some((url) => req.url.includes(url))) {
@@ -35,7 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       tap(
-        () => { },
+        () => {},
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
