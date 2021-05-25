@@ -18,6 +18,7 @@ import {
 } from '@consult-indochina/auth';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './base/util/interceptors/api.interceptor';
+import { AuthGuard } from './base/util/guards/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { APIInterceptor } from './base/util/interceptors/api.interceptor';
     ),
   ],
   providers: [
+    AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LOCALE_ID, useValue: 'vi_VN' },
     {
