@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
 import { HomeWork } from 'src/app/models/homework.model';
 import { HomeWorkService } from 'src/app/service/homework.service';
 
@@ -38,6 +38,7 @@ export class HomeWorkPage implements OnInit {
       .pipe(
         distinctUntilChanged(),
         debounceTime(500),
+        startWith(''),
         switchMap((term: string) => {
           return this.homeworkService.getListHomeWork(25, term);
         })

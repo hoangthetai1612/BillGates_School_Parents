@@ -59,7 +59,7 @@ export class TimetablePage implements OnInit {
     const fromDate = this.datePipe.transform(this.startWeek, 'yyyy-MM-dd');
     const toDate = this.datePipe.transform(this.endWeek, 'yyyy-MM-dd');
     this.listTimeTable$ = this.subject.asObservable().pipe(
-      startWith(0),
+      startWith(this.valueToday),
       switchMap((valueDay) => {
         return this.timetableService.getTimeTable(
           valueDay,
