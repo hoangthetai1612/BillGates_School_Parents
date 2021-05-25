@@ -34,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
       },
       {
         provide: ACCESS_TOKEN_PROVIDER,
-        useFactory: () => {},
+        useFactory: () => { },
       }
     ),
   ],
@@ -45,4 +45,4 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
