@@ -59,7 +59,7 @@ export class MenuComponent implements OnInit {
       "DishName": 'Cá thu chiên sốt cà chua',
       "MenuId": 1,
       "DayValue": 2,
-      "Type": 1,
+      "Type": 2,
       "Status": 0,
       "OldDishName": 'Cá diêu hồng chiên sốt cà chua'
     },
@@ -69,7 +69,7 @@ export class MenuComponent implements OnInit {
       "DishName": 'Bò xào cần tỏi',
       "MenuId": 1,
       "DayValue": 2,
-      "Type": 1,
+      "Type": 2,
       "Status": 0,
     },
     {

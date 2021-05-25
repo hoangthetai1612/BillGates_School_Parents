@@ -36,7 +36,7 @@
             </ion-col>
             <ion-col size="9">
               <ng-container *ngFor="let item of dishMenus">
-                <span class="menu-lunch-text" *ngIf="item.DayValue === 1">{{item.DishName}}</span>
+                <span class="menu-lunch-text" *ngIf="item.Type === 1">{{item.DishName}}</span>
               </ng-container>
               <!-- <span class="menu-lunch-text">Cá diêu hồng chiên sốt cà chua</span>
               <span class="menu-lunch-text">Bò xào cần tỏi</span>
@@ -56,14 +56,30 @@
               </ion-col>
               <ion-col size="9">
                 <ng-container *ngFor="let item of dishMenus">
-                  <span class="menu-lunch-text" *ngIf="item.DayValue === 2">{{item.DishName}}</span>
+                  <span class="menu-lunch-text" *ngIf="item.Type === 2">{{item.DishName}}</span>
                 </ng-container>
               </ion-col>
             </div>
 
 
           </div>
+          <div class="menu-lunch">
+            <div class="menu-lunch-title">
+              <h3>ĂN CHIỀU</h3>
+            </div>
+            <div class="menu-lunch-item">
+              <ion-col size="3">
+                <img src="assets/svg/icon-menu-lunch.svg" alt="">
+              </ion-col>
+              <ion-col size="9">
+                <ng-container *ngFor="let item of dishMenus">
+                  <span class="menu-lunch-text" *ngIf="item.Type === 3">{{item.DishName}}</span>
+                </ng-container>
+              </ion-col>
+            </div>
 
+
+          </div>
         </div>
       </ion-col>
       <div class="menu-description">
