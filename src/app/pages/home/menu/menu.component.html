@@ -5,11 +5,11 @@
       <ion-col size="12">
         <div class="calendar">
           <div class="date">
-            <img src="assets/icon/pre-btn.svg" alt="" class="pre-btn" (click)="preWeek()" />
+            <img src="assets/icon/pre-btn.svg" alt="" class="pre-btn" (click)="preWeek(); getDishMenu();" />
 
             {{startWeek | date: 'dd/MM-yyyy'}} - {{endWeek | date:
             'dd/MM-yyyy'}}
-            <img src="assets/icon/next-btn.svg" alt="" class="next-btn" (click)="nextWeek()" />
+            <img src="assets/icon/next-btn.svg" alt="" class="next-btn" (click)="nextWeek(); getDishMenu();" />
           </div>
           <div class="listDate">
 
@@ -35,12 +35,15 @@
               <img src="assets/svg/icon-menu-lunch.svg" alt="">
             </ion-col>
             <ion-col size="9">
-              <span class="menu-lunch-text">Cá diêu hồng chiên sốt cà chua</span>
+              <ng-container *ngFor="let item of dishMenus">
+                <span class="menu-lunch-text" *ngIf="item.DayValue === 1">{{item.DishName}}</span>
+              </ng-container>
+              <!-- <span class="menu-lunch-text">Cá diêu hồng chiên sốt cà chua</span>
               <span class="menu-lunch-text">Bò xào cần tỏi</span>
               <span class="menu-lunch-text">Bắp cải luộc gừng</span>
               <span class="menu-lunch-text">Canh rau ngót thịt bằm</span>
               <span class="menu-lunch-text">Cơm trắng</span>
-              <span class="menu-lunch-text">Táo Mỹ</span>
+              <span class="menu-lunch-text">Táo Mỹ</span> -->
             </ion-col>
           </div>
           <div class="menu-lunch">
@@ -52,9 +55,9 @@
                 <img src="assets/svg/icon-menu-lunch.svg" alt="">
               </ion-col>
               <ion-col size="9">
-                <span class="menu-lunch-text">Canh rau ngót thịt bằm</span>
-                <span class="menu-lunch-text">Cơm trắng</span>
-                <span class="menu-lunch-text">Táo Mỹ</span>
+                <ng-container *ngFor="let item of dishMenus">
+                  <span class="menu-lunch-text" *ngIf="item.DayValue === 2">{{item.DishName}}</span>
+                </ng-container>
               </ion-col>
             </div>
 
@@ -66,7 +69,11 @@
       <div class="menu-description">
         <h3>Ghi chú:</h3>
         <span>
-          "Cá thu chiên sốt cà chua" "Cá diêu hồng chiên sốt cà chua"
+          <ng-container *ngFor="let item of dishMenus">
+            <ng-container *ngIf="item.OldDishName && item.OldDishName.length !== 0">
+              "{{item.OldDishName}}"
+            </ng-container>
+          </ng-container>
         </span>
       </div>
     </ion-row>

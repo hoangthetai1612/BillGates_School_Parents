@@ -1,10 +1,11 @@
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 import { Component, LOCALE_ID, NgModule, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import startOfWeek from 'date-fns/startOfWeek';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import localeVi from "@angular/common/locales/vi";
+import { MenuService } from 'src/app/service/menu.service';
 registerLocaleData(localeVi);
 
 @Component({
@@ -32,7 +33,75 @@ export class MenuComponent implements OnInit {
   endWeek: Date;
   currentDate = new Date();
   listDate = [];
-  constructor() { }
+  dishMenus = [
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Cá thu chiên sốt cà chua',
+      "MenuId": 1,
+      "DayValue": 1,
+      "Type": 1,
+      "Status": 0,
+      "OldDishName": 'Cá diêu hồng chiên sốt cà chua'
+    },
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Cá thu chiên sốt cà chua',
+      "MenuId": 1,
+      "DayValue": 1,
+      "Type": 1,
+      "Status": 0,
+    },
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Cá thu chiên sốt cà chua',
+      "MenuId": 1,
+      "DayValue": 2,
+      "Type": 1,
+      "Status": 0,
+      "OldDishName": 'Cá diêu hồng chiên sốt cà chua'
+    },
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Bò xào cần tỏi',
+      "MenuId": 1,
+      "DayValue": 2,
+      "Type": 1,
+      "Status": 0,
+    },
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Bò xào cần tỏi',
+      "MenuId": 1,
+      "DayValue": 1,
+      "Type": 1,
+      "Status": 0,
+    },
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Bò xào cần tỏi',
+      "MenuId": 1,
+      "DayValue": 2,
+      "Type": 1,
+      "Status": 0,
+    },
+    {
+      "DishMenuId": 1,
+      "DishId": 2,
+      "DishName": 'Bò xào cần tỏi',
+      "MenuId": 1,
+      "DayValue": 2,
+      "Type": 1,
+      "Status": 0,
+    }
+  ];
+
+  constructor(private menuService: MenuService, public datepipe: DatePipe) { }
 
   ngOnInit() {
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
@@ -78,6 +147,17 @@ export class MenuComponent implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
+  }
+  getDishMenu() {
+    let req = {
+      FromDate: this.datepipe.transform(this.startWeek, 'yyyy-MM-dd'),
+      ToDate: this.datepipe.transform(this.endWeek, 'yyyy-MM-dd'),
+      ClassId: 25,
+      DayValue: 3
+    }
+    this.menuService.getDishMenuByTimePeriod(req).subscribe(res => {
+      this.dishMenus = res
+    })
   }
 }
 @NgModule({
