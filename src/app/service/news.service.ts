@@ -19,10 +19,10 @@ export class NewsService {
     postNews(data): Observable<NewModel> {
         return this.http.post(`/api/news`, data).pipe(map((res: any) => res));
     }
-    editNews(data): Observable<NewModel> {
-        return this.http.put(`/api/news/{{NewsId:intt}`, data).pipe(map((res: any) => res));
+    editNews(data, newsId): Observable<NewModel> {
+        return this.http.put(`/api/news/${newsId}`, data).pipe(map((res: any) => res));
     }
-    deleteNews(data): Observable<NewModel> {
-        return this.http.delete(`/api/news/{{NewsId:intt}`, data).pipe(map((res: any) => res));
+    deleteNews(data, newsId): Observable<NewModel> {
+        return this.http.delete(`/api/news/${newsId}`, data).pipe(map((res: any) => res));
     }
 }
