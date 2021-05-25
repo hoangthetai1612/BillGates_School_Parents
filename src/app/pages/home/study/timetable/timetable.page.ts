@@ -105,18 +105,26 @@ export class TimetablePage implements OnInit {
   listTimeTableByService(valueDay: any) {
     this.subject.next(valueDay);
   }
-  async openNoteLesson() {
+  async openNoteLesson(id, note) {
     const role = localStorage.getItem('role');
     if (role === 'parents') {
       const modal = await this.modalController.create({
         component: NoteLessonComponent,
         cssClass: 'note-lesson-wrap',
+        componentProps: {
+          id: id,
+          note: note
+        }
       });
       return await modal.present();
     } else {
       const modal = await this.modalController.create({
         component: TeacherNoteLessonComponent,
         cssClass: 'note-lesson-wrap',
+        componentProps: {
+          id: id,
+          note: note
+        }
       });
       return await modal.present();
     }
