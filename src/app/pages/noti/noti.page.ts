@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, NgModule, OnInit } from '@angular/core';
+import { FormControl, FormsModule } from '@angular/forms';
+import { IonicModule, PopoverController } from '@ionic/angular';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 // import { NotificationService } from 'src/app/service/notification.service';
 import { FilterNotiComponent } from './filter-noti/filter-noti.component';
 
@@ -23,9 +26,11 @@ export class NotiPage implements OnInit {
     }
   };
   keyword: string;
+  queryField: FormControl = new FormControl();
   constructor(
     public popoverController: PopoverController,
-    // private notiService: NotificationService
+    // private notiService: NotificationService,
+    private cd: ChangeDetectorRef
   ) { }
   listNotification = [
     {
@@ -67,8 +72,19 @@ export class NotiPage implements OnInit {
     //     this.listNotification = res;
     //   })
 
+    this.filterServerSide();
   }
+  filterServerSide() {
+    this.queryField.valueChanges
+      .pipe(distinctUntilChanged(), debounceTime(1000))
+      .subscribe((res) => {
+        this.cd.detectChanges();
+        console.log(res);
 
+
+      });
+
+  }
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: FilterNotiComponent,
