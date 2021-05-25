@@ -1,33 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { IonicModule, PopoverController } from '@ionic/angular';
+import { NotificationModel } from 'src/app/models/notification.model';
 // import { NotificationService } from 'src/app/service/notification.service';
-import { FilterNotiComponent } from './filter-noti/filter-noti.component';
-
-
 @Component({
-  selector: 'app-noti',
-  templateUrl: './noti.page.html',
-  styleUrls: ['./noti.page.scss'],
+  selector: 'app-filter-noti',
+  templateUrl: './filter-noti.component.html',
+  styleUrls: ['./filter-noti.component.scss'],
+
 })
-export class NotiPage implements OnInit {
-  header = {
-    cssClass: 'header-special',
-    classText: 'text-white',
-    iconLeft: 'assets/svg/icon-noti.png',
-    iconRight: 'assets/svg/icon-filter-noti.png',
-    iconCenter: {
-      text: 'Thông báo',
-    },
-    type: {
-      text: 'text',
-    }
-  };
-  keyword: string;
+export class FilterNotiComponent implements OnInit {
+
+
   constructor(
     public popoverController: PopoverController,
     // private notiService: NotificationService
   ) { }
-  listNotification = [
+  data = [
     {
       NotificationId: 1,
       AnnouncementId: 2,
@@ -57,30 +47,52 @@ export class NotiPage implements OnInit {
       AnnouncementId: 4,
       Title: 'Thay đổi về thời khóa biểu',
       Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
-      datCreatedOne: '13:30, hôm nay',
+      CreatedOne: '13:30, hôm nay',
       MediaURL: 'assets/svg/icon-item-noti.svg'
     }
   ]
+  titleFilter = [
+    {
+      id: 2,
+      title: 'Tất cả'
+    },
+    {
+      id: 3,
+      title: 'Thông báo tự động'
+    },
+    {
+      id: 4,
+      title: 'Thông báo admin'
+    }
+  ]
+  // data: NotificationModel
+  keyword: string;
   ngOnInit() {
-    // this.keyword = 'aaaa'
-    //   this.notiService.getAllNotification(this.keyword).subscribe(res => {
-    //     this.listNotification = res;
-    //   })
-
   }
+  // getAllNotification() {
+  //   this.keyword = 'aaaa'
+  //   this.notiService.getAllNotification(this.keyword).subscribe(res => {
+  //     this.data = res;
+  //   })
+  // }
 
-  async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
-      component: FilterNotiComponent,
-      cssClass: 'my-custom-class',
-      event: ev,
-      translucent: true,
-    });
-    await popover.present();
-    const { data } = await popover.onDidDismiss();
-    this.listNotification = data
-    console.log(data);
+  async DismissClick(item) {
+    console.log(item);
+    const listdata = this.data.filter(x => x.AnnouncementId == item)
+    console.log(listdata);
 
+    await this.popoverController.dismiss(listdata);
   }
+}
+@NgModule({
+  declarations: [FilterNotiComponent],
+  imports: [
+    IonicModule,
+    CommonModule,
+    HttpClientModule
+  ],
+  exports: [FilterNotiComponent],
+})
+export class FiterModule {
 
 }

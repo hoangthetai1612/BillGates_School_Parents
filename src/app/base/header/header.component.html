@@ -15,26 +15,21 @@
                     <span class="icon-center"
                         *ngIf="headerStyle.type.image==='image' && headerStyle.type.isText">Hotline</span>
                 </div>
-
             </div>
         </ion-col>
-
         <ion-col size="6" class="header-center" *ngIf="headerStyle.type.couple !='couple'">
             <img class="icon-center" *ngIf="headerStyle.type.image==='image'" src="{{headerStyle.iconCenter.image}}"
                 alt="">
             <span [class]="headerStyle.classText"
                 *ngIf="headerStyle.type.text==='text'">{{headerStyle.iconCenter.text}}</span>
         </ion-col>
-
         <ion-col size="6" class="header-center" *ngIf="headerStyle.type.couple==='couple'">
             <img class="icon-center-couple" src="{{headerStyle.iconCenter.image}}" alt="">
             <span [class]="headerStyle.classText">{{headerStyle.iconCenter.text}}</span>
         </ion-col>
-
         <ion-col size="3">
             <img class="icon-right" (click)="handleCallbackEvent($event)" [src]="headerStyle.iconRight" alt="">
+
         </ion-col>
-
-
     </ion-row>
 </ion-grid>
