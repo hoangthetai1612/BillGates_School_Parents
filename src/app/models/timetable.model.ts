@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface TimeTableLesson {
   TimeTableLessonId: number;
   LessonId: number;
