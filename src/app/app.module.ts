@@ -16,7 +16,8 @@ import {
   accessTokenFactory,
   CiAuthStateService,
 } from '@consult-indochina/auth';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { APIInterceptor } from './base/util/interceptors/api.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,15 +35,20 @@ import { HttpClientModule } from '@angular/common/http';
       },
       {
         provide: ACCESS_TOKEN_PROVIDER,
-        useFactory: () => {},
+        useFactory: () => { },
       }
     ),
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LOCALE_ID, useValue: 'vi_VN' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true,
+    },
     IonNav,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

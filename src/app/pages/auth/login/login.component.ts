@@ -10,10 +10,11 @@ import { InputUsernameComponent } from '../forgot/input-username/input-username.
 import { LoginService } from 'src/app/service/login.service';
 import { Router } from '@angular/router';
 import {
-  FormControl,
+  FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -28,53 +29,46 @@ export class LoginComponent implements OnInit {
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: '',
     iconCenter: {
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       image: 'image',
       isText: true,
     },
   };
-  data = {
-    password: '123456aA',
-    username: '0964554300',
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    grant_type: ['password'],
-  };
+
   buttonStyle = {
     width: '100%',
     cssClass: 'buttonDarkOrange',
     text: 'Đăng nhập',
   };
   rootPage: any;
-  formLogin = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });
+  loginForm: FormGroup;
+
   constructor(
     public modalController: ModalController,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet,
     private loginService: LoginService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.loginForm = this.fb.group({
+      grant_type: ['password'],
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
+
   ngOnInit() { }
 
   login() {
-    this.loginService
-      .login({
-        username: this.formLogin.get('username').value,
-        password: this.formLogin.get('password').value,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        grant_type: ['password'],
-      })
-      .subscribe(
-        (res) => {
-          localStorage.setItem('access_token', JSON.stringify(res));
-          this.router.navigate(['/main/home']);
-        },
-        (err) => { }
-      );
+    this.loginService.login(this.loginForm.value).subscribe(
+      (res) => {
+        localStorage.setItem('access_token', JSON.stringify(res));
+        this.router.navigate(['/main/home']);
+      },
+      (err) => { }
+    );
   }
   presentModal() {
     this.modalService.presentModal({
