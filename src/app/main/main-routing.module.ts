@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainPage,
+
     children: [
       {
         path: 'home',
@@ -53,4 +54,4 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })
-export class MainPageRoutingModule {}
+export class MainPageRoutingModule { }
