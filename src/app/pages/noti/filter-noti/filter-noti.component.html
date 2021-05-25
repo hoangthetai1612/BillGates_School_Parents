@@ -1,18 +1,8 @@
 <ion-content>
   <ion-row class="filter">
-    <ion-col>
-      <div class="filter-item" (click)="DismissClick()">
-        <span>Tất cả</span>
-      </div>
-    </ion-col>
-    <ion-col>
-      <div class="filter-item">
-        <span>Thông báo tự động</span>
-      </div>
-    </ion-col>
-    <ion-col>
-      <div class="filter-item">
-        <span>Thông báo admin</span>
+    <ion-col *ngFor="let item of titleFilter">
+      <div class="filter-item" (click)="DismissClick(item.id)">
+        <span>{{item.title}}</span>
       </div>
     </ion-col>
   </ion-row>
