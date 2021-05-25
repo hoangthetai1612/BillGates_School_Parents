@@ -11,7 +11,7 @@
     <div class="note">
       <ion-textarea
         placeholder="Nhập nội dung"
-        [formControl]="note"
+        [formControl]="noteControl"
         (keyup)="noteKeyUp()"
       ></ion-textarea>
     </div>
@@ -19,6 +19,7 @@
   <app-base-button
     *ngIf="showSaveBtn"
     [buttonStyle]="{ width: '156px', cssClass: 'buttonDarkOrange br-20' }"
+    (click)="saveNote()"
   >
     Lưu
   </app-base-button>

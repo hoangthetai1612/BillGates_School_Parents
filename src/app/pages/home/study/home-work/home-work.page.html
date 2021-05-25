@@ -9,7 +9,7 @@
   showClearButton="never"
   mode="ios"
   #searchBox
-  (input)="search(searchBox.value)"
+  [formControl]="search"
 ></ion-searchbar>
 <ion-content>
   <ion-grid>

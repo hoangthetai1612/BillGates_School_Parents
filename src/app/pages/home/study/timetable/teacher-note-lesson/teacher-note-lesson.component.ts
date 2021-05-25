@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { TimeTableService } from 'src/app/service/timetable.service';
 
 @Component({
   selector: 'app-teacher-note-lesson',
@@ -7,6 +9,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./teacher-note-lesson.component.scss'],
 })
 export class TeacherNoteLessonComponent implements OnInit {
+  @Input() id;
+  @Input() note: string;
   header = {
     cssClass: 'header-special',
     classText: 'text-white',
@@ -22,14 +26,21 @@ export class TeacherNoteLessonComponent implements OnInit {
   };
   checkEdit: boolean;
   showSaveBtn: boolean = false;
-  note = new FormControl({ value: '', disabled: true });
-  constructor() {}
+  noteControl = new FormControl({ value: '' , disabled: true });
+  constructor(private timetableService: TimeTableService, private modalController: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.noteControl.setValue(this.note)
+  }
   noteKeyUp() {
     this.showSaveBtn = true;
   }
   editNote(ev) {
-    this.note.enable();
+    this.noteControl.enable();
+  }
+  saveNote() {
+    this.timetableService.update(this.noteControl.value, this.id).subscribe(()=>{
+      this.modalController.dismiss();
+    });
   }
 }
