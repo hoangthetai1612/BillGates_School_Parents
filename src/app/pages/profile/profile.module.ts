@@ -22,7 +22,7 @@ import { ProfileDetailModule } from './profile-detail/profile-detail.component';
     HeaderModule,
     RouterModule,
     RoleDirectiveModule,
-    ProfileDetailModule
+    ProfileDetailModule,
   ],
   declarations: [ProfilePage],
 })

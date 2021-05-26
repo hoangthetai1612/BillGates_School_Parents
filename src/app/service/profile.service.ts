@@ -11,7 +11,7 @@ export class ProfileService {
   constructor(protected http: HttpClient) { }
   getProfileParent(): Observable<ProfileModel> {
     return this.http
-      .get(`api/parent/username`)
+      .get(`api/parents/username`)
       .pipe(map((res: any) => res.Payload));
   }
   getProfileTeacher(): Observable<ProfileModel> {

@@ -19,6 +19,7 @@ import {
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './base/util/interceptors/api.interceptor';
 import { AuthGuard } from './base/util/guards/auth.guard';
+import { ProfileService } from './service/profile.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +37,7 @@ import { AuthGuard } from './base/util/guards/auth.guard';
       },
       {
         provide: ACCESS_TOKEN_PROVIDER,
-        useFactory: () => { },
+        useFactory: () => {},
       }
     ),
   ],
@@ -53,4 +54,4 @@ import { AuthGuard } from './base/util/guards/auth.guard';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
