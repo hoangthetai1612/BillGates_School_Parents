@@ -18,12 +18,9 @@ export class FeedbackPage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Góp ý với nhà trường',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };
@@ -82,9 +79,6 @@ export class FeedbackPage implements OnInit {
   }
 
   createReview() {
-    this.reviewService.create(this.formReview.value).subscribe((res) => {
-      console.log(res);
-    });
-    console.log(this.formReview.value);
+    this.reviewService.create(this.formReview.value).subscribe((res) => {});
   }
 }

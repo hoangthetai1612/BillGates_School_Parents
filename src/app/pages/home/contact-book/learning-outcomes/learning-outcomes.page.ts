@@ -24,16 +24,12 @@ export class LearningOutcomesPage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Kết quả học tập',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };
-  // defaultHref = 'main/home/contact-book';
   listSubject: Subject[] = [
     { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
     { SubjectId: 1, Name: 'Toán 10', Description: 'string' },

@@ -20,12 +20,9 @@ export class LeaveApplicationPage implements OnInit {
     iconRight: 'assets/contact-book/icon-create.svg',
     iconCenter: {
       text: 'Đơn xin nghỉ học',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };

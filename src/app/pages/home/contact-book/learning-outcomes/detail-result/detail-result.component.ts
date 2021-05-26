@@ -21,14 +21,11 @@ export class DetailResultComponent implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Kết quả học tập',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
       image: 'image',
       isText: false,
-      // couple: 'couple',
-      // backbutton: 'backbutton'
     },
   };
 
@@ -43,13 +40,9 @@ export class DetailResultComponent implements OnInit {
     private authStoreService: AuthStoreService
   ) {}
 
-  ngOnInit() {
-    console.log(this.name);
-  }
+  ngOnInit() {}
   closeModal() {
-    this.modalController.dismiss({
-      // dismissed: true
-    });
+    this.modalController.dismiss({});
   }
 
   getDetalTestResult() {

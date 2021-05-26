@@ -17,17 +17,13 @@ export class CreateLeaveComponent implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Tạo đơn xin nghỉ học',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
       image: 'image',
       isText: false,
-      // couple: 'couple',
-      // backbutton: 'backbutton'
     },
   };
-  // defaultHref = 'main/home/contact-book';
 
   formLeave = new FormGroup({
     FromDate: new FormControl(''),
@@ -42,15 +38,12 @@ export class CreateLeaveComponent implements OnInit {
   ngOnInit() {}
 
   closeModal() {
-    this.modalController.dismiss({
-      // dismissed: true
-    });
+    this.modalController.dismiss({});
   }
 
   createLeave() {
-    console.log(this.formLeave.value);
-    this.absenceRequestService.create(this.formLeave.value).subscribe((res) => {
-      console.log(res);
-    });
+    this.absenceRequestService
+      .create(this.formLeave.value)
+      .subscribe((res) => {});
   }
 }

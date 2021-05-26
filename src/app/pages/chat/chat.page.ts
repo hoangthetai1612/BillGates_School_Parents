@@ -18,13 +18,9 @@ export class ChatPage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Tin nhắn',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
-      // backbutton: 'backbutton'
     },
   };
 
@@ -35,13 +31,9 @@ export class ChatPage implements OnInit {
     iconRight: 'assets/icon/add-icon.svg',
     iconCenter: {
       text: 'Tin nhắn',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
-      // backbutton: 'backbutton'
     },
   };
 

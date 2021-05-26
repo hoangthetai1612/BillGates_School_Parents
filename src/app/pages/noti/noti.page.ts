@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
@@ -5,7 +7,6 @@ import { IonicModule, PopoverController } from '@ionic/angular';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 // import { NotificationService } from 'src/app/service/notification.service';
 import { FilterNotiComponent } from './filter-noti/filter-noti.component';
-
 
 @Component({
   selector: 'app-noti',
@@ -23,7 +24,7 @@ export class NotiPage implements OnInit {
     },
     type: {
       text: 'text',
-    }
+    },
   };
   keyword: string;
   queryField: FormControl = new FormControl();
@@ -31,7 +32,7 @@ export class NotiPage implements OnInit {
     public popoverController: PopoverController,
     // private notiService: NotificationService,
     private cd: ChangeDetectorRef
-  ) { }
+  ) {}
   listNotification = [
     {
       NotificationId: 1,
@@ -39,7 +40,7 @@ export class NotiPage implements OnInit {
       Title: 'Thay đổi về thời khóa biểu',
       Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
       CreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg'
+      MediaURL: 'assets/svg/icon-item-noti.svg',
     },
     {
       NotificationId: 1,
@@ -47,7 +48,7 @@ export class NotiPage implements OnInit {
       Title: 'Thay đổi về thời khóa biểu',
       Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
       CreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg'
+      MediaURL: 'assets/svg/icon-item-noti.svg',
     },
     {
       NotificationId: 1,
@@ -55,7 +56,7 @@ export class NotiPage implements OnInit {
       Title: 'Thay đổi về thời khóa biểu',
       Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
       CreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg'
+      MediaURL: 'assets/svg/icon-item-noti.svg',
     },
     {
       NotificationId: 1,
@@ -63,9 +64,9 @@ export class NotiPage implements OnInit {
       Title: 'Thay đổi về thời khóa biểu',
       Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
       datCreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg'
-    }
-  ]
+      MediaURL: 'assets/svg/icon-item-noti.svg',
+    },
+  ];
   ngOnInit() {
     // this.keyword = 'aaaa'
     //   this.notiService.getAllNotification(this.keyword).subscribe(res => {
@@ -80,10 +81,7 @@ export class NotiPage implements OnInit {
       .subscribe((res) => {
         this.cd.detectChanges();
         console.log(res);
-
-
       });
-
   }
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -94,9 +92,7 @@ export class NotiPage implements OnInit {
     });
     await popover.present();
     const { data } = await popover.onDidDismiss();
-    this.listNotification = data
+    this.listNotification = data;
     console.log(data);
-
   }
-
 }
