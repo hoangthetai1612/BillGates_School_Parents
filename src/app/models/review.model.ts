@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface Review {
+export interface ReviewModel {
   ReviewId: number;
   Title: string;
   Description: string;

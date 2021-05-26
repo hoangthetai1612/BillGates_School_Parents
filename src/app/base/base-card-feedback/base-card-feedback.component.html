@@ -1,16 +1,21 @@
 <ion-card>
-    <div class="status" [style.backgroundColor]="'#FF9569'" *ngIf="data.isFeedback">Đã được phản hồi</div>
-    <div class="status" [style.backgroundColor]="'#979797'" *ngIf="!data.isFeedback">Chờ phản hồi</div>
+    <div class="status"
+         [style.backgroundColor]="'#FF9569'"
+         *ngIf="data.Status === 1">Đã được phản hồi</div>
+    <div class="status"
+         [style.backgroundColor]="'#979797'"
+         *ngIf="!(data.Status === 1)">Chờ phản hồi</div>
     <ion-grid>
         <ion-row>
             <div class="status"></div>
             <ion-col size="3">
-                <img [src]="data.img" alt="">
+                <img [src]="data.StudentMediaURL"
+                     alt="">
             </ion-col>
             <ion-col size="9">
-                <div class="title">{{data.title}}</div>
-                <div class="content">{{data.content}}</div>
-                <div class="date">{{data.date}}</div>
+                <div class="title">{{data.Title}}</div>
+                <div class="content">{{data.Description}}</div>
+                <div class="date">18:00 Hôm nay</div>
             </ion-col>
         </ion-row>
     </ion-grid>

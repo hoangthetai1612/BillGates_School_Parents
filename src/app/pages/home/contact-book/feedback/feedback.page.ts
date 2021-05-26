@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ReviewModel } from 'src/app/models/review.model';
+import { AuthStoreService } from 'src/app/service/auth.store';
+import { ReviewService } from 'src/app/service/review.service';
 
 @Component({
   selector: 'app-feedback',
@@ -23,33 +28,63 @@ export class FeedbackPage implements OnInit {
     },
   };
   defaultHref = 'main/home/contact-book';
-  listCard = [
+
+  formReview = new FormGroup({
+    Title: new FormControl(''),
+    Description: new FormControl(''),
+    Type: new FormControl(4),
+    StudentId: new FormControl(1),
+  });
+  listCard: ReviewModel[] = [
     {
-      title: 'Lan can tầng 3 nhà B',
-      content:
-        'Lan can tầng 3 nhà B sắp đổ, đề nghị nhà trường nhanh chóng sửa tránh tai nạn xảy ra',
-      date: '18:30 Hôm nay',
-      img: 'assets/contact-book/avatar.svg',
-      isFeedback: true,
+      ReviewId: 1,
+      Title: 'sdcdscsdcsd',
+      Description: 'adaffgdvdg',
+      Type: 4,
+      Rating: 4,
+      Status: 1,
+      StudentMediaURL: 'assets/contact-book/avatar.svg',
     },
     {
-      title: 'Lan can tầng 3 nhà B',
-      content:
-        'Lan can tầng 3 nhà B sắp đổ, đề nghị nhà trường nhanh chóng sửa tránh tai nạn xảy ra',
-      date: '18:30 Hôm nay',
-      img: 'assets/contact-book/avatar.svg',
-      isFeedback: false,
+      ReviewId: 1,
+      Title: 'sdcdscsdcsd',
+      Description: 'adaffgdvdg',
+      Type: 4,
+      Rating: 4,
+      Status: 2,
+      StudentMediaURL: 'assets/contact-book/avatar.svg',
     },
     {
-      title: 'Lan can tầng 3 nhà B',
-      content:
-        'Lan can tầng 3 nhà B sắp đổ, đề nghị nhà trường nhanh chóng sửa tránh tai nạn xảy ra',
-      date: '18:30 Hôm nay',
-      img: 'assets/contact-book/avatar.svg',
-      isFeedback: true,
+      ReviewId: 1,
+      Title: 'sdcdscsdcsd',
+      Description: 'adaffgdvdg',
+      Type: 4,
+      Rating: 4,
+      Status: 1,
+      StudentMediaURL: 'assets/contact-book/avatar.svg',
     },
   ];
-  constructor() {}
+  constructor(
+    private reviewService: ReviewService,
+    private authStoreService: AuthStoreService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authStoreService.studentId$.subscribe((res) => {
+      this.formReview.get('StudentId').setValue(res);
+    });
+  }
+
+  getListReview() {
+    this.reviewService.list().subscribe((res) => {
+      this.listCard = res;
+    });
+  }
+
+  createReview() {
+    this.reviewService.create(this.formReview.value).subscribe((res) => {
+      console.log(res);
+    });
+    console.log(this.formReview.value);
+  }
 }

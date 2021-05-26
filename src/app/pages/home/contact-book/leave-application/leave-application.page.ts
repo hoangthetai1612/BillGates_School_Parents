@@ -1,5 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable max-len */
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { DetailAbsenceRequest } from 'src/app/models/detail-absence-request.model';
+import { AbsenceRequestService } from 'src/app/service/absence-request.service';
+import { AuthStoreService } from 'src/app/service/auth.store';
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
 
 @Component({
@@ -21,48 +26,53 @@ export class LeaveApplicationPage implements OnInit {
       text: 'text',
       // image: 'image',
       // couple: 'couple',
-      backbutton: 'backbutton'
-    }
-
+      backbutton: 'backbutton',
+    },
   };
   defaultHref = 'main/home/contact-book';
-listCard = [
-  {
-    currentDate: '10/10/2021',
-    startDate: '20/10/2021',
-    endDate: '21/10/2021',
-    isApprove: true,
-    // eslint-disable-next-line max-len
-  content: 'Gia đình em có kế hoạch đi du lịch vào cuối tuần tới. Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. Em xin hứa sẽ học và chép bài đầy đủ mà không làảnh hưởng đến học tập của mình.'
-},
-
-{
-  currentDate: '10/10/2021',
-  startDate: '20/10/2021',
-  endDate: '21/10/2021',
-  isApprove: false,
-  // eslint-disable-next-line max-len
-  content: 'Gia đình em có kế hoạch đi du lịch vào cuối tuần tới. Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. Em xin hứa sẽ học và chép bài đầy đủ mà không làảnh hưởng đến học tập của mình.'
-},
-{
-  currentDate: '10/10/2021',
-  startDate: '20/10/2021',
-  endDate: '21/10/2021',
-  isApprove: true,
-  // eslint-disable-next-line max-len
-  content: 'Gia đình em có kế hoạch đi du lịch vào cuối tuần tới. Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. Em xin hứa sẽ học và chép bài đầy đủ mà không làảnh hưởng đến học tập của mình.'
-}
-];
-  constructor(public modalController: ModalController) { }
+  listCard: DetailAbsenceRequest[] = [
+    {
+      StudentAbsenceRequestId: 1,
+      FromDate: new Date(),
+      ToDate: new Date(),
+      Description: 'addsavcdvasdcdsavsdavcsdvfsa',
+      Type: 1,
+      Status: 1,
+    },
+    {
+      StudentAbsenceRequestId: 1,
+      FromDate: new Date(),
+      ToDate: new Date(),
+      Description: 'addsavcdvasdcdsavsdavcsdvfsa',
+      Type: 1,
+      Status: 2,
+    },
+  ];
+  studentId = 0;
+  constructor(
+    public modalController: ModalController,
+    private absenceRequestService: AbsenceRequestService,
+    private authStoreService: AuthStoreService
+  ) {}
 
   ngOnInit() {
+    this.authStoreService.studentId$.subscribe((res) => {
+      this.studentId = res;
+    });
+    // this.getListAbsence();
   }
 
+  getListAbsence() {
+    this.absenceRequestService
+      .getListAbsenceById(this.studentId)
+      .subscribe((res) => {
+        this.listCard = res;
+      });
+  }
   async createLeave() {
     const modal = await this.modalController.create({
       component: CreateLeaveComponent,
     });
     return await modal.present();
   }
-
 }
