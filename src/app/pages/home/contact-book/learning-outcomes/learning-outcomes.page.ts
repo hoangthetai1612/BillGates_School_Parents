@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, ModalController } from '@ionic/angular';
+import { SubjectService } from 'src/app/service/subject.service';
 import { DetailResultComponent } from './detail-result/detail-result.component';
 
 @Component({
@@ -8,7 +9,7 @@ import { DetailResultComponent } from './detail-result/detail-result.component';
   styleUrls: ['./learning-outcomes.page.scss'],
 })
 export class LearningOutcomesPage implements OnInit {
-  @ViewChild('mySlider')  slides: IonSlides;
+  @ViewChild('mySlider') slides: IonSlides;
   @Input() data;
 
   header = {
@@ -24,30 +25,42 @@ export class LearningOutcomesPage implements OnInit {
       text: 'text',
       // image: 'image',
       // couple: 'couple',
-      backbutton: 'backbutton'
-    }
-
+      backbutton: 'backbutton',
+    },
   };
   // defaultHref = 'main/home/contact-book';
-  listSubject=[{name: 'Toán 10'},{name: 'Ngữ Văn 10'},{name: 'Toán 10'},{name: 'Ngữ Văn 10'},{name: 'Toán 10'},{name: 'Ngữ Văn 10'}];
+  listSubject = [
+    { name: 'Toán 10' },
+    { name: 'Ngữ Văn 10' },
+    { name: 'Toán 10' },
+    { name: 'Ngữ Văn 10' },
+    { name: 'Toán 10' },
+    { name: 'Ngữ Văn 10' },
+  ];
 
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private subjectService: SubjectService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
+  // getListSubject(){
+  //   this.subjectService.getListSubjectByTerm().
+  // }
 
   async openDetail(item) {
     const modal = await this.modalController.create({
       component: DetailResultComponent,
-      componentProps: {name: item.name}
+      componentProps: { name: item.name },
     });
     return await modal.present();
   }
 
-  prev(){
+  prev() {
     this.slides.slidePrev();
   }
-  next(){
+  next() {
     this.slides.slideNext();
   }
 }
