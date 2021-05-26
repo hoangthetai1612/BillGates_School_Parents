@@ -10,6 +10,7 @@ import { ProfilePage } from './profile.page';
 import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import { RouterModule } from '@angular/router';
+import { ProfileDetailModule } from './profile-detail/profile-detail.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     HeaderModule,
     RouterModule,
     RoleDirectiveModule,
+    ProfileDetailModule
   ],
   declarations: [ProfilePage],
 })

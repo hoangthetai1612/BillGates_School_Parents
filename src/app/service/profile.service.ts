@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProfileModel } from '../models/profile.model';
 
-Injectable({
+@Injectable({
   providedIn: 'root',
-});
+})
 export class ProfileService {
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient) { }
   getProfileParent(): Observable<ProfileModel> {
     return this.http
-      .get(`api/teacher/username`)
+      .get(`api/parent/username`)
       .pipe(map((res: any) => res.Payload));
   }
   getProfileTeacher(): Observable<ProfileModel> {
