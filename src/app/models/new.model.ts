@@ -1,5 +1,5 @@
 export interface NewModel {
-  NewsId: string;
+  NewsId: number;
   Title: string;
   Description: string;
   URLLink: string;

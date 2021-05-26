@@ -16,7 +16,7 @@ export class HomeWorkService extends BaseApiService<HomeWork> {
     return this.http
       .get(this.actionUrl, {
         params: {
-          ClassId: ClassId,
+          ClassId,
           keywork: keyword,
         },
       })
