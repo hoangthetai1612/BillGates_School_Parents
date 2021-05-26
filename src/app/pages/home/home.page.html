@@ -56,13 +56,15 @@
     <ion-grid class="home">
         <ion-row class="home-posts">
             <ion-col size="12">
-                <div class="post-item" *ngFor="let item of data">
-                    <img src="{{item.mediaURL}}" alt="">
-                    <div class="post-item-text">
-                        <h3>{{item.title}}</h3>
-                        <span>{{item.date}}</span>
+                <ng-container *ngFor="let item of news">
+                    <div class="post-item" [routerLink]="item.URLLink">
+                        <img src="{{item.MediaURL}}" alt="">
+                        <div class="post-item-text">
+                            <h3>{{item.Title}}</h3>
+                            <span>{{item.CreatedOn | date:'shortDate'}}</span>
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </ion-col>
         </ion-row>
     </ion-grid>

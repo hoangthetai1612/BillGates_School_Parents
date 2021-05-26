@@ -1,0 +1,9 @@
+<ion-content>
+  <ion-row class="filter">
+    <ion-col *ngFor="let item of titleFilter">
+      <div class="filter-item" (click)="DismissClick(item.id)">
+        <span>{{item.title}}</span>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
