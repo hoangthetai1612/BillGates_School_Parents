@@ -24,12 +24,9 @@ export class TimetablePage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Thời khóa biểu',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };
@@ -113,8 +110,8 @@ export class TimetablePage implements OnInit {
         cssClass: 'note-lesson-wrap',
         componentProps: {
           id: id,
-          note: note
-        }
+          note: note,
+        },
       });
       return await modal.present();
     } else {
@@ -123,8 +120,8 @@ export class TimetablePage implements OnInit {
         cssClass: 'note-lesson-wrap',
         componentProps: {
           id: id,
-          note: note
-        }
+          note: note,
+        },
       });
       return await modal.present();
     }

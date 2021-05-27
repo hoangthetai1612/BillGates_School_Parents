@@ -6,7 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   BaseChatComponent,
   CiSocketService,
@@ -82,20 +82,17 @@ export class ConversationPage
   }
 
   ngOnDestroy() {
-    console.log(this.messageContainer);
     this.socketService.close();
   }
 
   updateListMessage(a: any[], v) {
     const result = [...a];
     const isRender = a.some((val) => val.CreatedOn !== v.CreatedOn);
-    console.log(isRender, v.Action);
 
     if (isRender && v.Action === 'receiveMessage') {
       return result;
     }
     result.push(v);
-    console.log(result);
     return result;
   }
 
@@ -124,11 +121,10 @@ export class ConversationPage
       Action: ActionMessage.sended,
       Content: this.msgText,
       CreatedOn: new Date().toISOString(),
-      RecipientUserProfileId: 2053,
+      RecipientUserProfileId: this.reciverId,
       SenderUserProfileId: this.currentUserId,
       Type: 1,
     };
-    console.log(this.currentMsg);
 
     this.messageSubject.next(this.currentMsg);
     this.socketService.sendMessage(this.currentMsg);

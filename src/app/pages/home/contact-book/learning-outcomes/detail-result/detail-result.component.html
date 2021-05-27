@@ -1,5 +1,6 @@
 <ion-header>
-    <app-header [headerStyle]="header" (callback)="closeModal()"></app-header>
+    <app-header [headerStyle]="header"
+                (callback)="closeModal()"></app-header>
 </ion-header>
 <ion-content>
     <ion-grid>
@@ -10,13 +11,14 @@
         </ion-row>
     </ion-grid>
     <ion-list>
-        <ion-item lines="none" *ngFor="let item of listPoint">
+        <ion-item lines="none"
+                  *ngFor="let item of listPoint">
             <div class="point">
-                {{item.point}}
-                <div class="per">/{{item.per}}</div>
+                {{item.Point}}
+                <div class="per">/10</div>
             </div>
             <div class="name">
-                {{item.title}}
+                {{item.TestTypeName}}
             </div>
         </ion-item>
     </ion-list>
