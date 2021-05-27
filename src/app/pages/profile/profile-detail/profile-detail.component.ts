@@ -36,6 +36,7 @@ export class ProfileDetailComponent implements OnInit {
   arrImgae = [];
   avt: string;
   profileTeacher
+  data
   buttonStyle = {
     width: '160px',
     cssClass: 'buttonDarkOrange',
@@ -50,11 +51,13 @@ export class ProfileDetailComponent implements OnInit {
   ngOnInit() {
     this.getProfile();
     this.getProfileTeacher();
-    this.updateProfileParent();
+    this.updateProfile();
   }
   getProfile() {
     this.profileService.getProfile().subscribe((res) => {
-      this.profile = res;
+      this.profile = res[0];
+      console.log(this.profile);
+
     });
   }
   getProfileTeacher() {
@@ -62,13 +65,13 @@ export class ProfileDetailComponent implements OnInit {
       this.profileTeacher = res;
     });
   }
-  updateProfileParent() {
-    this.profile.StudentMediaURL = this.avt;
-    console.log(this.profile);
+  updateProfile() {
+    this.profile.MediaURL = this.avt;
     this.profileService
-      .updateProfile(this.profile)
+      .updateProfile(this.profile.MediaURL)
       .subscribe((res) => {
-        console.log(this.profile);
+        this.getProfile()
+        this.getProfileTeacher()
       });
   }
   changePhoto() {

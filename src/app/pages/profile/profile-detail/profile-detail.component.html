@@ -1,23 +1,12 @@
-<app-header [headerStyle]="header"
-            [defaultHref]="'/main/profile'"></app-header>
+<app-header [headerStyle]="header" [defaultHref]="'/main/profile'"></app-header>
 <ion-content>
-  <ion-grid class="profile"
-            *roles="'parents' else teacher">
+  <ion-grid class="profile" *roles="'parents' else teacher">
     <ion-row>
-      <ion-col size="12"
-               class="profile-item">
-        <img *ngIf="avt == null"
-             class="profile-image"
-             src="{{profileParent.StudentMediaURL}}"
-             alt="">
-        <img *ngIf="avt"
-             class="profile-image"
-             src="data:image/png;base64,{{avt}}"
-             alt="">
-        <label for="profile"
-               (click)="changePhoto()">
-          <img src="assets/svg/icon-upload.svg"
-               alt="">
+      <ion-col size="12" class="profile-item">
+        <img *ngIf="avt == null" class="profile-image" src="{{profile?.MediaURL}}" alt="">
+        <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
+        <label for="profile" (click)="changePhoto()">
+          <img src="assets/svg/icon-upload.svg" alt="">
         </label>
       </ion-col>
     </ion-row>
@@ -26,34 +15,30 @@
       <ion-col size="12">
         <div class="profile-info">
           <span>Họ tên</span>
-          <p>{{profileParent?.StudentLastName}}</p>
+          <p>{{profile?.StudentName}}</p>
         </div>
         <div class="profile-info">
           <span>Lớp:</span>
-          <p>{{profileParent?.ClassName}}</p>
+          <p>{{profile?.ClassName}}</p>
         </div>
         <div class="profile-info">
           <span>Tên PH:</span>
-          <input type="text"
-                 [(ngModel)]="profileParent.LastName" />
+          <input type="text" [(ngModel)]="profile.ParentName" />
         </div>
         <div class="profile-info">
           <span>SĐT phụ huynh:</span>
-          <p>{{profileParent?.Phone}}</p>
+          <p>{{profile?.ParentPhone}}</p>
         </div>
         <div class="profile-info">
           <span>SĐT học sinh:</span>
-          <input type="text"
-                 [(ngModel)]="profileParent.StudentPhone" />
+          <input type="text" [(ngModel)]="profile.Phone" />
         </div>
         <div class="profile-info">
           <span>Địa chỉ nhà:</span>
-          <input type="text"
-                 [(ngModel)]="profileParent.LocationAddress" />
+          <input type="text" [(ngModel)]="profile.LocationAddress" />
         </div>
         <div class="profile-button">
-          <app-base-button (callback)="updateProfileParent()"
-                           [buttonStyle]="buttonStyle"></app-base-button>
+          <app-base-button (callback)="updateProfile()" [buttonStyle]="buttonStyle"></app-base-button>
         </div>
       </ion-col>
 
@@ -62,20 +47,11 @@
   <ng-template #teacher>
     <ion-grid class="profile">
       <ion-row>
-        <ion-col size="12"
-                 class="profile-item">
-          <img *ngIf="avt == null"
-               class="profile-image"
-               src="{{profileTeacher.MediaURL}}"
-               alt="">
-          <img *ngIf="avt"
-               class="profile-image"
-               src="data:image/png;base64,{{avt}}"
-               alt="">
-          <label for="profile"
-                 (click)="changePhoto()">
-            <img src="assets/svg/icon-upload.svg"
-                 alt="">
+        <ion-col size="12" class="profile-item">
+          <img *ngIf="avt == null" class="profile-image" src="{{profileTeacher.MediaURL}}" alt="">
+          <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
+          <label for="profile" (click)="changePhoto()">
+            <img src="assets/svg/icon-upload.svg" alt="">
           </label>
         </ion-col>
 
@@ -85,8 +61,7 @@
         <ion-col size="12">
           <div class="profile-info">
             <span>Họ tên giáo viên:</span>
-            <input type="text"
-                   [(ngModel)]="profileTeacher.LastName" />
+            <input type="text" [(ngModel)]="profileTeacher.LastName" />
           </div>
           <div class="profile-info">
             <span>Chủ nhiệm lớp:</span>
@@ -94,17 +69,14 @@
           </div>
           <div class="profile-info">
             <span>SĐT giáo viên:</span>
-            <input type="text"
-                   [(ngModel)]="profileTeacher.Phone" />
+            <input type="text" [(ngModel)]="profileTeacher.Phone" />
           </div>
           <div class="profile-info">
             <span>Địa chỉ nhà:</span>
-            <input type="text"
-                   [(ngModel)]="profileTeacher.LocationAddress" />
+            <input type="text" [(ngModel)]="profileTeacher.LocationAddress" />
           </div>
           <div class="profile-button">
-            <app-base-button (callback)="updateProfileTeacher()"
-                             [buttonStyle]="buttonStyle"></app-base-button>
+            <app-base-button (callback)="updateProfile()" [buttonStyle]="buttonStyle"></app-base-button>
           </div>
         </ion-col>
       </ion-row>

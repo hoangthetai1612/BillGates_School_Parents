@@ -46,7 +46,9 @@ export class ProfilePage implements OnInit {
   }
   getProfile() {
     this.profileService.getProfile().subscribe(res => {
-      this.profile = res
+      this.profile = res[0]
+      console.log(this.profile);
+
     })
   }
 
