@@ -8,7 +8,5 @@ import { TabsService } from './service/tab.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private tabService: TabsService) {
-    localStorage.setItem('role', 'parents');
-  }
+  constructor(private tabService: TabsService) {}
 }

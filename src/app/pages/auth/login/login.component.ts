@@ -76,6 +76,11 @@ export class LoginComponent implements OnInit {
         concatMap((res) => {
           localStorage.setItem('access_token', JSON.stringify(res));
           this.router.navigate(['/main/home']);
+          if (res.Role === 'Parent') {
+            localStorage.setItem('role', 'parents');
+          } else {
+            localStorage.setItem('role', 'teacher');
+          }
           return this.profileService.getProfile();
         }),
         tap((res: any) => {
