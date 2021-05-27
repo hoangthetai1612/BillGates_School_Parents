@@ -34,24 +34,24 @@ export class DetailResultComponent implements OnInit {
     { TestResultId: 1, Point: 8, TestTypeName: '15 phút' },
     { TestResultId: 1, Point: 8, TestTypeName: 'giữa kỳ' },
   ];
+  studentId;
   constructor(
     private modalController: ModalController,
     private testResultService: TestResultService,
     private authStoreService: AuthStoreService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authStoreService.studentId$.subscribe((res) => (this.studentId = res));
+    this.getDetalTestResult();
+  }
   closeModal() {
     this.modalController.dismiss({});
   }
 
   getDetalTestResult() {
     this.testResultService
-      .getDetailTestById(
-        this.authStoreService.studentId$,
-        this.semsterId,
-        this.subjectId
-      )
+      .getDetailTestById(this.studentId, this.semsterId, this.subjectId)
       .subscribe((res) => {
         this.listPoint = res;
       });
