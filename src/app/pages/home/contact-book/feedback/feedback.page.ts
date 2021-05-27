@@ -80,6 +80,9 @@ export class FeedbackPage implements OnInit {
   }
 
   createReview() {
-    this.reviewService.create(this.formReview.value).subscribe((res) => {});
+    this.reviewService.create(this.formReview.value).subscribe((res) => {
+      this.getListReview();
+    });
+    this.formReview.reset();
   }
 }

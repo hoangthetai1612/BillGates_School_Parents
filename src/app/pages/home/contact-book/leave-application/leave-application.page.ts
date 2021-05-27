@@ -52,19 +52,21 @@ export class LeaveApplicationPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authStoreService.studentId$.subscribe((res) => {
-      console.log(res);
-      this.getListAbsence(res);
-    });
+    this.getListAbsence();
   }
-  getListAbsence(id) {
-    this.absenceRequestService.getListAbsenceById(id).subscribe((res) => {
-      this.listCard = res;
+  getListAbsence() {
+    this.authStoreService.studentId$.subscribe((id) => {
+      this.absenceRequestService.getListAbsenceById(id).subscribe((res) => {
+        this.listCard = res;
+      });
     });
   }
   async createLeave() {
     const modal = await this.modalController.create({
       component: CreateLeaveComponent,
+    });
+    modal.onDidDismiss().then((res) => {
+      this.getListAbsence();
     });
     return await modal.present();
   }

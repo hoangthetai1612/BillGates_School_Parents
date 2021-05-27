@@ -1,10 +1,10 @@
 <ion-card>
     <div class="status"
          [style.backgroundColor]="'#FF9569'"
-         *ngIf="data.Status === 1">Đã được phản hồi</div>
+         *ngIf="data.Status !== 1">Đã được phản hồi</div>
     <div class="status"
          [style.backgroundColor]="'#979797'"
-         *ngIf="!(data.Status === 1)">Chờ phản hồi</div>
+         *ngIf="data.Status === 1">Chờ phản hồi</div>
     <ion-grid>
         <ion-row>
             <div class="status"></div>

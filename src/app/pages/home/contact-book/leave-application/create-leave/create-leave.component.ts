@@ -29,6 +29,7 @@ export class CreateLeaveComponent implements OnInit {
     FromDate: new FormControl(''),
     ToDate: new FormControl(''),
     Description: new FormControl(''),
+    Type: new FormControl(1),
   });
   constructor(
     private modalController: ModalController,
@@ -38,7 +39,9 @@ export class CreateLeaveComponent implements OnInit {
   ngOnInit() {}
 
   closeModal() {
-    this.modalController.dismiss({});
+    this.modalController.dismiss({
+      dismissed: true,
+    });
   }
 
   createLeave() {
