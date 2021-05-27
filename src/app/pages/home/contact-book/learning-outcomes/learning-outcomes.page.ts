@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, ModalController } from '@ionic/angular';
+import { IonSlides, ModalController, NavParams } from '@ionic/angular';
 import { SemsterModel } from 'src/app/models/semster.model';
 import { Subject } from 'src/app/models/subject.model';
 import { AuthStoreService } from 'src/app/service/auth.store';
@@ -67,8 +67,12 @@ export class LearningOutcomesPage implements OnInit {
     private modalController: ModalController,
     private subjectService: SubjectService,
     private semsterService: SemsterService,
-    private authStoreService: AuthStoreService
-  ) {}
+    private authStoreService: AuthStoreService,
+    private params: NavParams
+  ) {
+    console.log('params', params.data.data);
+
+  }
 
   ngOnInit() {
     this.authStoreService.classId$.subscribe((res) => {
