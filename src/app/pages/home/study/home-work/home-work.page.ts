@@ -35,22 +35,33 @@ export class HomeWorkPage implements OnInit {
   classId: number;
   private searchTerms = new Subject<string>();
 
-  constructor(private homeworkService: HomeWorkService, private authStoreService: AuthStoreService) {}
+  constructor(
+    private homeworkService: HomeWorkService,
+    private authStoreService: AuthStoreService
+  ) {}
 
   ngOnInit() {
     this.authStoreService.classId$.subscribe((res) => {
       this.classId = res;
     });
-    this.classId = 1
+    this.classId = 1;
     this.search.valueChanges
       .pipe(
         distinctUntilChanged(),
         debounceTime(500),
-        startWith(""),
         switchMap((term: string) =>
-          this.homeworkService.getListHomeWork(this.classId, term)
+          this.homeworkService.list({
+            ClassId: this.classId,
+            keyword: term,
+          })
         )
       )
-      .subscribe();
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => console.log(err),
+        () => console.log('comp')
+      );
   }
 }

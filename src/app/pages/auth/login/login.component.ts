@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
       .pipe(
         concatMap((res) => {
           localStorage.setItem('access_token', JSON.stringify(res));
+          localStorage.setItem('token', JSON.stringify(res.assess_token));
           this.router.navigate(['/main/home']);
           return this.profileService.getProfile();
         }),
