@@ -20,6 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './base/util/interceptors/api.interceptor';
 import { AuthGuard } from './base/util/guards/auth.guard';
 import { ProfileService } from './service/profile.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +38,7 @@ import { ProfileService } from './service/profile.service';
       },
       {
         provide: ACCESS_TOKEN_PROVIDER,
-        useFactory: () => {},
+        useFactory: () => { },
       }
     ),
   ],
@@ -45,6 +46,9 @@ import { ProfileService } from './service/profile.service';
     AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LOCALE_ID, useValue: 'vi_VN' },
+    {
+      provide: DatePipe
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
@@ -54,4 +58,4 @@ import { ProfileService } from './service/profile.service';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

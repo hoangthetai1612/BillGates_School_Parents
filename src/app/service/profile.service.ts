@@ -10,7 +10,7 @@ import { ProfileModel } from '../models/profile.model';
 export class ProfileService {
   constructor(protected http: HttpClient) { }
   getProfile(): Observable<ProfileModel> {
-    if (localStorage.getItem('role') == 'Parents') {
+    if (localStorage.getItem('role') == 'parents') {
       return this.http
         .get(`api/parents/username`)
         .pipe(map((res: any) => res.Payload));
@@ -27,7 +27,7 @@ export class ProfileService {
       .pipe(map((res: any) => res.Payload));
   }
   updateProfile(data): Observable<ProfileModel> {
-    if (localStorage.getItem('role') == 'Parents') {
+    if (localStorage.getItem('role') == 'parents') {
       return this.http
         .put(`api/parent/username`, data)
         .pipe(map((res: any) => res));
