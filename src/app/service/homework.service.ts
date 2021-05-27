@@ -17,7 +17,7 @@ export class HomeWorkService extends BaseApiService<HomeWork> {
       .get(this.actionUrl, {
         params: {
           ClassId,
-          keywork: keyword,
+          keyword,
         },
       })
       .pipe(map((res: any) => res.Payload));
