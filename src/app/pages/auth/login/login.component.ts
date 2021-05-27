@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   login() {
     this.loginService
@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
       .pipe(
         concatMap((res) => {
           localStorage.setItem('access_token', JSON.stringify(res));
+          localStorage.setItem('token', JSON.stringify(res.assess_token));
           this.router.navigate(['/main/home']);
           if (res.Role === 'Parent') {
             localStorage.setItem('role', 'parents');
@@ -87,7 +88,6 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.authStoreService.set('ClassId', res.ClassId);
           this.authStoreService.set('StudentId', res.StudentId);
-          console.log(res);
         }),
         catchError((err) => {
           if (err.status === 400) {
@@ -122,4 +122,4 @@ export class LoginComponent implements OnInit {
   ],
   exports: [LoginComponent],
 })
-export class LoginModule { }
+export class LoginModule {}

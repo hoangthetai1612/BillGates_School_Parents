@@ -15,10 +15,10 @@ export class TimeTableService extends BaseApiService<HomeWork> {
     return this.http
       .get(this.actionUrl, {
         params: {
-          DayValue: DayValue,
-          ClassId: ClassId,
-          FromDate: FromDate,
-          ToDate: ToDate,
+          DayValue,
+          ClassId,
+          FromDate,
+          ToDate,
         },
       })
       .pipe(map((res: any) => res.Payload));

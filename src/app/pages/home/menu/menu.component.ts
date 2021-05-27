@@ -179,5 +179,4 @@ export class MenuComponent implements OnInit {
   entryComponents: [MenuComponent],
 })
 export class MenuModule {
-
 }

@@ -8,9 +8,9 @@ import { ProfileModel } from '../models/profile.model';
   providedIn: 'root',
 })
 export class ProfileService {
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
   getProfile(): Observable<ProfileModel> {
-    if (localStorage.getItem('role') == 'parents') {
+    if (localStorage.getItem('role') === 'parents') {
       return this.http
         .get(`api/parents/username`)
         .pipe(map((res: any) => res.Payload));
@@ -19,7 +19,6 @@ export class ProfileService {
         .get(`api/teacher/username/parent`)
         .pipe(map((res: any) => res.Payload));
     }
-
   }
   getDetailProfileTeacher(): Observable<ProfileModel> {
     return this.http
@@ -27,7 +26,7 @@ export class ProfileService {
       .pipe(map((res: any) => res.Payload));
   }
   updateProfile(data): Observable<ProfileModel> {
-    if (localStorage.getItem('role') == 'parents') {
+    if (localStorage.getItem('role') === 'parents') {
       return this.http
         .put(`api/parent/username`, data)
         .pipe(map((res: any) => res));
@@ -36,6 +35,5 @@ export class ProfileService {
         .put(`api/teacher/username`, data)
         .pipe(map((res: any) => res));
     }
-
   }
 }
