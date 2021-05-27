@@ -35,5 +35,8 @@ export class MainPage {
     },
   ];
   constructor() {}
-
+  test(ev) {
+    console.log(ev);
+    
+  }
 }

@@ -30,9 +30,9 @@ export class HomeWorkPage implements OnInit {
       backbutton: 'backbutton',
     },
   };
+  listHomeWork$!: Observable<HomeWork[]>;
   search = new FormControl('');
   classId: number;
-  private searchTerms = new Subject<string>();
 
   constructor(
     private homeworkService: HomeWorkService,
@@ -43,19 +43,13 @@ export class HomeWorkPage implements OnInit {
     this.authStoreService.classId$.subscribe((res) => {
       this.classId = res;
     });
-    this.classId = 1;
-    this.search.valueChanges
-      .pipe(
-        distinctUntilChanged(),
-        startWith(''),
-        debounceTime(500),
-        switchMap((term: string) =>
-          this.homeworkService.list({
-            ClassId: this.classId,
-            keyword: term,
-          })
-        )
+    this.listHomeWork$ = this.search.valueChanges.pipe(
+      distinctUntilChanged(),
+      debounceTime(500),
+      startWith(''),
+      switchMap((term: string) =>
+        this.homeworkService.getListHomeWork(this.classId, term)
       )
-      .subscribe();
+    );
   }
 }
