@@ -70,33 +70,28 @@ export class ProfileDetailComponent implements OnInit {
   constructor(
     public photoService: PhotoService,
     private profileService: ProfileService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProfileParent();
+    this.getProfileTeacher();
+    this.updateProfileParent();
+  }
   getProfileParent() {
-    this.profileService.getProfileParent().subscribe((res) => {
+    this.profileService.getProfile().subscribe((res) => {
       this.profileParent = res;
     });
   }
   getProfileTeacher() {
     this.profileService.getDetailProfileTeacher().subscribe((res) => {
-      this.profileParent = res;
+      this.profileTeacher = res;
     });
   }
   updateProfileParent() {
     this.profileParent.StudentMediaURL = this.avt;
     console.log(this.profileParent);
     this.profileService
-      .updateProfileParent(this.profileParent)
-      .subscribe((res) => {
-        console.log(this.profileParent);
-      });
-  }
-  updateProfileTeacher() {
-    this.profileParent.StudentMediaURL = this.avt;
-    console.log(this.profileParent);
-    this.profileService
-      .updateProfileTeacher(this.profileParent)
+      .updateProfile(this.profileParent)
       .subscribe((res) => {
         console.log(this.profileParent);
       });
@@ -120,4 +115,4 @@ export class ProfileDetailComponent implements OnInit {
   ],
   exports: [ProfileDetailComponent],
 })
-export class ProfileDetailModule {}
+export class ProfileDetailModule { }

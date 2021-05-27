@@ -8,7 +8,7 @@ import { NewModel } from '../models/new.model';
   providedIn: 'root',
 })
 export class NewsService {
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient) { }
   getNews(param: any): Observable<NewModel> {
     const paramReq = new HttpParams({ fromObject: param });
     return this.http

@@ -30,51 +30,38 @@ export class ProfilePage implements OnInit {
 
   arrImgae = [];
   avt: string;
-  profileParent = {
+  profile = {
     ParentId: 1,
     StudentId: 2,
-    LastName: ' Trần Huyền Diệu',
-    Phone: '0968744046',
-    StudentLastName: ' Trần duy',
-    StudentPhone: '09687421561',
-    StudentMediaURL:
-      'https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512',
-    LocationAddress: ' 193 phú diẽn',
-    ClassName: '5A',
+    LastName: " Trần Huyền Diệu",
+    Phone: "0968744046",
+    StudentLastName: " Trần duy",
+    StudentPhone: "09687421561",
+    StudentMediaURL: "https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512",
+    LocationAddress: " 193 phú diẽn",
+    ClassName: "5A",
     ClassId: 3,
-  };
-  profileTeacher = {
-    ParentId: 1,
-    StudentId: 2,
-    LastName: ' Trần Huyền Diệu',
-    Phone: '0968744046',
-    StudentLastName: ' Trần duy',
-    StudentPhone: '09687421561',
-    MediaURL:
-      'https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512',
-    LocationAddress: ' 193 phú diẽn',
-    ClassName: '5A',
-    ClassId: 3,
-  };
+    MediaURL: "https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512",
+  }
+
   constructor(
     public photoService: PhotoService,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet,
     private router: Router,
     private profileService: ProfileService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProfile();
+
+  }
   getProfile() {
-    this.profileService.getProfileParent().subscribe((res) => {
-      this.profileParent = res;
-    });
+    this.profileService.getProfile().subscribe(res => {
+      this.profile = res
+    })
   }
-  getProfileTeacher() {
-    this.profileService.getProfileTeacher().subscribe((res) => {
-      this.profileTeacher = res;
-    });
-  }
+
   presentModal() {
     this.modalService.presentModal({
       presentingElement: this.routerOutlet.nativeEl,

@@ -8,30 +8,34 @@ import { ProfileModel } from '../models/profile.model';
   providedIn: 'root',
 })
 export class ProfileService {
-  constructor(protected http: HttpClient) {}
-  getProfileParent(): Observable<ProfileModel> {
-    return this.http
-      .get(`api/parents/username`)
-      .pipe(map((res: any) => res.Payload));
-  }
-  getProfileTeacher(): Observable<ProfileModel> {
-    return this.http
-      .get(`api/teacher/username/parent`)
-      .pipe(map((res: any) => res.Payload));
+  constructor(protected http: HttpClient) { }
+  getProfile(): Observable<ProfileModel> {
+    if (localStorage.getItem('role') == 'Parents') {
+      return this.http
+        .get(`api/parents/username`)
+        .pipe(map((res: any) => res.Payload));
+    } else {
+      return this.http
+        .get(`api/teacher/username/parent`)
+        .pipe(map((res: any) => res.Payload));
+    }
+
   }
   getDetailProfileTeacher(): Observable<ProfileModel> {
     return this.http
       .get(`api/teacher/username`)
       .pipe(map((res: any) => res.Payload));
   }
-  updateProfileParent(data): Observable<ProfileModel> {
-    return this.http
-      .put(`api/parent/username`, data)
-      .pipe(map((res: any) => res));
-  }
-  updateProfileTeacher(data): Observable<ProfileModel> {
-    return this.http
-      .put(`api/teacher/username`, data)
-      .pipe(map((res: any) => res));
+  updateProfile(data): Observable<ProfileModel> {
+    if (localStorage.getItem('role') == 'Parents') {
+      return this.http
+        .put(`api/parent/username`, data)
+        .pipe(map((res: any) => res));
+    } else {
+      return this.http
+        .put(`api/teacher/username`, data)
+        .pipe(map((res: any) => res));
+    }
+
   }
 }

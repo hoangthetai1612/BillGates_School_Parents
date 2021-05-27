@@ -26,4 +26,4 @@ import { ProfileDetailModule } from './profile-detail/profile-detail.component';
   ],
   declarations: [ProfilePage],
 })
-export class ProfilePageModule {}
+export class ProfilePageModule { }

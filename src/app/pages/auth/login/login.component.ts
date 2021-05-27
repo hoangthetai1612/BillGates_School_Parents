@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   login() {
     this.loginService
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
         concatMap((res) => {
           localStorage.setItem('access_token', JSON.stringify(res));
           this.router.navigate(['/main/home']);
-          return this.profileService.getProfileParent();
+          return this.profileService.getProfile();
         }),
         tap((res: any) => {
           console.log(res);
@@ -117,4 +117,4 @@ export class LoginComponent implements OnInit {
   ],
   exports: [LoginComponent],
 })
-export class LoginModule {}
+export class LoginModule { }
