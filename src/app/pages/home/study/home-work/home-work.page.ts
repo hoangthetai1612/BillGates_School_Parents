@@ -30,7 +30,6 @@ export class HomeWorkPage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-  listHomeWork$!: Observable<HomeWork[]>;
   search = new FormControl('');
   classId: number;
   private searchTerms = new Subject<string>();
@@ -48,8 +47,8 @@ export class HomeWorkPage implements OnInit {
     this.search.valueChanges
       .pipe(
         distinctUntilChanged(),
-        debounceTime(500),
         startWith(''),
+        debounceTime(500),
         switchMap((term: string) =>
           this.homeworkService.list({
             ClassId: this.classId,
@@ -57,12 +56,6 @@ export class HomeWorkPage implements OnInit {
           })
         )
       )
-      .subscribe(
-        (res) => {
-          console.log(res);
-        },
-        (err) => console.log(err),
-        () => console.log('comp')
-      );
+      .subscribe();
   }
 }

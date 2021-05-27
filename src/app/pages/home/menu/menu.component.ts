@@ -4,9 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import startOfWeek from 'date-fns/startOfWeek';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
-import localeVi from "@angular/common/locales/vi";
 import { MenuService } from 'src/app/service/menu.service';
-registerLocaleData(localeVi);
 
 @Component({
   selector: 'app-menu',
@@ -175,7 +173,7 @@ export class MenuComponent implements OnInit {
     HeaderModule
   ],
   exports: [MenuComponent],
-  providers: [{ provide: LOCALE_ID, useValue: 'vi-VN' }],
+  providers: [DatePipe, ],
   entryComponents: [MenuComponent],
 })
 export class MenuModule {

@@ -53,11 +53,11 @@ import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
       useClass: APIInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true,
+    // },
     IonNav,
   ],
   bootstrap: [AppComponent],
