@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { IonicModule, IonRouterOutlet } from '@ionic/angular';
@@ -17,6 +18,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastService } from 'src/app/service/toast.service';
+import { catchError, concatMap, tap } from 'rxjs/operators';
+import { ProfileService } from 'src/app/service/profile.service';
+import { AuthStoreService } from 'src/app/service/auth.store';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -29,8 +34,7 @@ export class LoginComponent implements OnInit {
     classText: 'text-black',
     iconLeft: 'assets/svg/icon-phone-home.svg',
     iconRight: '',
-    iconCenter: {
-    },
+    iconCenter: {},
     type: {
       image: 'image',
       isText: true,
@@ -52,29 +56,42 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private fb: FormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private profileService: ProfileService,
+    private authStoreService: AuthStoreService
   ) {
     this.loginForm = this.fb.group({
       grant_type: ['password'],
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   login() {
-    this.loginService.login(this.loginForm.value).subscribe(
-      (res) => {
-        localStorage.setItem('access_token', JSON.stringify(res));
-        this.router.navigate(['/main/home']);
-      },
-      (err) => {
-        if (err.status === 400) {
-          this.toastService.showError("Sai tên tài khoản hoặc mật khẩu!");
-        }
-      }
-    );
+    this.loginService
+      .login(this.loginForm.value)
+      .pipe(
+        concatMap((res) => {
+          localStorage.setItem('access_token', JSON.stringify(res));
+          this.router.navigate(['/main/home']);
+          return this.profileService.getProfileParent();
+        }),
+        tap((res: any) => {
+          console.log(res);
+          this.authStoreService.set('ClassId', res.ClassId);
+          this.authStoreService.set('StudentId', res.StudentId);
+          console.log(res);
+        }),
+        catchError((err) => {
+          if (err.status === 400) {
+            this.toastService.showError('Sai tên tài khoản hoặc mật khẩu!');
+          }
+          return throwError(err);
+        })
+      )
+      .subscribe();
   }
   presentModal() {
     this.modalService.presentModal({
@@ -100,4 +117,4 @@ export class LoginComponent implements OnInit {
   ],
   exports: [LoginComponent],
 })
-export class LoginModule { }
+export class LoginModule {}

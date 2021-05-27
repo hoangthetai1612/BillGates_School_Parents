@@ -13,12 +13,9 @@ export class NoteLessonComponent implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Ghi chú tiết học',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };

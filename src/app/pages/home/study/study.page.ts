@@ -13,12 +13,9 @@ export class StudyPage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Học liệu',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };

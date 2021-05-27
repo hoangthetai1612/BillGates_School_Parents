@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -17,8 +17,9 @@ import { HeaderModule } from 'src/app/base/header/header.component';
     IonicModule,
     FeedbackPageRoutingModule,
     BaseCardFeedbackModule,
-    HeaderModule
+    HeaderModule,
+    ReactiveFormsModule,
   ],
-  declarations: [FeedbackPage]
+  declarations: [FeedbackPage],
 })
 export class FeedbackPageModule {}

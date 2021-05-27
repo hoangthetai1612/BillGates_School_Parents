@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 
 @Component({
   selector: 'app-create-leave',
@@ -14,26 +17,33 @@ export class CreateLeaveComponent implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Tạo đơn xin nghỉ học',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
       image: 'image',
-      isText: false
-      // couple: 'couple',
-      // backbutton: 'backbutton'
-    }
-
+      isText: false,
+    },
   };
-  // defaultHref = 'main/home/contact-book';
-  constructor(private modalController: ModalController) { }
+
+  formLeave = new FormGroup({
+    FromDate: new FormControl(''),
+    ToDate: new FormControl(''),
+    Description: new FormControl(''),
+  });
+  constructor(
+    private modalController: ModalController,
+    private absenceRequestService: AbsenceRequestService
+  ) {}
 
   ngOnInit() {}
 
-  closeModal(){
-    this.modalController.dismiss({
-      // dismissed: true
-    });
+  closeModal() {
+    this.modalController.dismiss({});
   }
 
+  createLeave() {
+    this.absenceRequestService
+      .create(this.formLeave.value)
+      .subscribe((res) => {});
+  }
 }
