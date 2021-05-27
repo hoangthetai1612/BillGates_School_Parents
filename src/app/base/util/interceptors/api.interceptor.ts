@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-} from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { retry } from "rxjs/operators";
-import { environment } from "src/environments/environment";
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class APIInterceptor implements HttpInterceptor {
-  constructor() { }
+  constructor() {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -19,7 +20,7 @@ export class APIInterceptor implements HttpInterceptor {
     const request = req.clone({
       url: `${environment.API_URL}/${req.url}`,
       setHeaders: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
     return next.handle(request).pipe(retry(1));

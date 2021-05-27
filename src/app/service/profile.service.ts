@@ -12,7 +12,7 @@ export class ProfileService {
   getProfile(): Observable<ProfileModel> {
     if (localStorage.getItem('role') === 'parents') {
       return this.http
-        .get(`api/parents/username`)
+        .get(`api/parent/username`)
         .pipe(map((res: any) => res.Payload));
     } else {
       return this.http
