@@ -28,24 +28,23 @@ export class LeaveApplicationPage implements OnInit {
   };
   defaultHref = 'main/home/contact-book';
   listCard: DetailAbsenceRequest[] = [
-    {
-      StudentAbsenceRequestId: 1,
-      FromDate: new Date(),
-      ToDate: new Date(),
-      Description: 'addsavcdvasdcdsavsdavcsdvfsa',
-      Type: 1,
-      Status: 1,
-    },
-    {
-      StudentAbsenceRequestId: 1,
-      FromDate: new Date(),
-      ToDate: new Date(),
-      Description: 'addsavcdvasdcdsavsdavcsdvfsa',
-      Type: 1,
-      Status: 2,
-    },
+    // {
+    //   StudentAbsenceRequestId: 1,
+    //   FromDate: new Date(),
+    //   ToDate: new Date(),
+    //   Description: 'addsavcdvasdcdsavsdavcsdvfsa',
+    //   Type: 1,
+    //   Status: 1,
+    // },
+    // {
+    //   StudentAbsenceRequestId: 1,
+    //   FromDate: new Date(),
+    //   ToDate: new Date(),
+    //   Description: 'addsavcdvasdcdsavsdavcsdvfsa',
+    //   Type: 1,
+    //   Status: 2,
+    // },
   ];
-  studentId = 0;
   constructor(
     public modalController: ModalController,
     private absenceRequestService: AbsenceRequestService,
@@ -53,22 +52,21 @@ export class LeaveApplicationPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authStoreService.studentId$.subscribe((res) => {
-      this.studentId = res;
-    });
     this.getListAbsence();
   }
-
   getListAbsence() {
-    this.absenceRequestService
-      .getListAbsenceById(this.studentId)
-      .subscribe((res) => {
+    this.authStoreService.studentId$.subscribe((id) => {
+      this.absenceRequestService.getListAbsenceById(id).subscribe((res) => {
         this.listCard = res;
       });
+    });
   }
   async createLeave() {
     const modal = await this.modalController.create({
       component: CreateLeaveComponent,
+    });
+    modal.onDidDismiss().then((res) => {
+      this.getListAbsence();
     });
     return await modal.present();
   }

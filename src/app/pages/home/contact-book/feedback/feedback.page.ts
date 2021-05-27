@@ -33,33 +33,33 @@ export class FeedbackPage implements OnInit {
     StudentId: new FormControl(1),
   });
   listCard: ReviewModel[] = [
-    {
-      ReviewId: 1,
-      Title: 'sdcdscsdcsd',
-      Description: 'adaffgdvdg',
-      Type: 4,
-      Rating: 4,
-      Status: 1,
-      StudentMediaURL: 'assets/contact-book/avatar.svg',
-    },
-    {
-      ReviewId: 1,
-      Title: 'sdcdscsdcsd',
-      Description: 'adaffgdvdg',
-      Type: 4,
-      Rating: 4,
-      Status: 2,
-      StudentMediaURL: 'assets/contact-book/avatar.svg',
-    },
-    {
-      ReviewId: 1,
-      Title: 'sdcdscsdcsd',
-      Description: 'adaffgdvdg',
-      Type: 4,
-      Rating: 4,
-      Status: 1,
-      StudentMediaURL: 'assets/contact-book/avatar.svg',
-    },
+    // {
+    //   ReviewId: 1,
+    //   Title: 'sdcdscsdcsd',
+    //   Description: 'adaffgdvdg',
+    //   Type: 4,
+    //   Rating: 4,
+    //   Status: 1,
+    //   StudentMediaURL: 'assets/contact-book/avatar.svg',
+    // },
+    // {
+    //   ReviewId: 1,
+    //   Title: 'sdcdscsdcsd',
+    //   Description: 'adaffgdvdg',
+    //   Type: 4,
+    //   Rating: 4,
+    //   Status: 2,
+    //   StudentMediaURL: 'assets/contact-book/avatar.svg',
+    // },
+    // {
+    //   ReviewId: 1,
+    //   Title: 'sdcdscsdcsd',
+    //   Description: 'adaffgdvdg',
+    //   Type: 4,
+    //   Rating: 4,
+    //   Status: 1,
+    //   StudentMediaURL: 'assets/contact-book/avatar.svg',
+    // },
   ];
   constructor(
     private reviewService: ReviewService,
@@ -80,6 +80,9 @@ export class FeedbackPage implements OnInit {
   }
 
   createReview() {
-    this.reviewService.create(this.formReview.value).subscribe((res) => {});
+    this.reviewService.create(this.formReview.value).subscribe((res) => {
+      this.getListReview();
+    });
+    this.formReview.reset();
   }
 }

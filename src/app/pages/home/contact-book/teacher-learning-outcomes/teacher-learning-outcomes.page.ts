@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { LearningOutcomesPage } from '../learning-outcomes/learning-outcomes.page';
 
@@ -75,7 +76,10 @@ export class TeacherLearningOutcomesPage implements OnInit {
     }
   ];
 
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }

@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   login() {
     this.loginService
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('access_token', JSON.stringify(res));
           localStorage.setItem('token', res.access_token);
           this.router.navigate(['/main/home']);
-          if (res.Role === "Parent") {
+          if (res.Role === 'Parent') {
             localStorage.setItem('role', 'parents');
           } else {
             localStorage.setItem('role', 'teacher');
@@ -86,8 +86,8 @@ export class LoginComponent implements OnInit {
         }),
         tap((res: any) => {
           console.log(res);
-          this.authStoreService.set('ClassId', res.ClassId);
-          this.authStoreService.set('StudentId', res.StudentId);
+          this.authStoreService.set({ ClassId: res[0].ClassId });
+          this.authStoreService.set({ StudentId: res[0].StudentId });
         }),
         catchError((err) => {
           if (err.status === 400) {
@@ -122,4 +122,4 @@ export class LoginComponent implements OnInit {
   ],
   exports: [LoginComponent],
 })
-export class LoginModule { }
+export class LoginModule {}
