@@ -36,7 +36,7 @@
         >
         <span
           *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
-          class="today"
+          [class]="checkActive==i? 'active': ''"
           >Hôm nay</span
         >
       </div>
@@ -58,6 +58,7 @@
       *ngFor="let item of listTimeTable$ | async, let i = index"
       
     >
+    {{item | json}}
       <div class="lesson-component" *ngIf="item.LessonType == 1"(click)=" openNoteLesson(item.TimeTableLessonId, item.Note)">
         <ion-col size="2">
           <div class="number">{{i+1}}</div>

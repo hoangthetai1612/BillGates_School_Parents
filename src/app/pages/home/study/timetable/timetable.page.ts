@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { TimeTableLesson } from 'src/app/models/timetable.model';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
+import { AuthStoreService } from 'src/app/service/auth.store';
 
 @Component({
   selector: 'app-timetable',
@@ -42,10 +43,17 @@ export class TimetablePage implements OnInit {
   constructor(
     private modalController: ModalController,
     private timetableService: TimeTableService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private authStoreService: AuthStoreService
   ) {}
 
   ngOnInit() {
+    this.authStoreService.classId$.subscribe((res) => {
+      this.classId = res;
+      console.log(this.classId);
+      
+    });
+    this.classId =25;
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
     this.setEndWeek(this.startWeek, 5);
     this.listDate = eachDayOfInterval({
@@ -53,6 +61,7 @@ export class TimetablePage implements OnInit {
       end: this.endWeek,
     });
     this.valueToday = getDay(this.currentDate);
+    this.checkActive = this.valueToday-1
     const fromDate = this.datePipe.transform(this.startWeek, 'yyyy-MM-dd');
     const toDate = this.datePipe.transform(this.endWeek, 'yyyy-MM-dd');
     this.listTimeTable$ = this.subject.asObservable().pipe(
@@ -60,7 +69,7 @@ export class TimetablePage implements OnInit {
       switchMap((valueDay) => {
         return this.timetableService.getTimeTable(
           valueDay,
-          25,
+          this.classId,
           fromDate,
           toDate
         );
