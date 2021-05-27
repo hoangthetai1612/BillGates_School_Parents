@@ -3,14 +3,14 @@
   <ion-grid class="profile">
     <ion-row *roles="'parents' else teacher">
       <ion-col size="6" class="profile-item">
-        <img *ngIf="avt == null" class="profile-image" src="{{profile.StudentMediaURL}}" alt="">
+        <img *ngIf="avt == null" class="profile-image" src="{{profile?.MediaURL}}" alt="">
         <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
         <label for="profile" (click)="changePhoto()">
           <img src="assets/svg/icon-upload.svg" alt="">
         </label>
       </ion-col>
       <ion-col size="6" class="profile-title">
-        <h1>{{profile.StudentLastName}}</h1>
+        <h1>{{profile?.StudentName}}</h1>
         <span routerLink="/main/profile/detail">Hồ sơ học sinh <img src="../../../assets/svg/icon-back.svg"
             alt=""></span>
       </ion-col>
@@ -18,14 +18,14 @@
     <ng-template #teacher>
       <ion-row>
         <ion-col size="6" class="profile-item">
-          <img *ngIf="avt == null" class="profile-image" src="{{profile.MediaURL}}" alt="">
+          <img *ngIf="avt == null" class="profile-image" src="{{profile?.MediaURL}}" alt="">
           <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
           <label for="profile" (click)="changePhoto()">
             <img src="assets/svg/icon-upload.svg" alt="">
           </label>
         </ion-col>
         <ion-col size="6" class="profile-title">
-          <h1>{{profile.LastName}}</h1>
+          <h1>{{profile?.LastName}}</h1>
           <span routerLink="/main/profile/detail">Hồ sơ học giáo viên <img src="../../../assets/svg/icon-back.svg"
               alt=""></span>
         </ion-col>

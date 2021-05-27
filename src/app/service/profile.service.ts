@@ -8,11 +8,11 @@ import { ProfileModel } from '../models/profile.model';
   providedIn: 'root',
 })
 export class ProfileService {
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient) { }
   getProfile(): Observable<ProfileModel> {
     if (localStorage.getItem('role') === 'parents') {
       return this.http
-        .get(`api/parents/username`)
+        .get(`api/parent/username`)
         .pipe(map((res: any) => res.Payload));
     } else {
       return this.http
@@ -28,7 +28,7 @@ export class ProfileService {
   updateProfile(data): Observable<ProfileModel> {
     if (localStorage.getItem('role') === 'parents') {
       return this.http
-        .put(`api/parent/username`, data)
+        .put(`api/parent/username`, { MediaURL: data })
         .pipe(map((res: any) => res));
     } else {
       return this.http
