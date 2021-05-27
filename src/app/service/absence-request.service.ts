@@ -9,15 +9,20 @@ import { BaseApiService } from './base.service';
   providedIn: 'root',
 })
 export class AbsenceRequestService extends BaseApiService<
-  DetailAbsenceRequest[]
+DetailAbsenceRequest[]
 > {
   constructor(protected http: HttpClient) {
     super(http, 'api/StudentAbsenceRequest');
   }
 
-  getListAbsenceById(studetId): Observable<DetailAbsenceRequest[]> {
+  getListAbsenceById(studentId): Observable<DetailAbsenceRequest[]> {
     return this.http
-      .get(`api/StudentAbsenceRequest?StudentId=${studetId}`)
+      .get(`api/StudentAbsenceRequest?StudentId=${studentId}`)
       .pipe(map((res: any) => res.Payload));
   }
+
+  getStudentAbsenceRequests(): Observable<DetailAbsenceRequest[]> {
+    return this.http.get('api/StudentAbsenceRequest/username/teacher').pipe(map((res: any) => res.Payload));
+  }
+
 }

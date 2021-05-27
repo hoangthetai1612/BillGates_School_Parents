@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 
 @Component({
   selector: 'app-teacher-approve-leave',
@@ -43,11 +44,19 @@ export class TeacherApproveLeavePage implements OnInit {
       status: 2,
       isDetail: false
     }
-  ]
+  ];
+  absences = [];
 
-  constructor() { }
+  constructor(private absenceRequestService: AbsenceRequestService) { }
 
   ngOnInit() {
+    this.getStudentAbsenceRequests();
+  }
+
+  getStudentAbsenceRequests() {
+    this.absenceRequestService.getStudentAbsenceRequests().subscribe(res => {
+      this.absences = res;
+    })
   }
 
 }
