@@ -19,7 +19,8 @@ import {
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './base/util/interceptors/api.interceptor';
 import { AuthGuard } from './base/util/guards/auth.guard';
-import { ProfileService } from './service/profile.service';
+import { DatePipe } from '@angular/common';
+import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,21 +38,28 @@ import { ProfileService } from './service/profile.service';
       },
       {
         provide: ACCESS_TOKEN_PROVIDER,
-        useFactory: () => {},
+        useFactory: () => { },
       }
     ),
   ],
   providers: [
     AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: LOCALE_ID, useValue: 'vi_VN' },
+    {
+      provide: DatePipe
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
     IonNav,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

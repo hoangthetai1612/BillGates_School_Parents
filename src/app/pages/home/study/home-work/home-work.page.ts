@@ -51,9 +51,18 @@ export class HomeWorkPage implements OnInit {
         debounceTime(500),
         startWith(''),
         switchMap((term: string) =>
-          this.homeworkService.getListHomeWork(this.classId, term)
+          this.homeworkService.list({
+            ClassId: this.classId,
+            keyword: term,
+          })
         )
       )
-      .subscribe();
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => console.log(err),
+        () => console.log('comp')
+      );
   }
 }

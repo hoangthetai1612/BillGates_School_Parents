@@ -75,6 +75,7 @@ export class LearningOutcomesPage implements OnInit {
       this.classId = res;
     });
     this.getListSemster();
+    this.getListSubject(this.listTerm[0].SemesterId);
   }
   getListSemster() {
     this.semsterService.list().subscribe((res) => {
