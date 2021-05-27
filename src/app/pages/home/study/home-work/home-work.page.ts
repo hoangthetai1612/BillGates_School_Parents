@@ -42,7 +42,6 @@ export class HomeWorkPage implements OnInit {
         switchMap((term: string) => {
           return this.homeworkService.getListHomeWork(25, term);
         })
-      )
-      .subscribe();
+      ).subscribe();
   }
 }
