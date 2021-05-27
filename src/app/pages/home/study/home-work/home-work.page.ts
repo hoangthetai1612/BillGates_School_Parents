@@ -49,6 +49,7 @@ export class HomeWorkPage implements OnInit {
       .pipe(
         distinctUntilChanged(),
         debounceTime(500),
+        startWith(''),
         switchMap((term: string) =>
           this.homeworkService.list({
             ClassId: this.classId,

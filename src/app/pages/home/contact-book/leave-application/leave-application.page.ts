@@ -56,7 +56,7 @@ export class LeaveApplicationPage implements OnInit {
     this.authStoreService.studentId$.subscribe((res) => {
       this.studentId = res;
     });
-    // this.getListAbsence();
+    this.getListAbsence();
   }
 
   getListAbsence() {
