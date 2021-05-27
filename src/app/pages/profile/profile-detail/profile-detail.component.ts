@@ -76,7 +76,6 @@ export class ProfileDetailComponent implements OnInit {
     this.getProfileParent();
     this.getProfileTeacher();
     this.updateProfileParent();
-    this.updateProfileTeacher();
   }
   getProfileParent() {
     this.profileService.getProfile().subscribe((res) => {
@@ -92,16 +91,7 @@ export class ProfileDetailComponent implements OnInit {
     this.profileParent.StudentMediaURL = this.avt;
     console.log(this.profileParent);
     this.profileService
-      .updateProfileParent(this.profileParent)
-      .subscribe((res) => {
-        console.log(this.profileParent);
-      });
-  }
-  updateProfileTeacher() {
-    this.profileParent.StudentMediaURL = this.avt;
-    console.log(this.profileParent);
-    this.profileService
-      .updateProfileTeacher(this.profileParent)
+      .updateProfile(this.profileParent)
       .subscribe((res) => {
         console.log(this.profileParent);
       });

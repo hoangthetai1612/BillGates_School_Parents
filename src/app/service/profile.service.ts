@@ -26,14 +26,16 @@ export class ProfileService {
       .get(`api/teacher/username`)
       .pipe(map((res: any) => res.Payload));
   }
-  updateProfileParent(data): Observable<ProfileModel> {
-    return this.http
-      .put(`api/parent/username`, data)
-      .pipe(map((res: any) => res));
-  }
-  updateProfileTeacher(data): Observable<ProfileModel> {
-    return this.http
-      .put(`api/teacher/username`, data)
-      .pipe(map((res: any) => res));
+  updateProfile(data): Observable<ProfileModel> {
+    if (localStorage.getItem('role') == 'Parents') {
+      return this.http
+        .put(`api/parent/username`, data)
+        .pipe(map((res: any) => res));
+    } else {
+      return this.http
+        .put(`api/teacher/username`, data)
+        .pipe(map((res: any) => res));
+    }
+
   }
 }
