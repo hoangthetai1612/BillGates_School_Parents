@@ -16,10 +16,13 @@ export class APIInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    let token = localStorage.getItem('access_token');
+
     const request = req.clone({
       url: `${environment.API_URL}/${req.url}`,
       setHeaders: {
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
       },
     });
     return next.handle(request).pipe(retry(1));
