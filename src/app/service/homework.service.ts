@@ -22,17 +22,6 @@ export class HomeWorkService extends BaseApiService<HomeWork> {
       })
       .pipe(map((res: any) => res.Payload));
   }
-  getClassId(): Observable<number> {
-    if (localStorage.getItem('role') === 'parents') {
-      return this.http
-        .get('api/parent/username')
-        .pipe(map((res: any) => res.Payload));
-    } else {
-      return this.http
-        .get('api/teacher/username')
-        .pipe(map((res: any) => res.Payload));
-    }
-  }
   getDetailHomeWork(id): Observable<HomeWork> {
     return this.http
       .get(`api/homework/${id}`)

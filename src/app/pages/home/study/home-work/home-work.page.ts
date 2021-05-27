@@ -8,6 +8,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 import { HomeWork } from 'src/app/models/homework.model';
+import { AuthStoreService } from 'src/app/service/auth.store';
 import { HomeWorkService } from 'src/app/service/homework.service';
 
 @Component({
@@ -31,18 +32,23 @@ export class HomeWorkPage implements OnInit {
   };
   listHomeWork$!: Observable<HomeWork[]>;
   search = new FormControl('');
+  classId: number;
   private searchTerms = new Subject<string>();
 
-  constructor(private homeworkService: HomeWorkService) {}
+  constructor(private homeworkService: HomeWorkService, private authStoreService: AuthStoreService) {}
 
   ngOnInit() {
+    this.authStoreService.classId$.subscribe((res) => {
+      this.classId = res;
+    });
+    this.classId = 1
     this.search.valueChanges
       .pipe(
         distinctUntilChanged(),
         debounceTime(500),
-        startWith(''),
+        startWith(""),
         switchMap((term: string) =>
-          this.homeworkService.getListHomeWork(25, term)
+          this.homeworkService.getListHomeWork(this.classId, term)
         )
       )
       .subscribe();
