@@ -45,7 +45,6 @@ export class LeaveApplicationPage implements OnInit {
       Status: 2,
     },
   ];
-  studentId = 0;
   constructor(
     public modalController: ModalController,
     private absenceRequestService: AbsenceRequestService,
@@ -54,17 +53,14 @@ export class LeaveApplicationPage implements OnInit {
 
   ngOnInit() {
     this.authStoreService.studentId$.subscribe((res) => {
-      this.studentId = res;
+      console.log(res);
+      this.getListAbsence(res);
     });
-    this.getListAbsence();
   }
-
-  getListAbsence() {
-    this.absenceRequestService
-      .getListAbsenceById(this.studentId)
-      .subscribe((res) => {
-        this.listCard = res;
-      });
+  getListAbsence(id) {
+    this.absenceRequestService.getListAbsenceById(id).subscribe((res) => {
+      this.listCard = res;
+    });
   }
   async createLeave() {
     const modal = await this.modalController.create({
