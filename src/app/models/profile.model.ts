@@ -5,6 +5,7 @@ export interface ProfileModel {
   ClassId: number;
   ParentName: string;
   LastName: string;
+  FullName: string;
   Phone: string;
   ParentPhone: string;
   StudentName: string;

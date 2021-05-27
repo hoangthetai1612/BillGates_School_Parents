@@ -32,7 +32,7 @@ export class ProfileService {
         .pipe(map((res: any) => res));
     } else {
       return this.http
-        .put(`api/teacher/username`, data)
+        .put(`api/teacher/username`, { MediaURL: data })
         .pipe(map((res: any) => res));
     }
   }

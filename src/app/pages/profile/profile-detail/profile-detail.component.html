@@ -48,7 +48,7 @@
     <ion-grid class="profile">
       <ion-row>
         <ion-col size="12" class="profile-item">
-          <img *ngIf="avt == null" class="profile-image" src="{{profileTeacher.MediaURL}}" alt="">
+          <img *ngIf="avt == null" class="profile-image" src="{{profile?.MediaURL}}" alt="">
           <img *ngIf="avt" class="profile-image" src="data:image/png;base64,{{avt}}" alt="">
           <label for="profile" (click)="changePhoto()">
             <img src="assets/svg/icon-upload.svg" alt="">
@@ -61,19 +61,19 @@
         <ion-col size="12">
           <div class="profile-info">
             <span>Họ tên giáo viên:</span>
-            <input type="text" [(ngModel)]="profileTeacher.LastName" />
+            <p>{{profile?.LastName}}</p>
           </div>
           <div class="profile-info">
             <span>Chủ nhiệm lớp:</span>
-            <p>{{profileTeacher.ClassName}}</p>
+            <p>{{profile?.ClassName}}</p>
           </div>
           <div class="profile-info">
             <span>SĐT giáo viên:</span>
-            <input type="text" [(ngModel)]="profileTeacher.Phone" />
+            <p>{{profile?.Phone}}</p>
           </div>
           <div class="profile-info">
             <span>Địa chỉ nhà:</span>
-            <input type="text" [(ngModel)]="profileTeacher.LocationAddress" />
+            <p>{{profile?.LocationAddress}}</p>
           </div>
           <div class="profile-button">
             <app-base-button (callback)="updateProfile()" [buttonStyle]="buttonStyle"></app-base-button>

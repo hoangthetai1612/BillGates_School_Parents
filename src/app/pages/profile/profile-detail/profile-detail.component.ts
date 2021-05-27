@@ -35,7 +35,6 @@ export class ProfileDetailComponent implements OnInit {
   };
   arrImgae = [];
   avt: string;
-  profileTeacher
   data
   buttonStyle = {
     width: '160px',
@@ -51,7 +50,6 @@ export class ProfileDetailComponent implements OnInit {
   ngOnInit() {
     this.getProfile();
     this.getProfileTeacher();
-    this.updateProfile();
   }
   getProfile() {
     this.profileService.getProfile().subscribe((res) => {
@@ -62,10 +60,12 @@ export class ProfileDetailComponent implements OnInit {
   }
   getProfileTeacher() {
     this.profileService.getDetailProfileTeacher().subscribe((res) => {
-      this.profileTeacher = res;
+      this.profile = res;
     });
   }
   updateProfile() {
+    console.log(12);
+
     this.profile.MediaURL = this.avt;
     this.profileService
       .updateProfile(this.profile.MediaURL)
