@@ -14,18 +14,12 @@ export class ContactBookPage implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Sổ liên lạc',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
-      // image: 'image',
-      // couple: 'couple',
       backbutton: 'backbutton',
     },
   };
-
-  // isTeacher = true;
-
   constructor() {}
 
   ngOnInit() {}

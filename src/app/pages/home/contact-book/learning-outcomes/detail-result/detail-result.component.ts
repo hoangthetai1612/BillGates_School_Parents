@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { TestResult } from 'src/app/models/test-result.model';
+import { AuthStoreService } from 'src/app/service/auth.store';
+import { TestResultService } from 'src/app/service/test-result.service';
 
 @Component({
   selector: 'app-detail-result',
@@ -8,6 +12,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class DetailResultComponent implements OnInit {
   @Input() name;
+  @Input() semsterId;
+  @Input() subjectId;
   header = {
     cssClass: 'header-special',
     classText: 'text-white',
@@ -15,43 +21,39 @@ export class DetailResultComponent implements OnInit {
     iconRight: '',
     iconCenter: {
       text: 'Kết quả học tập',
-      // image: 'assets/svg/icon-logo.png'
     },
     type: {
       text: 'text',
       image: 'image',
-      isText: false
-      // couple: 'couple',
-      // backbutton: 'backbutton'
-    }
-
+      isText: false,
+    },
   };
 
-  listPoint = [
-    {
-      point: 8,
-      per: 10,
-      title: 'Điểm miệng 1_Hệ số 1'
-    },
-    {
-      point: 8,
-      per: 10,
-      title: 'Điểm miệng 1_Hệ số 1'
-    },
-    {
-      point: 9,
-      per: 10,
-      title: 'Điểm miệng 1_Hệ số 1'
-    }
+  listPoint: TestResult[] = [
+    { TestResultId: 1, Point: 8, TestTypeName: '1 tiết' },
+    { TestResultId: 1, Point: 8, TestTypeName: '15 phút' },
+    { TestResultId: 1, Point: 8, TestTypeName: 'giữa kỳ' },
   ];
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private testResultService: TestResultService,
+    private authStoreService: AuthStoreService
+  ) {}
 
-  ngOnInit() {
-    console.log(this.name);
+  ngOnInit() {}
+  closeModal() {
+    this.modalController.dismiss({});
   }
-  closeModal(){
-    this.modalController.dismiss({
-      // dismissed: true
-    });
+
+  getDetalTestResult() {
+    this.testResultService
+      .getDetailTestById(
+        this.authStoreService.studentId$,
+        this.semsterId,
+        this.subjectId
+      )
+      .subscribe((res) => {
+        this.listPoint = res;
+      });
   }
 }

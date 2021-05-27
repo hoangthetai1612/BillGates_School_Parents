@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
           return this.profileService.getProfile();
         }),
         tap((res: any) => {
+          console.log(res);
           this.authStoreService.set('ClassId', res.ClassId);
           this.authStoreService.set('StudentId', res.StudentId);
           console.log(res);

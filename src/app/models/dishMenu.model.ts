@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface DishMenu {
   Type: number;
   DayValue1: string;
@@ -20,4 +21,3 @@ export interface Menu {
   StartDate: string;
   DishMenuList: DishMenu[];
 }
-

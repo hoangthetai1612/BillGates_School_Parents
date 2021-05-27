@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
@@ -23,9 +24,8 @@ export class ProfilePage implements OnInit {
     },
     type: {
       text: 'text',
-      backbutton: 'backbutton'
-    }
-
+      backbutton: 'backbutton',
+    },
   };
 
   arrImgae = [];
@@ -63,16 +63,15 @@ export class ProfilePage implements OnInit {
   }
 
   presentModal() {
-    this.modalService
-      .presentModal({
-        presentingElement: this.routerOutlet.nativeEl,
-        component: ForgotComponent,
-        cssClass: "modal-full-height",
-        mode: 'md',
-        componentProps: {
-          rootPage: InputUsernameComponent,
-        },
-      })
+    this.modalService.presentModal({
+      presentingElement: this.routerOutlet.nativeEl,
+      component: ForgotComponent,
+      cssClass: 'modal-full-height',
+      mode: 'md',
+      componentProps: {
+        rootPage: InputUsernameComponent,
+      },
+    });
   }
   changePhoto() {
     this.photoService.addNewToGallery().then(() => {

@@ -31,7 +31,7 @@ import { ProfileService } from './service/profile.service';
     HttpClientModule,
     CiWebsocketModule.forRoot(
       {
-        RECONNECT_INTERVAL: 10000,
+        RECONNECT_INTERVAL: 20000,
         WS_ENDPOINT:
           'wss://7o5p7mfv40.execute-api.ap-southeast-1.amazonaws.com/production',
       },

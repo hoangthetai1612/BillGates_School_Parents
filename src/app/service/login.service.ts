@@ -1,22 +1,21 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Login } from "../models/login.model";
+/* eslint-disable @typescript-eslint/naming-convention */
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Login } from '../models/login.model';
 @Injectable({
-	providedIn: "root",
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(private http: HttpClient) {}
 
-	constructor(private http: HttpClient,) { }
-
-	public login(data: Login): Observable<any> {
-		const httpOptions = {
-			headers: new HttpHeaders({
-				"Content-Type": "application/x-www-form-urlencoded",
-			}),
-		};
-		let body = `grant_type=${data.grant_type}&username=${data.username}&password=${data.password}`;
-		return this.http.post<any>(`Token`, body, httpOptions);
-	}
-
+  public login(data: Login): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    };
+    const body = `grant_type=${data.grant_type}&username=${data.username}&password=${data.password}`;
+    return this.http.post<any>(`Token`, body, httpOptions);
+  }
 }
