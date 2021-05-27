@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, NgModule, OnInit, Output } from '@angular/core';
+import { Component, Input, NgModule, OnInit, Output, EventEmitter } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import * as EventEmitter from 'events';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -11,10 +10,15 @@ import { RouterModule } from '@angular/router';
 })
 export class BaseListItemComponent implements OnInit {
   @Input() data;
+  @Output() callback = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() { }
+
+  handleRouterLink = (item) => {
+    this.callback.emit(item);
+  };
 
 }
 
