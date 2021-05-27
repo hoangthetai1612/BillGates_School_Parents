@@ -35,51 +35,26 @@ export class ProfileDetailComponent implements OnInit {
   };
   arrImgae = [];
   avt: string;
-  profileParent = {
-    ParentId: 1,
-    StudentId: 2,
-    LastName: ' Trần Huyền Diệu',
-    Phone: '0968744046',
-    StudentLastName: ' Trần duy',
-    StudentPhone: '09687421561',
-    StudentMediaURL:
-      'https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512',
-    LocationAddress: ' 193 phú diẽn',
-    ClassName: '5A',
-    ClassId: 3,
-  };
-  profileTeacher = {
-    ParentId: 1,
-    StudentId: 2,
-    LastName: ' Trần Huyền Diệu',
-    Phone: '0968744046',
-    StudentLastName: ' Trần duy',
-    StudentPhone: '09687421561',
-    MediaURL:
-      'https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512',
-    LocationAddress: ' 193 phú diẽn',
-    ClassName: '5A',
-    ClassId: 3,
-  };
+  profileTeacher
   buttonStyle = {
     width: '160px',
     cssClass: 'buttonDarkOrange',
     text: 'Hoàn thành',
   };
-  // profileParent: ProfileModel
+  profile: ProfileModel
   constructor(
     public photoService: PhotoService,
     private profileService: ProfileService
   ) { }
 
   ngOnInit() {
-    this.getProfileParent();
+    this.getProfile();
     this.getProfileTeacher();
     this.updateProfileParent();
   }
-  getProfileParent() {
+  getProfile() {
     this.profileService.getProfile().subscribe((res) => {
-      this.profileParent = res;
+      this.profile = res;
     });
   }
   getProfileTeacher() {
@@ -88,12 +63,12 @@ export class ProfileDetailComponent implements OnInit {
     });
   }
   updateProfileParent() {
-    this.profileParent.StudentMediaURL = this.avt;
-    console.log(this.profileParent);
+    this.profile.StudentMediaURL = this.avt;
+    console.log(this.profile);
     this.profileService
-      .updateProfile(this.profileParent)
+      .updateProfile(this.profile)
       .subscribe((res) => {
-        console.log(this.profileParent);
+        console.log(this.profile);
       });
   }
   changePhoto() {

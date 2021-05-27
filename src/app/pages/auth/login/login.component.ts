@@ -77,6 +77,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('access_token', JSON.stringify(res));
           localStorage.setItem('token', JSON.stringify(res.assess_token));
           this.router.navigate(['/main/home']);
+          if (res.Role === 'Parent') {
+            localStorage.setItem('role', 'parents');
+          } else {
+            localStorage.setItem('role', 'teacher');
+          }
           return this.profileService.getProfile();
         }),
         tap((res: any) => {

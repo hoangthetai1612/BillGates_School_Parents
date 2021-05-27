@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
 import { IonicModule, PopoverController } from '@ionic/angular';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-// import { NotificationService } from 'src/app/service/notification.service';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { NotificationModel } from 'src/app/models/notification.model';
+import { NotificationService } from 'src/app/service/notification.service';
 import { FilterNotiComponent } from './filter-noti/filter-noti.component';
 
 @Component({
@@ -30,57 +31,28 @@ export class NotiPage implements OnInit {
   queryField: FormControl = new FormControl();
   constructor(
     public popoverController: PopoverController,
-    // private notiService: NotificationService,
+    private notiService: NotificationService,
     private cd: ChangeDetectorRef
-  ) {}
-  listNotification = [
-    {
-      NotificationId: 1,
-      AnnouncementId: 2,
-      Title: 'Thay đổi về thời khóa biểu',
-      Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
-      CreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg',
-    },
-    {
-      NotificationId: 1,
-      AnnouncementId: 3,
-      Title: 'Thay đổi về thời khóa biểu',
-      Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
-      CreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg',
-    },
-    {
-      NotificationId: 1,
-      AnnouncementId: 3,
-      Title: 'Thay đổi về thời khóa biểu',
-      Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
-      CreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg',
-    },
-    {
-      NotificationId: 1,
-      AnnouncementId: 4,
-      Title: 'Thay đổi về thời khóa biểu',
-      Content: 'Thời khóa biểu tuần 3 tháng 4 lớp đã được thay đổi.',
-      datCreatedOne: '13:30, hôm nay',
-      MediaURL: 'assets/svg/icon-item-noti.svg',
-    },
-  ];
+  ) { }
+  listNotification: NotificationModel;
   ngOnInit() {
-    // this.keyword = 'aaaa'
-    //   this.notiService.getAllNotification(this.keyword).subscribe(res => {
-    //     this.listNotification = res;
-    //   })
+    this.keyword = ''
+    this.notiService.getAllNotification(this.keyword).subscribe(res => {
+      this.listNotification = res;
+      console.log(this.listNotification);
+
+    })
 
     this.filterServerSide();
   }
   filterServerSide() {
     this.queryField.valueChanges
-      .pipe(distinctUntilChanged(), debounceTime(1000))
-      .subscribe((res) => {
-        this.cd.detectChanges();
+      .pipe(distinctUntilChanged(), debounceTime(500), switchMap((keyword: string) =>
+        this.notiService.getAllNotification(keyword)))
+      .subscribe(res => {
         console.log(res);
+        this.listNotification = res;
+
       });
   }
   async presentPopover(ev: any) {

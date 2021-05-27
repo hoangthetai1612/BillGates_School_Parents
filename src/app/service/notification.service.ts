@@ -12,7 +12,7 @@ export class NotificationService {
         private http: HttpClient
     ) { }
     getAllNotification(keyword): Observable<NotificationModel> {
-        return this.http.get(`/api/announcement/combine?keyword=${keyword}`).pipe(map((res: any) => res))
+        return this.http.get(`/api/announcement/combine?keyword=${keyword}`).pipe(map((res: any) => res.Payload))
     }
 
 }
