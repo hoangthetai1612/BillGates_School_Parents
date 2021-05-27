@@ -42,8 +42,8 @@ export class CreateLeaveComponent implements OnInit {
   }
 
   createLeave() {
-    this.absenceRequestService
-      .create(this.formLeave.value)
-      .subscribe((res) => {});
+    this.absenceRequestService.create(this.formLeave.value).subscribe((res) => {
+      this.closeModal();
+    });
   }
 }

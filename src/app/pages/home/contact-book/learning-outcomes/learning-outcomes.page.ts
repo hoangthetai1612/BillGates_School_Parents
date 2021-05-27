@@ -74,10 +74,12 @@ export class LearningOutcomesPage implements OnInit {
     this.authStoreService.classId$.subscribe((res) => {
       this.classId = res;
     });
+    this.getListSemster();
   }
   getListSemster() {
     this.semsterService.list().subscribe((res) => {
       this.listTerm = res;
+      console.log(res);
     });
   }
   sliderChanges() {

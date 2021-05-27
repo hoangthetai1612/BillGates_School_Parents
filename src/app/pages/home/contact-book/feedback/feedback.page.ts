@@ -70,10 +70,11 @@ export class FeedbackPage implements OnInit {
     this.authStoreService.studentId$.subscribe((res) => {
       this.formReview.get('StudentId').setValue(res);
     });
+    this.getListReview();
   }
 
   getListReview() {
-    this.reviewService.list().subscribe((res) => {
+    this.reviewService.getListReview().subscribe((res) => {
       this.listCard = res;
     });
   }
