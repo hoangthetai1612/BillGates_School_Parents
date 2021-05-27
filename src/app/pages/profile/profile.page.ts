@@ -28,7 +28,6 @@ export class ProfilePage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-
   arrImgae = [];
   avt: string;
   profile: ProfileModel;
