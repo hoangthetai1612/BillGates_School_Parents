@@ -30,9 +30,9 @@ export class DetailResultComponent implements OnInit {
   };
 
   listPoint: TestResult[] = [
-    { TestResultId: 1, Point: 8, TestTypeName: '1 tiết' },
-    { TestResultId: 1, Point: 8, TestTypeName: '15 phút' },
-    { TestResultId: 1, Point: 8, TestTypeName: 'giữa kỳ' },
+    // { TestResultId: 1, Point: 8, TestTypeName: '1 tiết' },
+    // { TestResultId: 1, Point: 8, TestTypeName: '15 phút' },
+    // { TestResultId: 1, Point: 8, TestTypeName: 'giữa kỳ' },
   ];
   studentId;
   constructor(

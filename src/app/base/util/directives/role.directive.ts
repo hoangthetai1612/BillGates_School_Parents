@@ -78,8 +78,6 @@ export class RoleDirective {
 @NgModule({
   imports: [CommonModule],
   declarations: [RoleDirective],
-  exports: [RoleDirective]
+  exports: [RoleDirective],
 })
-
-export class RoleDirectiveModule{}
-
+export class RoleDirectiveModule {}

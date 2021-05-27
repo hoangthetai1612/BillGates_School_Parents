@@ -28,22 +28,22 @@ export class LeaveApplicationPage implements OnInit {
   };
   defaultHref = 'main/home/contact-book';
   listCard: DetailAbsenceRequest[] = [
-    {
-      StudentAbsenceRequestId: 1,
-      FromDate: new Date(),
-      ToDate: new Date(),
-      Description: 'addsavcdvasdcdsavsdavcsdvfsa',
-      Type: 1,
-      Status: 1,
-    },
-    {
-      StudentAbsenceRequestId: 1,
-      FromDate: new Date(),
-      ToDate: new Date(),
-      Description: 'addsavcdvasdcdsavsdavcsdvfsa',
-      Type: 1,
-      Status: 2,
-    },
+    // {
+    //   StudentAbsenceRequestId: 1,
+    //   FromDate: new Date(),
+    //   ToDate: new Date(),
+    //   Description: 'addsavcdvasdcdsavsdavcsdvfsa',
+    //   Type: 1,
+    //   Status: 1,
+    // },
+    // {
+    //   StudentAbsenceRequestId: 1,
+    //   FromDate: new Date(),
+    //   ToDate: new Date(),
+    //   Description: 'addsavcdvasdcdsavsdavcsdvfsa',
+    //   Type: 1,
+    //   Status: 2,
+    // },
   ];
   constructor(
     public modalController: ModalController,

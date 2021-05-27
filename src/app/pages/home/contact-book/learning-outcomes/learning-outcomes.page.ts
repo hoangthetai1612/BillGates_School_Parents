@@ -31,10 +31,10 @@ export class LearningOutcomesPage implements OnInit {
     },
   };
   listSubject: Subject[] = [
-    { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
+    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
+    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
+    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
+    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
   ];
   listTerm: SemsterModel[] = [
     {
@@ -45,14 +45,14 @@ export class LearningOutcomesPage implements OnInit {
       EndDate: new Date(),
     },
     {
-      SemesterId: 1,
+      SemesterId: 2,
       Name: 'adfdscsd',
       Description: 'dasdvasd',
       StartDate: new Date(),
       EndDate: new Date(),
     },
     {
-      SemesterId: 1,
+      SemesterId: 3,
       Name: 'adfdscsd',
       Description: 'dasdvasd',
       StartDate: new Date(),
