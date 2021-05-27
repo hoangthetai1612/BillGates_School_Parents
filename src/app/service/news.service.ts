@@ -12,7 +12,7 @@ export class NewsService {
   getNews(param: any): Observable<NewModel> {
     const paramReq = new HttpParams({ fromObject: param });
     return this.http
-      .get(`/api/news?${paramReq}`)
+      .get(`api/news?${paramReq}`)
       .pipe(map((res: any) => res.Payload));
   }
 }
