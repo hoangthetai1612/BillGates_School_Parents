@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalService } from 'src/app/service/modal.service';
 import { PhotoService } from 'src/app/service/photo.service';
-// import { ProfileService } from 'src/app/service/profile.service';
+import { ProfileService } from 'src/app/service/profile.service';
 import { ForgotComponent } from '../auth/forgot/forgot.component';
 import { InputUsernameComponent } from '../auth/forgot/input-username/input-username.component';
 
@@ -30,7 +30,7 @@ export class ProfilePage implements OnInit {
 
   arrImgae = [];
   avt: string;
-  profileParent = {
+  profile = {
     ParentId: 1,
     StudentId: 2,
     LastName: " Trần Huyền Diệu",
@@ -40,40 +40,28 @@ export class ProfilePage implements OnInit {
     StudentMediaURL: "https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512",
     LocationAddress: " 193 phú diẽn",
     ClassName: "5A",
-    ClassId: 3
-  }
-  profileTeacher = {
-    ParentId: 1,
-    StudentId: 2,
-    LastName: " Trần Huyền Diệu",
-    Phone: "0968744046",
-    StudentLastName: " Trần duy",
-    StudentPhone: "09687421561",
+    ClassId: 3,
     MediaURL: "https://ca.slack-edge.com/TUZA24EAJ-U013SHQETU5-g8a6f2e13a04-512",
-    LocationAddress: " 193 phú diẽn",
-    ClassName: "5A",
-    ClassId: 3
   }
+
   constructor(
     public photoService: PhotoService,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet,
-    private router: Router
-    // private profileService: ProfileService
+    private router: Router,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit() {
+    this.getProfile();
+
   }
-  // getProfile() {
-  //   this.profileService.getProfileParent().subscribe(res => {
-  //     this.profileParent = res
-  //   })
-  // }
-  // getProfileTeacher() {
-  //   this.profileService.getProfileTeacher().subscribe(res => {
-  //     this.profileTeacher = res
-  //   })
-  // }
+  getProfile() {
+    this.profileService.getProfile().subscribe(res => {
+      this.profile = res
+    })
+  }
+
   presentModal() {
     this.modalService
       .presentModal({

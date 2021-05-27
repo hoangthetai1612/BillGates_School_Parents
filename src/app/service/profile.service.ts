@@ -9,15 +9,17 @@ import { ProfileModel } from '../models/profile.model';
 })
 export class ProfileService {
   constructor(protected http: HttpClient) { }
-  getProfileParent(): Observable<ProfileModel> {
-    return this.http
-      .get(`api/parents/username`)
-      .pipe(map((res: any) => res.Payload));
-  }
-  getProfileTeacher(): Observable<ProfileModel> {
-    return this.http
-      .get(`api/teacher/username/parent`)
-      .pipe(map((res: any) => res.Payload));
+  getProfile(): Observable<ProfileModel> {
+    if (localStorage.getItem('role') == 'Parents') {
+      return this.http
+        .get(`api/parents/username`)
+        .pipe(map((res: any) => res.Payload));
+    } else {
+      return this.http
+        .get(`api/teacher/username/parent`)
+        .pipe(map((res: any) => res.Payload));
+    }
+
   }
   getDetailProfileTeacher(): Observable<ProfileModel> {
     return this.http
