@@ -48,8 +48,11 @@ export class ProfileDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getProfile();
-    this.getProfileTeacher();
+    if (localStorage.getItem('role') === 'parents') {
+      this.getProfile();
+    } else {
+      this.getProfileTeacher();
+    }
   }
   getProfile() {
     this.profileService.getProfile().subscribe((res) => {
@@ -61,11 +64,11 @@ export class ProfileDetailComponent implements OnInit {
   getProfileTeacher() {
     this.profileService.getDetailProfileTeacher().subscribe((res) => {
       this.profile = res;
+      console.log(this.profile);
+
     });
   }
   updateProfile() {
-    console.log(12);
-
     this.profile.MediaURL = this.avt;
     this.profileService
       .updateProfile(this.profile.MediaURL)

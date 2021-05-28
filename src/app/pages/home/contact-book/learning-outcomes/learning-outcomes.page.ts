@@ -30,12 +30,7 @@ export class LearningOutcomesPage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-  listSubject: Subject[] = [
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-  ];
+  listSubject: Subject[] = [];
   listTerm: SemsterModel[] = [
     {
       SemesterId: 1,
@@ -68,9 +63,7 @@ export class LearningOutcomesPage implements OnInit {
     private subjectService: SubjectService,
     private semsterService: SemsterService,
     private authStoreService: AuthStoreService
-  ) {
-    // console.log('params', params.data.data);
-  }
+  ) {}
 
   ngOnInit() {
     this.authStoreService.classId$.subscribe((res) => {
@@ -96,6 +89,7 @@ export class LearningOutcomesPage implements OnInit {
       .getListSubjectByTerm(semsterId, this.classId)
       .subscribe((res) => {
         this.listSubject = res;
+        console.log(res);
       });
   }
 
