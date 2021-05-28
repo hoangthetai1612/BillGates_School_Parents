@@ -26,6 +26,10 @@
     .detail-session {
         border-bottom: 1px dashed #b7b7b7;
         margin-top: 10px;
+        .lesson-component {
+            display: flex;
+            width: 100%;
+        }
         .number {
             width: 42px;
             height: 42px;
