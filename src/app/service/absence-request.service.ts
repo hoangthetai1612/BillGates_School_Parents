@@ -21,8 +21,15 @@ DetailAbsenceRequest[]
       .pipe(map((res: any) => res.Payload));
   }
 
-  getStudentAbsenceRequests(): Observable<DetailAbsenceRequest[]> {
-    return this.http.get('api/StudentAbsenceRequest/username/teacher').pipe(map((res: any) => res.Payload));
+  getStudentAbsenceRequests(ClassId): Observable<DetailAbsenceRequest[]> {
+    return this.http
+      .get(`api/StudentAbsenceRequest/Class/${ClassId}`)
+      .pipe(map((res: any) => res.Payload));
   }
 
+  createAbsenceById(studentId, data): Observable<any> {
+    return this.http
+      .post(`api/StudentAbsenceRequest?StudentId=${studentId}`, data)
+      .pipe(map((res: any) => res.Payload));
+  }
 }

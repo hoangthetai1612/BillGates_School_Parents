@@ -27,24 +27,7 @@ export class LeaveApplicationPage implements OnInit {
     },
   };
   defaultHref = 'main/home/contact-book';
-  listCard: DetailAbsenceRequest[] = [
-    // {
-    //   StudentAbsenceRequestId: 1,
-    //   FromDate: new Date(),
-    //   ToDate: new Date(),
-    //   Description: 'addsavcdvasdcdsavsdavcsdvfsa',
-    //   Type: 1,
-    //   Status: 1,
-    // },
-    // {
-    //   StudentAbsenceRequestId: 1,
-    //   FromDate: new Date(),
-    //   ToDate: new Date(),
-    //   Description: 'addsavcdvasdcdsavsdavcsdvfsa',
-    //   Type: 1,
-    //   Status: 2,
-    // },
-  ];
+  listCard: DetailAbsenceRequest[] = [];
   constructor(
     public modalController: ModalController,
     private absenceRequestService: AbsenceRequestService,
@@ -66,6 +49,8 @@ export class LeaveApplicationPage implements OnInit {
       component: CreateLeaveComponent,
     });
     modal.onDidDismiss().then((res) => {
+      console.log('close');
+
       this.getListAbsence();
     });
     return await modal.present();

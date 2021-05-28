@@ -15,7 +15,7 @@
             <ion-col size="9">
                 <div class="title">{{data.Title}}</div>
                 <div class="content">{{data.Description}}</div>
-                <div class="date">18:00 Hôm nay</div>
+                <div class="date">{{data.CreatedOnString | date: "hh:mm dd/MM/yyyy"}}</div>
             </ion-col>
         </ion-row>
     </ion-grid>
