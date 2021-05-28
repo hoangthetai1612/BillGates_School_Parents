@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-note-lesson',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note-lesson.component.scss'],
 })
 export class NoteLessonComponent implements OnInit {
+  @Input() note: string;
   header = {
     cssClass: 'header-special',
     classText: 'text-white',

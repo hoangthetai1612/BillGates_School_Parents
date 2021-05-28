@@ -24,11 +24,11 @@
         }
     }
     .detail-session {
-        border-bottom: 1px dashed #b7b7b7;
-        margin-top: 10px;
         .lesson-component {
+            margin-top: 10px;
             display: flex;
             width: 100%;
+            border-bottom: 1px dashed #b7b7b7;
         }
         .number {
             width: 42px;
