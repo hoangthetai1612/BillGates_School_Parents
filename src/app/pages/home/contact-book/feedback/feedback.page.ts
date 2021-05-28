@@ -75,7 +75,7 @@ export class FeedbackPage implements OnInit {
 
   getListReview() {
     this.reviewService.getListReview().subscribe((res) => {
-      this.listCard = res;
+      this.listCard = res.reverse();
     });
   }
 
