@@ -21,7 +21,7 @@
           </ion-col>
           <ion-col size="10" class="card-content">
             <div class="title">{{item.Title}}</div>
-            <div class="time">{{item.CreatedOn}}</div>
+            <div class="time">{{item.CreatedOn | date: 'HH:MM, dd-MM-yyyy'}}</div>
             <img src="assets/svg/show-more-button.svg" alt="" />
           </ion-col>
         </ion-row>

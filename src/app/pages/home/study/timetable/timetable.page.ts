@@ -55,8 +55,6 @@ export class TimetablePage implements OnInit {
 
   }
   getCurrentTimeTable() {
-    console.log('a');
-
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
     this.setEndWeek(this.startWeek, 5);
     this.listDate = eachDayOfInterval({

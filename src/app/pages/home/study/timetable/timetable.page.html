@@ -12,7 +12,7 @@
     </div>
     <div class="listDate">
       <div class="item" *ngFor="let item of listDate; let i = index"
-        (click)="checkActive = i; listTimeTableByService(i)">
+        (click)="checkActive = i; listTimeTableByService(i+1)">
         <span
           *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
           [class]="checkActive==i? 'active': ''">{{item | date: "EEEEEE"}}</span>
@@ -33,10 +33,10 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row class="detail-session" *ngFor="let item of listTimeTable$ | async, let i = index">
+    <ion-row class="detail-session" *ngFor="let item of listTimeTable$ | async, let i = index, let last = last">
 
       <div class="lesson-component" *ngIf="item.LessonType == 1"
-        (click)=" openNoteLesson(item.TimeTableLessonId, item.Note)">
+        (click)=" openNoteLesson(item.TimeTableLessonId, item.Note) " [class]="{'last-child': last}">
         <ion-col size="2">
           <div class="number">{{i+1}}</div>
         </ion-col>
@@ -48,7 +48,7 @@
           </div>
           <div class="lesson">
             <div class="label">Phòng học:</div>
-            <div class="room">Lớp {{item.RoomName}}</div>
+            <div class="room">{{item.RoomName}}</div>
           </div>
         </ion-col>
       </div>

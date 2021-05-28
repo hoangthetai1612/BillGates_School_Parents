@@ -9,7 +9,7 @@ import { TimeTableService } from 'src/app/service/timetable.service';
   styleUrls: ['./teacher-note-lesson.component.scss'],
 })
 export class TeacherNoteLessonComponent implements OnInit {
-  @Input() id;
+  @Input() id: number;
   @Input() note: string;
   header = {
     cssClass: 'header-special',
@@ -31,6 +31,8 @@ export class TeacherNoteLessonComponent implements OnInit {
 
   ngOnInit() {
     this.noteControl.setValue(this.note)
+    console.log(this.note);
+    
   }
   noteKeyUp() {
     this.showSaveBtn = true;
