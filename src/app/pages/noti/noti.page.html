@@ -10,7 +10,7 @@
 <ion-content>
   <ion-row>
     <ion-col size="12">
-      <div class="noti-item" *ngFor="let item of listNotification">
+      <div class="noti-item" *ngFor="let item of listNotification" (click)="routeTo(item)">
         <img src="{{item.MediaURL}}" alt="">
         <div class="noti-item-text">
           <h3>{{item.Title}}</h3>

@@ -3,6 +3,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule, PopoverController } from '@ionic/angular';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { NotificationModel } from 'src/app/models/notification.model';
@@ -32,7 +33,8 @@ export class NotiPage implements OnInit {
   constructor(
     public popoverController: PopoverController,
     private notiService: NotificationService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private route: Router
   ) { }
   listNotification: NotificationModel;
   ngOnInit() {
@@ -42,8 +44,23 @@ export class NotiPage implements OnInit {
       console.log(this.listNotification);
 
     })
-
     this.filterServerSide();
+  }
+  routeTo(item) {
+    switch (item.Type) {
+      case 5:
+        this.route.navigateByUrl('/main/home/study/timetable');
+        break;
+      case 6:
+        this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
+        break;
+      case 7:
+        this.route.navigateByUrl('/main/home/contact-book/feedback');
+        break;
+      case 8:
+        this.route.navigateByUrl('/main/home/study/home-work');
+        break;
+    }
   }
   filterServerSide() {
     this.queryField.valueChanges
@@ -65,6 +82,5 @@ export class NotiPage implements OnInit {
     await popover.present();
     const { data } = await popover.onDidDismiss();
     this.listNotification = data;
-    console.log(data);
   }
 }
