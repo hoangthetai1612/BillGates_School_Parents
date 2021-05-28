@@ -3,6 +3,7 @@ import { Component, LOCALE_ID, NgModule, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { HeaderModule } from 'src/app/base/header/header.component';
 import startOfWeek from 'date-fns/startOfWeek';
+import getDay from 'date-fns/getDay';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { MenuService } from 'src/app/service/menu.service';
 
@@ -34,73 +35,7 @@ export class MenuComponent implements OnInit {
   dayValue = -1;
   indexWeek = 0;
   focusWeek = 0;
-  dishMenus = [
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Cá thu chiên sốt cà chua',
-      "MenuId": 1,
-      "DayValue": 1,
-      "Type": 1,
-      "Status": 0,
-      "OldDishName": 'Cá diêu hồng chiên sốt cà chua'
-    },
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Cá thu chiên sốt cà chua',
-      "MenuId": 1,
-      "DayValue": 1,
-      "Type": 1,
-      "Status": 0,
-    },
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Cá thu chiên sốt cà chua',
-      "MenuId": 1,
-      "DayValue": 2,
-      "Type": 2,
-      "Status": 0,
-      "OldDishName": 'Cá diêu hồng chiên sốt cà chua'
-    },
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Bò xào cần tỏi',
-      "MenuId": 1,
-      "DayValue": 2,
-      "Type": 2,
-      "Status": 0,
-    },
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Bò xào cần tỏi',
-      "MenuId": 1,
-      "DayValue": 1,
-      "Type": 1,
-      "Status": 0,
-    },
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Bò xào cần tỏi',
-      "MenuId": 1,
-      "DayValue": 2,
-      "Type": 1,
-      "Status": 0,
-    },
-    {
-      "DishMenuId": 1,
-      "DishId": 2,
-      "DishName": 'Bò xào cần tỏi',
-      "MenuId": 1,
-      "DayValue": 2,
-      "Type": 1,
-      "Status": 0,
-    }
-  ];
+  dishMenus =[];
 
   constructor(private menuService: MenuService, public datepipe: DatePipe) { }
 
@@ -115,7 +50,8 @@ export class MenuComponent implements OnInit {
       start: this.startWeek,
       end: this.endWeek,
     });
-
+    const valueToday = getDay(new Date())
+    this.getDishMenu(valueToday)
   }
   nextWeek() {
     this.startWeek = new Date(
@@ -152,7 +88,7 @@ export class MenuComponent implements OnInit {
     this.indexWeek--;
   }
   getDishMenu(dayValue) {
-    this.dayValue = dayValue;
+    this.dayValue = dayValue-1;
     this.focusWeek = this.indexWeek;
     let req = {
       FromDate: this.datepipe.transform(this.startWeek, "yyyy-MM-dd'T'HH:mm:ss"),
@@ -162,6 +98,7 @@ export class MenuComponent implements OnInit {
     }
     this.menuService.getDishMenuByTimePeriod(req).subscribe(res => {
       this.dishMenus = res
+      console.log(res);
     })
   }
 }
