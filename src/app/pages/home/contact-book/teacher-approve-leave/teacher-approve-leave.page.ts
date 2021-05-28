@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherModel } from 'src/app/models/teacher.model';
 import { AbsenceRequestService } from 'src/app/service/absence-request.service';
+import { TeacherService } from 'src/app/service/teacher.service';
 
 @Component({
   selector: 'app-teacher-approve-leave',
@@ -46,17 +48,30 @@ export class TeacherApproveLeavePage implements OnInit {
     }
   ];
   absences = [];
+  teacher: TeacherModel;
+  classId: number;
 
-  constructor(private absenceRequestService: AbsenceRequestService) { }
+  constructor(
+    private absenceRequestService: AbsenceRequestService,
+    private teacherService: TeacherService
+  ) { }
 
   ngOnInit() {
     this.getStudentAbsenceRequests();
   }
 
+
   getStudentAbsenceRequests() {
-    this.absenceRequestService.getStudentAbsenceRequests().subscribe(res => {
-      this.absences = res;
-    })
+    this.teacherService.getTeacher().subscribe(res => {
+      this.teacher = res;
+      this.classId = this.teacher.ClassId;
+      this.absenceRequestService.getStudentAbsenceRequests(this.classId).subscribe(res => {
+        this.absences = res;
+        console.log('absences', this.absences);
+
+      });
+    });
+
   }
 
 }
