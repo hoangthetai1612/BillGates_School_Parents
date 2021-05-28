@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
   constructor(private router: Router, private newsService: NewsService) { }
 
   ngOnInit() {
-    this.setNews();
+    this.getNews();
   }
   getNews() {
     let req = {
@@ -34,20 +34,8 @@ export class HomePage implements OnInit {
     }
     this.newsService.getNews(req).subscribe(res => {
       this.news = res;
+      console.log(this.news);
+
     })
-  }
-  setNews() {
-    const dataObject = {
-      Title: 'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      CreatedByName:  'Anh',
-      MediaURL:  'assets/svg/image-post.svg',
-      Description:  'Khai giảng khóa học kỹ năng sống cho trẻ từ 3-6 tuổi',
-      URLLink:  'contact-book',
-      CreatedOn:  new Date()
-    }
-    this.news = [];
-    for (let i = 0; i < 10; i++) {
-      this.news.push(dataObject);
-    }
   }
 }

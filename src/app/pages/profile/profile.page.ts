@@ -28,11 +28,10 @@ export class ProfilePage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-
   arrImgae = [];
   avt: string;
   profile: ProfileModel;
-
+  profileTeacher
   constructor(
     public photoService: PhotoService,
     private modalService: ModalService,
@@ -43,12 +42,20 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.getProfile();
+    this.getProfileTeacher();
 
   }
   getProfile() {
     this.profileService.getProfile().subscribe(res => {
       this.profile = res
+      console.log(this.profile);
+
     })
+  }
+  getProfileTeacher() {
+    this.profileService.getDetailProfileTeacher().subscribe((res) => {
+      this.profileTeacher = res;
+    });
   }
 
   presentModal() {

@@ -14,7 +14,6 @@ import localeVi from '@angular/common/locales/vi';
 import { RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
 import { TeacherNoteLessonComponent } from './teacher-note-lesson/teacher-note-lesson.component';
 import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
-registerLocaleData(localeVi);
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +31,7 @@ registerLocaleData(localeVi);
     NoteLessonComponent,
     TeacherNoteLessonComponent,
   ],
-  providers: [DatePipe, { provide: LOCALE_ID, useValue: 'vi-VN' }],
+  providers: [],
   entryComponents: [TimetablePage],
 })
 export class TimetablePageModule {}
