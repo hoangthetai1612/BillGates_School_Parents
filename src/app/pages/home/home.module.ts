@@ -3,12 +3,14 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HeaderModule } from 'src/app/base/header/header.component';
-import { RoleDirective, RoleDirectiveModule } from 'src/app/base/util/directives/role.directive';
+import {
+  RoleDirective,
+  RoleDirectiveModule,
+} from 'src/app/base/util/directives/role.directive';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
-import localeVi from "@angular/common/locales/vi";
+import localeVi from '@angular/common/locales/vi';
 registerLocaleData(localeVi);
-
 
 @NgModule({
   imports: [
@@ -17,12 +19,9 @@ registerLocaleData(localeVi);
     IonicModule,
     HomePageRoutingModule,
     HeaderModule,
-    RoleDirectiveModule
+    RoleDirectiveModule,
   ],
-  providers: [
-    DatePipe,
-    { provide: LOCALE_ID, useValue: 'vi-VN' }
-  ],
-  declarations: [HomePage]
+  providers: [DatePipe, { provide: LOCALE_ID, useValue: 'vi-VN' }],
+  declarations: [HomePage],
 })
 export class HomePageModule {}

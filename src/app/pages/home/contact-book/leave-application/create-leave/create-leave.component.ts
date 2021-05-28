@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AbsenceRequestService } from 'src/app/service/absence-request.service';
+import { AuthStoreService } from 'src/app/service/auth.store';
 
 @Component({
   selector: 'app-create-leave',
@@ -29,11 +30,13 @@ export class CreateLeaveComponent implements OnInit {
     FromDate: new FormControl(''),
     ToDate: new FormControl(''),
     Description: new FormControl(''),
-    Type: new FormControl(1),
+    Type: new FormControl(''),
+    StudentId: new FormControl(0),
   });
   constructor(
     private modalController: ModalController,
-    private absenceRequestService: AbsenceRequestService
+    private absenceRequestService: AbsenceRequestService,
+    private authStoreService: AuthStoreService
   ) {}
 
   ngOnInit() {}
@@ -45,8 +48,13 @@ export class CreateLeaveComponent implements OnInit {
   }
 
   createLeave() {
-    this.absenceRequestService.create(this.formLeave.value).subscribe((res) => {
-      this.closeModal();
+    this.authStoreService.studentId$.subscribe((id) => {
+      this.formLeave.get('StudentId').setValue(id);
+      this.absenceRequestService
+        .create(this.formLeave.value)
+        .subscribe((res) => {
+          this.closeModal();
+        });
     });
   }
 }
