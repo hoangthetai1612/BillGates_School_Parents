@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "io.schoolerp.app",
   "appName": "BillGates_School_Parents",
   "bundledWebRuntime": false,
   "npmClient": "npm",
