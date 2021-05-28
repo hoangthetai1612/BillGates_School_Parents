@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { StudentService } from 'src/app/service/student.service';
 import { LearningOutcomesPage } from '../learning-outcomes/learning-outcomes.page';
 
 @Component({
@@ -76,12 +77,22 @@ export class TeacherLearningOutcomesPage implements OnInit {
     }
   ];
 
+  students = [];
+
   constructor(
     private modalController: ModalController,
-    private router: Router
+    private router: Router,
+    private studentService: StudentService
   ) { }
 
   ngOnInit() {
+    this.getStudentsByTeacher();
+  }
+
+  getStudentsByTeacher() {
+    this.studentService.getStudentsByTeacher().subscribe(res => {
+      this.students = res;
+    });
   }
 
   async openDetailResult(item) {
