@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-leave-detail',
@@ -44,9 +45,14 @@ export class LeaveDetailComponent implements OnInit {
       isDetail: true
     }
   ]
+  StudentAbsenceRequestId: number;
+  constructor(
+    private routerActive: ActivatedRoute,
 
-  constructor() { }
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.StudentAbsenceRequestId = this.routerActive.snapshot.params.id
+  }
 
 }
