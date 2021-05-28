@@ -79,15 +79,22 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/main/home']);
           if (res.Role === 'Parent') {
             localStorage.setItem('role', 'parents');
-          } else {
+          }
+
+          if (res.Role === 'Teacher') {
             localStorage.setItem('role', 'teacher');
           }
           return this.profileService.getProfile();
         }),
         tap((res: any) => {
           console.log(res);
-          this.authStoreService.set({ ClassId: res[0].ClassId });
-          this.authStoreService.set({ StudentId: res[0].StudentId });
+          if (localStorage.getItem('role') === 'parents') {
+            this.authStoreService.set({ ClassId: res[0].ClassId });
+            this.authStoreService.set({ StudentId: res[0].StudentId });
+          } else {
+            this.authStoreService.set({ ClassId: res.ClassId });
+            this.authStoreService.set({ StudentId: res.StudentId });
+          }
         }),
         catchError((err) => {
           if (err.status === 400) {
