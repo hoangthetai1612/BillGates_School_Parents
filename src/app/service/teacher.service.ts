@@ -13,7 +13,7 @@ export class TeacherService extends BaseApiService<TeacherModel> {
         super(http, 'api/teacher');
     }
 
-    getTeacher(): Observable<TeacherModel> {
-        return this.http.get<TeacherModel>('api/teacher/username').pipe(map((res: any) => res.Payload));
+    getDetailTeacher(StudentAbsenceRequestId): Observable<TeacherModel> {
+        return this.http.get<TeacherModel>(`api/StudentAbsenceRequest/${StudentAbsenceRequestId}`).pipe(map((res: any) => res.Payload));
     }
 }
