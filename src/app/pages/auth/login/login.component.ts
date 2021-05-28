@@ -22,12 +22,7 @@ import { catchError, concatMap, tap } from 'rxjs/operators';
 import { ProfileService } from 'src/app/service/profile.service';
 import { AuthStoreService } from 'src/app/service/auth.store';
 import { throwError } from 'rxjs';
-import {
-  PushNotificationSchema,
-  PushNotifications,
-  PushNotificationToken,
-  PushNotificationActionPerformed,
-} from '@capacitor/push-notifications';
+
 
 @Component({
   selector: 'app-login',
@@ -74,38 +69,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    PushNotifications.requestPermissions().then(result => {
-      if (result.receive === 'granted') {
-        PushNotifications.register();
-      } else {
-      }
-    });
-    PushNotifications.addListener(
-      'registration',
-      (token: PushNotificationToken) => {
-        alert('Push registration success, token: ' + token.value);
-        console.log(token);
 
-      },
-    );
-
-    PushNotifications.addListener('registrationError', (error: any) => {
-      alert('Error on registration: ' + JSON.stringify(error));
-    });
-
-    PushNotifications.addListener(
-      'pushNotificationReceived',
-      (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
-      },
-    );
-
-    PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      (notification: PushNotificationActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
-      },
-    );
   }
 
   login() {
