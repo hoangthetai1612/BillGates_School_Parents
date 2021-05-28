@@ -23,7 +23,7 @@
         </div>
         <div class="profile-info">
           <span>Tên PH:</span>
-          <input type="text" [(ngModel)]="profile.ParentName" />
+          <p>{{profile?.ParentName}}</p>
         </div>
         <div class="profile-info">
           <span>SĐT phụ huynh:</span>
@@ -31,11 +31,11 @@
         </div>
         <div class="profile-info">
           <span>SĐT học sinh:</span>
-          <input type="text" [(ngModel)]="profile.Phone" />
+          <p>{{profile?.Phone}}</p>
         </div>
         <div class="profile-info">
           <span>Địa chỉ nhà:</span>
-          <input type="text" [(ngModel)]="profile.LocationAddress" />
+          <p>{{profile?.LocationAddress}}</p>
         </div>
         <div class="profile-button">
           <app-base-button (callback)="updateProfile()" [buttonStyle]="buttonStyle"></app-base-button>

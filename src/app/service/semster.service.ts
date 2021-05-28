@@ -8,6 +8,6 @@ import { BaseApiService } from './base.service';
 })
 export class SemsterService extends BaseApiService<SemsterModel> {
   constructor(protected http: HttpClient) {
-    super(http, 'api/semster');
+    super(http, 'api/Semester');
   }
 }
