@@ -9,7 +9,7 @@ import { BaseApiService } from './base.service';
   providedIn: 'root',
 })
 export class AbsenceRequestService extends BaseApiService<
-DetailAbsenceRequest[]
+  DetailAbsenceRequest[]
 > {
   constructor(protected http: HttpClient) {
     super(http, 'api/StudentAbsenceRequest');
@@ -22,7 +22,14 @@ DetailAbsenceRequest[]
   }
 
   getStudentAbsenceRequests(): Observable<DetailAbsenceRequest[]> {
-    return this.http.get('api/StudentAbsenceRequest/username/teacher').pipe(map((res: any) => res.Payload));
+    return this.http
+      .get('api/StudentAbsenceRequest/username/teacher')
+      .pipe(map((res: any) => res.Payload));
   }
 
+  createAbsenceById(studentId, data): Observable<any> {
+    return this.http
+      .post(`api/StudentAbsenceRequest?StudentId=${studentId}`, data)
+      .pipe(map((res: any) => res.Payload));
+  }
 }

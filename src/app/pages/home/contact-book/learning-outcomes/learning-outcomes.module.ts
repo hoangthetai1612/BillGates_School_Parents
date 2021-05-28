@@ -16,8 +16,8 @@ import { DetailResultComponent } from './detail-result/detail-result.component';
     FormsModule,
     IonicModule,
     LearningOutcomesPageRoutingModule,
-    HeaderModule
+    HeaderModule,
   ],
-  declarations: [LearningOutcomesPage, DetailResultComponent]
+  declarations: [LearningOutcomesPage, DetailResultComponent],
 })
 export class LearningOutcomesPageModule {}

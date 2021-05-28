@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, ModalController, NavParams } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { SemsterModel } from 'src/app/models/semster.model';
 import { Subject } from 'src/app/models/subject.model';
 import { AuthStoreService } from 'src/app/service/auth.store';
@@ -30,12 +30,7 @@ export class LearningOutcomesPage implements OnInit {
       backbutton: 'backbutton',
     },
   };
-  listSubject: Subject[] = [
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-    // { SubjectId: 1, Name: 'Toán 10', Description: 'string' },
-  ];
+  listSubject: Subject[] = [];
   listTerm: SemsterModel[] = [
     {
       SemesterId: 1,
@@ -67,12 +62,8 @@ export class LearningOutcomesPage implements OnInit {
     private modalController: ModalController,
     private subjectService: SubjectService,
     private semsterService: SemsterService,
-    private authStoreService: AuthStoreService,
-    private params: NavParams
-  ) {
-    console.log('params', params.data.data);
-
-  }
+    private authStoreService: AuthStoreService
+  ) {}
 
   ngOnInit() {
     this.authStoreService.classId$.subscribe((res) => {
@@ -98,6 +89,7 @@ export class LearningOutcomesPage implements OnInit {
       .getListSubjectByTerm(semsterId, this.classId)
       .subscribe((res) => {
         this.listSubject = res;
+        console.log(res);
       });
   }
 

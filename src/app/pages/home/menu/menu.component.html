@@ -16,7 +16,8 @@
             <div class="item" *ngFor="let item of listDate; let i = index" (click)="getDishMenu(i);">
               <span
                 *ngIf="item.getFullYear()!=currentDate.getFullYear() || item.getMonth()!=currentDate.getMonth() || item.getDate()!=currentDate.getDate()"
-                [ngClass]="{'active': dayValue !== -1 && i == dayValue && indexWeek == focusWeek }" >{{i}}{{item | date: "EEEEEE"}}</span>
+                [ngClass]="{'active': dayValue !== -1 && i == dayValue && indexWeek == focusWeek }">{{item | date:
+                "EEEEEE"}}</span>
               <span
                 *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
                 class="active">Hôm nay</span>
