@@ -48,13 +48,11 @@ export class CreateLeaveComponent implements OnInit {
   }
 
   createLeave() {
+    this.absenceRequestService.create(this.formLeave.value).subscribe((res) => {
+      this.closeModal();
+    });
     this.authStoreService.studentId$.subscribe((id) => {
       this.formLeave.get('StudentId').setValue(id);
-      this.absenceRequestService
-        .create(this.formLeave.value)
-        .subscribe((res) => {
-          this.closeModal();
-        });
     });
   }
 }

@@ -22,20 +22,19 @@ export class HomePage implements OnInit {
     },
   };
   news;
-  constructor(private router: Router, private newsService: NewsService) { }
+  constructor(private router: Router, private newsService: NewsService) {}
 
   ngOnInit() {
     this.getNews();
   }
   getNews() {
-    let req = {
+    const req = {
       pageNumber: 1,
-      pageSize: 20
-    }
-    this.newsService.getNews(req).subscribe(res => {
+      pageSize: 20,
+    };
+    this.newsService.getNews(req).subscribe((res) => {
       this.news = res;
       console.log(this.news);
-
-    })
+    });
   }
 }

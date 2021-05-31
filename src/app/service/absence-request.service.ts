@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,7 +10,7 @@ import { BaseApiService } from './base.service';
   providedIn: 'root',
 })
 export class AbsenceRequestService extends BaseApiService<
-DetailAbsenceRequest[]
+  DetailAbsenceRequest[]
 > {
   constructor(protected http: HttpClient) {
     super(http, 'api/StudentAbsenceRequest');

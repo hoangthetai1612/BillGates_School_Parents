@@ -9,7 +9,7 @@ import { TimeTableService } from 'src/app/service/timetable.service';
 import { DatePipe } from '@angular/common';
 import { TimeTableLesson } from 'src/app/models/timetable.model';
 import { Observable, Subject } from 'rxjs';
-import { startWith, switchMap } from 'rxjs/operators';
+import { startWith, switchMap, take } from 'rxjs/operators';
 import { AuthStoreService } from 'src/app/service/auth.store';
 
 @Component({
@@ -45,15 +45,16 @@ export class TimetablePage implements OnInit {
     private timetableService: TimeTableService,
     private datePipe: DatePipe,
     private authStoreService: AuthStoreService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.authStoreService.classId$.subscribe((res) => {
       this.classId = res;
-      console.log(this.classId);
-      
+      this.getCurrentTimeTable();
     });
-    this.classId =25;
+
+  }
+  getCurrentTimeTable() {
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
     this.setEndWeek(this.startWeek, 5);
     this.listDate = eachDayOfInterval({
@@ -61,21 +62,17 @@ export class TimetablePage implements OnInit {
       end: this.endWeek,
     });
     this.valueToday = getDay(this.currentDate);
-    this.checkActive = this.valueToday-1
+    this.checkActive = this.valueToday - 1
     const fromDate = this.datePipe.transform(this.startWeek, 'yyyy-MM-dd');
     const toDate = this.datePipe.transform(this.endWeek, 'yyyy-MM-dd');
-    this.listTimeTable$ = this.subject.asObservable().pipe(
-      startWith(this.valueToday),
-      switchMap((valueDay) => {
-        return this.timetableService.getTimeTable(
-          valueDay,
-          this.classId,
-          fromDate,
-          toDate
-        );
-      })
+    this.listTimeTable$ = this.timetableService.getTimeTable(
+      this.valueToday,
+      this.classId,
+      fromDate,
+      toDate
     );
   }
+
   setStartWeek(dateFrom: Date, number: number) {
     this.startWeek = new Date(
       dateFrom.getFullYear(),
@@ -109,7 +106,17 @@ export class TimetablePage implements OnInit {
     this.checkActive = -1;
   }
   listTimeTableByService(valueDay: any) {
-    this.subject.next(valueDay);
+    console.log(valueDay);
+
+    const fromDate = this.datePipe.transform(this.startWeek, 'yyyy-MM-dd');
+    const toDate = this.datePipe.transform(this.endWeek, 'yyyy-MM-dd');
+
+    this.listTimeTable$ = this.timetableService.getTimeTable(
+      valueDay,
+      this.classId,
+      fromDate,
+      toDate
+    );
   }
   async openNoteLesson(id, note) {
     const role = localStorage.getItem('role');

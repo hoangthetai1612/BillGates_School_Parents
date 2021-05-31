@@ -57,10 +57,10 @@
         <ion-row class="home-posts">
             <ion-col size="12">
                 <ng-container *ngFor="let item of news">
-                    <div class="post-item" [routerLink]="item.URLLink">
+                    <div class="post-item">
                         <img src="{{item.MediaURL}}" alt="">
                         <div class="post-item-text">
-                            <h3>{{item.Title}}</h3>
+                            <a href="{{item.URLLink}}">{{item.Title}}</a>
                             <span>{{item.CreatedOn | date:'shortDate'}}</span>
                         </div>
                     </div>
