@@ -7,6 +7,7 @@ import { ModalService } from 'src/app/service/modal.service';
 import { PhotoService } from 'src/app/service/photo.service';
 import { ProfileService } from 'src/app/service/profile.service';
 import { ForgotComponent } from '../auth/forgot/forgot.component';
+import { InputConfirmComponent } from '../auth/forgot/input-confirm/input-confirm.component';
 import { InputUsernameComponent } from '../auth/forgot/input-username/input-username.component';
 
 @Component({
@@ -65,7 +66,7 @@ export class ProfilePage implements OnInit {
       cssClass: 'modal-full-height',
       mode: 'md',
       componentProps: {
-        rootPage: InputUsernameComponent,
+        rootPage: InputConfirmComponent,
       },
     });
   }

@@ -22,6 +22,7 @@ import { ModalService } from 'src/app/service/modal.service';
 import { ProfileService } from 'src/app/service/profile.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { ForgotComponent } from '../forgot/forgot.component';
+import { InputConfirmComponent } from '../forgot/input-confirm/input-confirm.component';
 import { InputUsernameComponent } from '../forgot/input-username/input-username.component';
 @Component({
   selector: 'app-login',
@@ -157,7 +158,7 @@ export class LoginComponent implements OnInit {
       cssClass: 'modal-full-height',
       mode: 'md',
       componentProps: {
-        rootPage: InputUsernameComponent,
+        rootPage: InputConfirmComponent,
       },
     });
   }
