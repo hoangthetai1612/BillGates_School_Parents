@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, NgModule, OnInit, Output } from '@angular/core';
+import { Component, Input, NgModule, OnInit, Output, EventEmitter } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import * as EventEmitter from 'events';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -21,6 +20,10 @@ export class CardApproveLeaveComponent implements OnInit {
   handleCallbackEvent = (type) => {
     this.callback.emit(type);
   };
+
+  handleRouterLink(value) {
+    this.callback.emit(value);
+  }
 
 }
 

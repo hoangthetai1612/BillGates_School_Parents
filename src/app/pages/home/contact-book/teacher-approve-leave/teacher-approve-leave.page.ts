@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherModel } from 'src/app/models/teacher.model';
 import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 import { TeacherService } from 'src/app/service/teacher.service';
@@ -29,7 +30,8 @@ export class TeacherApproveLeavePage implements OnInit {
 
   constructor(
     private absenceRequestService: AbsenceRequestService,
-    private teacherService: TeacherService
+    private teacherService: TeacherService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,7 +49,11 @@ export class TeacherApproveLeavePage implements OnInit {
 
       });
     });
+  }
 
+  viewAbsenceRequestsDetail(value) {
+    console.log(value);
+    this.router.navigate([`/main/home/contact-book/teacher-approve-leave/${value}`]);
   }
 
 }

@@ -39,6 +39,8 @@ export class TeacherLearningOutcomesPage implements OnInit {
   getStudentsByTeacher() {
     this.studentService.getStudentsByTeacher().subscribe(res => {
       this.students = res;
+      console.log('students', this.students);
+
     });
   }
 
