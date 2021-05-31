@@ -36,7 +36,7 @@ export class NotiPage implements OnInit {
     private cd: ChangeDetectorRef,
     private route: Router
   ) { }
-  listNotification: NotificationModel;
+  listNotification: NotificationModel[];
   ngOnInit() {
     this.keyword = ''
     this.notiService.getAllNotification(this.keyword).subscribe(res => {

@@ -8,7 +8,7 @@ import { NotificationModel } from '../models/notification.model';
 })
 export class NotificationService {
   constructor(private http: HttpClient) { }
-  getAllNotification(keyword): Observable<NotificationModel> {
+  getAllNotification(keyword): Observable<NotificationModel[]> {
     return this.http
       .get(`/api/announcement/combine?keyword=${keyword}`)
       .pipe(map((res: any) => res.Payload));

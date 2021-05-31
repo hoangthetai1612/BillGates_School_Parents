@@ -1,29 +1,28 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
-import { IonicModule, IonRouterOutlet } from '@ionic/angular';
-import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
-import { HeaderModule } from 'src/app/base/header/header.component';
-import { ModalController } from '@ionic/angular';
-import { ForgotComponent } from '../forgot/forgot.component';
-import { ModalService } from 'src/app/service/modal.service';
-import { InputUsernameComponent } from '../forgot/input-username/input-username.component';
-import { LoginService } from 'src/app/service/login.service';
-import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
+  Validators
 } from '@angular/forms';
-import { ToastService } from 'src/app/service/toast.service';
-import { catchError, concatMap, tap } from 'rxjs/operators';
-import { ProfileService } from 'src/app/service/profile.service';
-import { AuthStoreService } from 'src/app/service/auth.store';
+import { Router } from '@angular/router';
+import { Capacitor, Plugins, PushNotification, PushNotificationActionPerformed, PushNotificationToken } from '@capacitor/core';
+import { IonicModule, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { throwError } from 'rxjs';
-
-
+import { catchError, concatMap, tap } from 'rxjs/operators';
+import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
+import { HeaderModule } from 'src/app/base/header/header.component';
+import { AuthStoreService } from 'src/app/service/auth.store';
+import { LoginService } from 'src/app/service/login.service';
+import { ModalService } from 'src/app/service/modal.service';
+import { ProfileService } from 'src/app/service/profile.service';
+import { ToastService } from 'src/app/service/toast.service';
+import { ForgotComponent } from '../forgot/forgot.component';
+import { InputUsernameComponent } from '../forgot/input-username/input-username.component';
+const { PushNotifications } = Plugins;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -70,6 +69,50 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+  initPush() {
+    if (Capacitor.platform !== 'web') {
+      this.registerPush();
+    }
+  }
+  registerPush() {
+    PushNotifications.requestPermissions().then((permission) => {
+      if (permission.results) {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // No permission for push granted
+      }
+    });
+
+    PushNotifications.addListener(
+      'registration',
+      (token: PushNotificationToken) => {
+        console.log('My token: ' + JSON.stringify(token));
+      }
+    );
+
+    PushNotifications.addListener('registrationError', (error: any) => {
+      console.log('Error: ' + JSON.stringify(error));
+    });
+
+    PushNotifications.addListener(
+      'pushNotificationReceived',
+      async (notification: PushNotification) => {
+        console.log('Push received: ' + JSON.stringify(notification));
+      }
+    );
+
+    PushNotifications.addListener(
+      'pushNotificationActionPerformed',
+      async (notification: PushNotificationActionPerformed) => {
+        const data = notification.notification.data;
+        console.log('Action performed: ' + JSON.stringify(notification.notification));
+        if (data.detailsId) {
+          this.router.navigateByUrl(`/home/${data.detailsId}`);
+        }
+      }
+    );
   }
 
   login() {

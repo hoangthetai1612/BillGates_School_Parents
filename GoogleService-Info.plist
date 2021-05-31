@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>889494156873-lcad5r5svqb83ih41l4kr0sqdb66akct.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.889494156873-lcad5r5svqb83ih41l4kr0sqdb66akct</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD7Rb1ssL3OG25witxhEGWQi27clEZ2nRs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>889494156873</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.schoolerp.app</string>
+	<key>PROJECT_ID</key>
+	<string>pushnotification-d4250</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pushnotification-d4250.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:889494156873:ios:b4085f3e2c324bbdd53198</string>
+	<key>DATABASE_URL</key>
+	<string>https://pushnotification-d4250.firebaseio.com</string>
+</dict>
+</plist>
