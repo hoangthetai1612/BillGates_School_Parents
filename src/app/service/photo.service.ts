@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-    CameraResultType,
-
-
-
-    CameraSource, Plugins
-} from '@capacitor/core';
+import { Camera, CameraResultType } from '@capacitor/camera';
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const { Camera, Filesystem, Storage } = Plugins;
 
 interface Photo {
     filepath: string;

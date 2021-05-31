@@ -9,7 +9,8 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Capacitor, Plugins, PushNotification, PushNotificationActionPerformed, PushNotificationToken } from '@capacitor/core';
+import { Capacitor } from '@capacitor/core';
+import { PushNotifications, } from '@capacitor/push-notifications';
 import { IonicModule, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { throwError } from 'rxjs';
 import { catchError, concatMap, tap } from 'rxjs/operators';
@@ -22,7 +23,6 @@ import { ProfileService } from 'src/app/service/profile.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { ForgotComponent } from '../forgot/forgot.component';
 import { InputUsernameComponent } from '../forgot/input-username/input-username.component';
-const { PushNotifications } = Plugins;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -68,49 +68,48 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.initPush();
   }
   initPush() {
-    if (Capacitor.platform !== 'web') {
+    if (Capacitor.getPlatform() !== 'web') {
       this.registerPush();
     }
   }
   registerPush() {
-    PushNotifications.requestPermissions().then((permission) => {
-      if (permission.results) {
+    PushNotifications.requestPermissions().then(result => {
+      if (result.receive === 'granted') {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
       } else {
-        // No permission for push granted
+        // Show some error
       }
     });
 
-    PushNotifications.addListener(
-      'registration',
-      (token: PushNotificationToken) => {
-        console.log('My token: ' + JSON.stringify(token));
+    // On success, we should be able to receive notifications
+    PushNotifications.addListener('registration',
+      (token) => {
+        alert('Push registration success, token: ' + token.value);
       }
     );
 
-    PushNotifications.addListener('registrationError', (error: any) => {
-      console.log('Error: ' + JSON.stringify(error));
-    });
-
-    PushNotifications.addListener(
-      'pushNotificationReceived',
-      async (notification: PushNotification) => {
-        console.log('Push received: ' + JSON.stringify(notification));
+    // Some issue with our setup and push will not work
+    PushNotifications.addListener('registrationError',
+      (error: any) => {
+        alert('Error on registration: ' + JSON.stringify(error));
       }
     );
 
-    PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      async (notification: PushNotificationActionPerformed) => {
-        const data = notification.notification.data;
-        console.log('Action performed: ' + JSON.stringify(notification.notification));
-        if (data.detailsId) {
-          this.router.navigateByUrl(`/home/${data.detailsId}`);
-        }
+    // Show us the notification payload if the app is open on our device
+    PushNotifications.addListener('pushNotificationReceived',
+      (notification) => {
+        alert('Push received: ' + JSON.stringify(notification));
+      }
+    );
+
+    // Method called when tapping on a notification
+    PushNotifications.addListener('pushNotificationActionPerformed',
+      (notification) => {
+        alert('Push action performed: ' + JSON.stringify(notification));
       }
     );
   }
