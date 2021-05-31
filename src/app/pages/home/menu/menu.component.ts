@@ -51,6 +51,7 @@ export class MenuComponent implements OnInit {
       end: this.endWeek,
     });
     const valueToday = getDay(new Date())
+    this.dayValue = valueToday;
     this.getDishMenu(valueToday)
   }
   nextWeek() {
@@ -98,7 +99,6 @@ export class MenuComponent implements OnInit {
     }
     this.menuService.getDishMenuByTimePeriod(req).subscribe(res => {
       this.dishMenus = res
-      console.log(res);
     })
   }
 }

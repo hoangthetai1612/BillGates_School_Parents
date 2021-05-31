@@ -20,7 +20,7 @@
                 "EEEEEE"}}</span>
               <span
                 *ngIf="item.getFullYear()==currentDate.getFullYear() && item.getMonth()==currentDate.getMonth() && item.getDate()==currentDate.getDate()"
-                class="active">Hôm nay</span>
+                [ngClass]="{'active': dayValue !== -1 && i == dayValue && indexWeek == focusWeek }">Hôm nay</span>
 
             </div>
           </div>
