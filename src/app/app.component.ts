@@ -17,7 +17,6 @@ export class AppComponent {
     private authStoreService: AuthStoreService
   ) {
     this.profileService.getProfile().subscribe((res) => {
-      console.log(res);
       if (localStorage.getItem('role') === 'parents') {
         this.authStoreService.set({ ClassId: res[0].ClassId });
         this.authStoreService.set({ StudentId: res[0].StudentId });

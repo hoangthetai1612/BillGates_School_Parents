@@ -1,4 +1,5 @@
 export interface StudentModel {
+    StudentId: number;
     LastName: string;
     DOB: string;
     Gender: number;
@@ -7,4 +8,5 @@ export interface StudentModel {
     LocationAddress: string;
     MediaURL: string;
     Code: string;
+    ClassName: string;
 }

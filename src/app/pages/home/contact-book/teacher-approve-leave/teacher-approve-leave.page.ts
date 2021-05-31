@@ -37,18 +37,14 @@ export class TeacherApproveLeavePage implements OnInit {
   ) { }
 
   ngOnInit() {
-
-
     this.getStudentAbsenceRequests();
   }
 
 
   getStudentAbsenceRequests() {
-    console.log('test');
     this.authStore.classId$.subscribe(res => {
       this.classId = res;
-      console.log('classId', this.classId);
-
+      localStorage.setItem('classId', this.classId.toString());
       this.absenceRequestService.getStudentAbsenceRequests(this.classId).subscribe(res => {
         this.absences = res;
       });
