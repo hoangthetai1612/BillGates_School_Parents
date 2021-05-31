@@ -37,23 +37,25 @@ export class TeacherApproveLeavePage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
     this.getStudentAbsenceRequests();
   }
 
 
   getStudentAbsenceRequests() {
+    console.log('test');
     this.authStore.classId$.subscribe(res => {
-      this.classId = res
+      this.classId = res;
+      console.log('classId', this.classId);
+
       this.absenceRequestService.getStudentAbsenceRequests(this.classId).subscribe(res => {
         this.absences = res;
-        console.log('absences', this.absences);
-
       });
     });
   }
 
   viewAbsenceRequestsDetail(value) {
-    console.log(value);
     this.router.navigate([`/main/home/contact-book/teacher-approve-leave/${value}`]);
   }
 
