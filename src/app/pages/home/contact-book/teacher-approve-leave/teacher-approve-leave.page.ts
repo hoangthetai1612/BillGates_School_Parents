@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherModel } from 'src/app/models/teacher.model';
 import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 import { AuthStoreService } from 'src/app/service/auth.store';
@@ -24,37 +25,15 @@ export class TeacherApproveLeavePage implements OnInit {
     }
   };
 
-  data = [
-    {
-      createdDate: '15/05/2021',
-      name: 'Phùng Thanh Hưng',
-      startDate: '8:00 16/05/2021',
-      endDate: '17:00 18/05/2021',
-      description: `Gia đình em có kế hoạch đi du lịch vào cuối tuần tới. 
-      Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. 
-      Em xin hứa sẽ học và chép bài đầy đủ mà không làm ảnh hưởng đến việc học tập của mình`,
-      status: 1,
-      isDetail: false
-    },
-    {
-      createdDate: '15/05/2021',
-      name: 'Nguyễn Khánh Huyền',
-      startDate: '8:00 16/05/2021',
-      endDate: '17:00 18/05/2021',
-      description: `Gia đình em có kế hoạch đi du lịch vào cuối tuần tới. 
-      Nên em viết đơn xin được nghỉ học 2 ngày cuối tuần. 
-      Em xin hứa sẽ học và chép bài đầy đủ mà không làm ảnh hưởng đến việc học tập của mình`,
-      status: 2,
-      isDetail: false
-    }
-  ];
   absences = [];
   teacher: TeacherModel;
   classId: number;
 
   constructor(
     private absenceRequestService: AbsenceRequestService,
-    private authStore: AuthStoreService
+    private authStore: AuthStoreService,
+    private teacherService: TeacherService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -71,7 +50,11 @@ export class TeacherApproveLeavePage implements OnInit {
 
       });
     });
+  }
 
+  viewAbsenceRequestsDetail(value) {
+    console.log(value);
+    this.router.navigate([`/main/home/contact-book/teacher-approve-leave/${value}`]);
   }
 
 }
