@@ -13,5 +13,6 @@ export interface ProfileModel {
   StudentMediaURL: string;
   LocationAddress: string;
   ClassName: string;
+  UserName: string;
   MediaURL: string;
 }

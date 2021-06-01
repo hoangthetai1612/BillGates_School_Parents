@@ -9,27 +9,15 @@ import { InputUsernameComponent } from './input-username/input-username.componen
   styleUrls: ['./forgot.component.scss'],
 })
 export class ForgotComponent implements OnInit {
-
   rootPage: any;
-  rootParams
-  constructor(
-    public modalController: ModalController,
-  ) { }
+  rootParams;
+  constructor(public modalController: ModalController) {}
 
-  ngOnInit() { }
-
-
+  ngOnInit() {}
 }
 @NgModule({
   declarations: [ForgotComponent, InputUsernameComponent],
-  imports: [
-    CommonModule,
-    IonicModule,
-    BaseButtonModule,
-
-  ],
-  exports: [ForgotComponent, InputUsernameComponent]
+  imports: [CommonModule, IonicModule, BaseButtonModule],
+  exports: [ForgotComponent, InputUsernameComponent],
 })
-export class ForgotModule {
-
-}
+export class ForgotModule {}

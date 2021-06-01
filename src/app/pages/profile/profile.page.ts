@@ -40,20 +40,18 @@ export class ProfilePage implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private router: Router,
     private profileService: ProfileService,
-    private loginService: LoginService,
-  ) { }
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
     this.getProfile();
     this.getProfileTeacher();
-
   }
   getProfile() {
-    this.profileService.getProfile().subscribe(res => {
-      this.profile = res[0]
+    this.profileService.getProfile().subscribe((res) => {
+      this.profile = res[0];
       console.log(this.profile);
-
-    })
+    });
   }
   getProfileTeacher() {
     this.profileService.getDetailProfileTeacher().subscribe((res) => {
@@ -81,8 +79,7 @@ export class ProfilePage implements OnInit {
 
   logOut() {
     const device = JSON.parse(localStorage.getItem('access_token')).device;
-    this.loginService.postDevice(device).subscribe(res => {
-    })
+    this.loginService.postDevice(device).subscribe((res) => {});
     localStorage.clear();
     this.router.navigate(['index/auth/login']);
   }
