@@ -38,7 +38,7 @@ export class LeaveDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.studentId = this.routerActive.snapshot.params.id;
+    this.studentId = this.routerActive.snapshot.params.studentId;
     this.getStudentAbsenceRequests();
     this.getStudent();
   }
