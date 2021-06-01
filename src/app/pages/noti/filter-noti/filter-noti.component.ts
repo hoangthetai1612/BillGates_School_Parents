@@ -40,17 +40,20 @@ export class FilterNotiComponent implements OnInit {
     })
   }
 
-  async DismissClick(item) {
+  DismissClick(item) {
     if (item === 0) {
       const listdata = this.data.filter((x) => x.AnnouncementId == 0);
+      this.popoverController.dismiss(listdata);
+      console.log(listdata);
 
-      await this.popoverController.dismiss(listdata);
     } else if (item === null) {
       const listdata = this.data.filter((x) => x.AnnouncementId);
-      await this.popoverController.dismiss(listdata);
+      this.popoverController.dismiss(listdata);
+      console.log(listdata);
     } else {
       const listdata = this.data.filter((x) => x.AnnouncementId !== 0);
-      await this.popoverController.dismiss(listdata);
+      this.popoverController.dismiss(listdata);
+      console.log(listdata);
     }
   }
 }
