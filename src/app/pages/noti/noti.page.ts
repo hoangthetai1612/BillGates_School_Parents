@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, NgModule, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgModule, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonicModule, PopoverController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
 import { NotificationModel } from 'src/app/models/notification.model';
 import { NotificationService } from 'src/app/service/notification.service';
 import { FilterNotiComponent } from './filter-noti/filter-noti.component';
@@ -30,7 +30,7 @@ export class NotiPage implements OnInit {
     },
   };
   keyword: string;
-  queryField: FormControl = new FormControl();
+  queryField: FormControl = new FormControl('');
   constructor(
     public popoverController: PopoverController,
     private notiService: NotificationService,
@@ -39,9 +39,15 @@ export class NotiPage implements OnInit {
   ) { }
   listNotification: Observable<NotificationModel[]>;
   ngOnInit() {
-    this.keyword = ''
-    this.listNotification = this.notiService.getAllNotification(this.keyword)
-    this.filterServerSide();
+
+    this.getAllNotification();
+  }
+
+  getAllNotification() {
+    this.keyword = '';
+    this.listNotification = this.queryField.valueChanges
+      .pipe(startWith(''), distinctUntilChanged(), debounceTime(300), switchMap((keyword: string) =>
+        this.notiService.getAllNotification(keyword)));
   }
   routeTo(item) {
     switch (item.Type) {
@@ -59,11 +65,7 @@ export class NotiPage implements OnInit {
         break;
     }
   }
-  filterServerSide() {
-    this.listNotification = this.queryField.valueChanges
-      .pipe(distinctUntilChanged(), debounceTime(500), switchMap((keyword: string) =>
-        this.notiService.getAllNotification(keyword)))
-  }
+
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: FilterNotiComponent,
@@ -73,6 +75,6 @@ export class NotiPage implements OnInit {
     });
     await popover.present();
     const { data } = await popover.onDidDismiss();
-    this.listNotification = data;
+    this.listNotification = of(data);
   }
 }

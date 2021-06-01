@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ProfileModel } from 'src/app/models/profile.model';
+import { LoginService } from 'src/app/service/login.service';
 import { ModalService } from 'src/app/service/modal.service';
 import { PhotoService } from 'src/app/service/photo.service';
 import { ProfileService } from 'src/app/service/profile.service';
@@ -32,13 +33,14 @@ export class ProfilePage implements OnInit {
   arrImgae = [];
   avt: string;
   profile: ProfileModel;
-  profileTeacher
+  profileTeacher;
   constructor(
     public photoService: PhotoService,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet,
     private router: Router,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private loginService: LoginService,
   ) { }
 
   ngOnInit() {
@@ -78,6 +80,9 @@ export class ProfilePage implements OnInit {
   }
 
   logOut() {
+    const device = JSON.parse(localStorage.getItem('access_token')).device;
+    this.loginService.postDevice(device).subscribe(res => {
+    })
     localStorage.clear();
     this.router.navigate(['index/auth/login']);
   }

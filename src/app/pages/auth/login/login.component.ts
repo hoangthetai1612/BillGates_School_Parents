@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   };
   rootPage: any;
   loginForm: FormGroup;
-
+  data = {};
   constructor(
     public modalController: ModalController,
     private modalService: ModalService,
@@ -69,50 +69,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initPush();
-  }
-  initPush() {
-    if (Capacitor.getPlatform() !== 'web') {
-      this.registerPush();
-    }
-  }
-  registerPush() {
-    PushNotifications.requestPermissions().then(result => {
-      if (result.receive === 'granted') {
-        // Register with Apple / Google to receive push via APNS/FCM
-        PushNotifications.register();
-      } else {
-        // Show some error
-      }
-    });
 
-    // On success, we should be able to receive notifications
-    PushNotifications.addListener('registration',
-      (token) => {
-        alert('Push registration success, token: ' + token.value);
-      }
-    );
-
-    // Some issue with our setup and push will not work
-    PushNotifications.addListener('registrationError',
-      (error: any) => {
-        alert('Error on registration: ' + JSON.stringify(error));
-      }
-    );
-
-    // Show us the notification payload if the app is open on our device
-    PushNotifications.addListener('pushNotificationReceived',
-      (notification) => {
-        alert('Push received: ' + JSON.stringify(notification));
-      }
-    );
-
-    // Method called when tapping on a notification
-    PushNotifications.addListener('pushNotificationActionPerformed',
-      (notification) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
-      }
-    );
   }
 
   login() {
@@ -120,9 +77,12 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.value)
       .pipe(
         concatMap((res) => {
+          this.data = res;
           localStorage.setItem('access_token', JSON.stringify(res));
           localStorage.setItem('token', res.access_token);
           this.router.navigate(['/main/home']);
+
+
           if (res.Role === 'Parent') {
             localStorage.setItem('role', 'parents');
           }
@@ -151,6 +111,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe();
   }
+
   presentModal() {
     this.modalService.presentModal({
       presentingElement: this.routerOutlet.nativeEl,
