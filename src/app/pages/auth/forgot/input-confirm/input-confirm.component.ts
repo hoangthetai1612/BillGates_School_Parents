@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
-import { IonicModule, IonNav } from '@ionic/angular';
+import { IonicModule, IonNav, ModalController } from '@ionic/angular';
 import { BaseButtonModule } from 'src/app/base/base-button/base-button.component';
 import { InputSuccessComponent } from '../input-success/input-success.component';
 
@@ -15,17 +15,22 @@ export class InputConfirmComponent implements OnInit {
     cssClass: "buttonDarkOrange",
     text: "Xác nhận",
   }
-  constructor(private nav: IonNav) { }
+  constructor(
+    private nav: IonNav,
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() { }
-  backToStep() {
-    this.nav.pop()
+  async closeModal(data?) {
+    await this.modalController.dismiss(data);
   }
-  openConfirm() {
-    this.nav.push(InputSuccessComponent, {
-
-    })
-  }
+  // backToStep() {
+  //   this.nav.pop()
+  // }
+  // openConfirm() {
+  //   this.nav.push(InputSuccessComponent, {
+  //   })
+  // }
 }
 @NgModule({
   declarations: [InputConfirmComponent],

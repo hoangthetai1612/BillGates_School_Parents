@@ -19,7 +19,7 @@ import {
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from './base/util/interceptors/api.interceptor';
 import { AuthGuard } from './base/util/guards/auth.guard';
-import { DatePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
 
 @NgModule({
@@ -52,6 +52,10 @@ import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
       multi: true,
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
     },
     // {
     //   provide: HTTP_INTERCEPTORS,

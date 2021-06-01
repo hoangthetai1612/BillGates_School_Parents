@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ProfileModel } from 'src/app/models/profile.model';
+import { LoginService } from 'src/app/service/login.service';
 import { ModalService } from 'src/app/service/modal.service';
 import { PhotoService } from 'src/app/service/photo.service';
 import { ProfileService } from 'src/app/service/profile.service';
 import { ForgotComponent } from '../auth/forgot/forgot.component';
+import { InputConfirmComponent } from '../auth/forgot/input-confirm/input-confirm.component';
 import { InputUsernameComponent } from '../auth/forgot/input-username/input-username.component';
 
 @Component({
@@ -31,13 +33,14 @@ export class ProfilePage implements OnInit {
   arrImgae = [];
   avt: string;
   profile: ProfileModel;
-  profileTeacher
+  profileTeacher;
   constructor(
     public photoService: PhotoService,
     private modalService: ModalService,
     private routerOutlet: IonRouterOutlet,
     private router: Router,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private loginService: LoginService,
   ) { }
 
   ngOnInit() {
@@ -65,7 +68,7 @@ export class ProfilePage implements OnInit {
       cssClass: 'modal-full-height',
       mode: 'md',
       componentProps: {
-        rootPage: InputUsernameComponent,
+        rootPage: InputConfirmComponent,
       },
     });
   }
@@ -76,8 +79,14 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  logOut() {
-    localStorage.clear();
+  async logOut() {
+    const GUID = JSON.parse(localStorage.getItem('device')).device;
+    console.log(GUID);
+    return
+
+    this.loginService.deleteDevice(GUID).subscribe(res => {
+    })
+    await localStorage.clear();
     this.router.navigate(['index/auth/login']);
   }
 }
