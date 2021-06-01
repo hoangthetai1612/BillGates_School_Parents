@@ -16,4 +16,8 @@ export class StudentService extends BaseApiService<StudentModel[]> {
     getStudentsByTeacher(): Observable<StudentModel[]> {
         return this.http.get<StudentModel[]>('api/student/username/teacher').pipe(map((res: any) => res.Payload));
     }
+
+    getStudentsByClass(classId): Observable<StudentModel[]> {
+        return this.http.get<StudentModel[]>(`api/student?ClassId=${classId}`).pipe(map((res: any) => res.Payload));
+    }
 }
