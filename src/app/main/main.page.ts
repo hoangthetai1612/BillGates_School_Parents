@@ -65,11 +65,11 @@ export class MainPage implements OnInit {
         console.log(token);
         alert('Push registration success, token: ' + token.value);
         localStorage.setItem('device', token.value);
-        const device = token.value;
-        const userName = JSON.parse(localStorage.getItem('access_token')).username;
+        const GUID = token.value;
+        const username = JSON.parse(localStorage.getItem('access_token')).username;
         this.data = {
-          userName,
-          device
+          username,
+          GUID
         }
         this.loginService.postDevice(this.data).subscribe(res => {
         })

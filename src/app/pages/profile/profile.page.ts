@@ -79,11 +79,14 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  logOut() {
-    const device = JSON.parse(localStorage.getItem('access_token')).device;
-    this.loginService.postDevice(device).subscribe(res => {
+  async logOut() {
+    const GUID = JSON.parse(localStorage.getItem('device')).device;
+    console.log(GUID);
+    return
+
+    this.loginService.deleteDevice(GUID).subscribe(res => {
     })
-    localStorage.clear();
+    await localStorage.clear();
     this.router.navigate(['index/auth/login']);
   }
 }
