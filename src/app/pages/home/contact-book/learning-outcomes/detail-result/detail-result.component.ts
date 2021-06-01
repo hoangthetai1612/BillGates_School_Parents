@@ -11,9 +11,6 @@ import { TestResultService } from 'src/app/service/test-result.service';
   styleUrls: ['./detail-result.component.scss'],
 })
 export class DetailResultComponent implements OnInit {
-  @Input() name;
-  @Input() semsterId;
-  @Input() subjectId;
   header = {
     cssClass: 'header-special',
     classText: 'text-white',
@@ -29,24 +26,33 @@ export class DetailResultComponent implements OnInit {
     },
   };
 
-  listPoint: TestResult[] = [
-    // { TestResultId: 1, Point: 8, TestTypeName: '1 tiết' },
-    // { TestResultId: 1, Point: 8, TestTypeName: '15 phút' },
-    // { TestResultId: 1, Point: 8, TestTypeName: 'giữa kỳ' },
-  ];
-  studentId;
+  name: number;
+  semsterId: number;
+  subjectId: number;
+  studentId: number;
+  listPoint: TestResult[];
+
   constructor(
     private modalController: ModalController,
     private testResultService: TestResultService,
     private authStoreService: AuthStoreService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.authStoreService.studentId$.subscribe((res) => (this.studentId = res));
+    this.getStudentId();
     this.getDetalTestResult();
   }
+
   closeModal() {
     this.modalController.dismiss({});
+  }
+
+  getStudentId() {
+    if (localStorage.getItem('role') === 'teacher') {
+      this.studentId = +localStorage.getItem('studentId');
+    } else {
+      this.authStoreService.studentId$.subscribe((res) => (this.studentId = res));
+    }
   }
 
   getDetalTestResult() {

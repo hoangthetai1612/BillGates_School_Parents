@@ -10,7 +10,7 @@ const routes: Routes = [
     component: TeacherApproveLeavePage
   },
   {
-    path: ':id',
+    path: ':studentId',
     component: LeaveDetailComponent
   }
 ];
