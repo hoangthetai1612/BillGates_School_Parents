@@ -5,6 +5,7 @@ import { ChangeDetectorRef, Component, NgModule, OnInit } from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonicModule, PopoverController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { NotificationModel } from 'src/app/models/notification.model';
 import { NotificationService } from 'src/app/service/notification.service';
@@ -36,14 +37,10 @@ export class NotiPage implements OnInit {
     private cd: ChangeDetectorRef,
     private route: Router
   ) { }
-  listNotification: NotificationModel[];
+  listNotification: Observable<NotificationModel[]>;
   ngOnInit() {
     this.keyword = ''
-    this.notiService.getAllNotification(this.keyword).subscribe(res => {
-      this.listNotification = res;
-      console.log(this.listNotification);
-
-    })
+    this.listNotification = this.notiService.getAllNotification(this.keyword)
     this.filterServerSide();
   }
   routeTo(item) {
@@ -63,14 +60,9 @@ export class NotiPage implements OnInit {
     }
   }
   filterServerSide() {
-    this.queryField.valueChanges
+    this.listNotification = this.queryField.valueChanges
       .pipe(distinctUntilChanged(), debounceTime(500), switchMap((keyword: string) =>
         this.notiService.getAllNotification(keyword)))
-      .subscribe(res => {
-        console.log(res);
-        this.listNotification = res;
-
-      });
   }
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
