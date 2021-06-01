@@ -81,10 +81,7 @@ export class ProfilePage implements OnInit {
 
   async logOut() {
     const GUID = JSON.parse(localStorage.getItem('device')).device;
-    console.log(GUID);
-    return
-
-    this.loginService.deleteDevice(GUID).subscribe(res => {
+    this.loginService.postDevice(GUID).subscribe(res => {
     })
     await localStorage.clear();
     this.router.navigate(['index/auth/login']);
