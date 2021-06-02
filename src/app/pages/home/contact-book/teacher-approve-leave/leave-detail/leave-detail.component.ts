@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { StudentModel } from 'src/app/models/student.model';
+import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 import { AuthStoreService } from 'src/app/service/auth.store';
 import { StudentService } from 'src/app/service/student.service';
 import { TeacherService } from 'src/app/service/teacher.service';
@@ -15,6 +16,7 @@ export class LeaveDetailComponent implements OnInit {
   studentId: number;
   classId = localStorage.getItem('classId');
   student: StudentModel;
+
 
   header = {
     cssClass: 'header-special',
@@ -34,7 +36,8 @@ export class LeaveDetailComponent implements OnInit {
   constructor(
     private routerActive: ActivatedRoute,
     private teacherService: TeacherService,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private absenceRequestService: AbsenceRequestService
   ) { }
 
   ngOnInit() {
@@ -66,6 +69,7 @@ export class LeaveDetailComponent implements OnInit {
 
     });
   }
+
 
 
 

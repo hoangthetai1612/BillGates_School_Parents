@@ -25,6 +25,10 @@ export class CardApproveLeaveComponent implements OnInit {
     this.callback.emit(value);
   }
 
+  handleApprove(value) {
+    this.callback.emit(value);
+  }
+
 }
 
 @NgModule({

@@ -4,7 +4,7 @@ import { TeacherModel } from 'src/app/models/teacher.model';
 import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 import { AuthStoreService } from 'src/app/service/auth.store';
 import { TeacherService } from 'src/app/service/teacher.service';
-
+import { DetailAbsenceRequest } from '../../../../models/detail-absence-request.model';
 @Component({
   selector: 'app-teacher-approve-leave',
   templateUrl: './teacher-approve-leave.page.html',
@@ -28,6 +28,7 @@ export class TeacherApproveLeavePage implements OnInit {
   absences = [];
   teacher: TeacherModel;
   classId: number;
+  absenceRequest: DetailAbsenceRequest;
 
   constructor(
     private absenceRequestService: AbsenceRequestService,
@@ -53,6 +54,13 @@ export class TeacherApproveLeavePage implements OnInit {
 
   viewAbsenceRequestsDetail(value) {
     this.router.navigate([`/main/home/contact-book/teacher-approve-leave/${value}`]);
+  }
+
+  approveAbsenceRequests(studentAbsenceRequestId) {
+    this.absenceRequest.Status = 2;
+    this.absenceRequestService.approveAbsenceRequests(studentAbsenceRequestId, this.absenceRequest).subscribe(res => {
+      this.getStudentAbsenceRequests();
+    })
   }
 
 }
