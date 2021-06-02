@@ -95,22 +95,20 @@ export class MainPage implements OnInit {
     PushNotifications.addListener('pushNotificationActionPerformed',
       (notification) => {
         this.noti = JSON.stringify(notification);
-        const data = this.noti.notification.data
-        switch (data.messageType2) {
-          case '5':
-            this.route.navigateByUrl('/main/home/study/timetable');
-            break;
-          case 6:
-            this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
-            break;
-          case 7:
-            this.route.navigateByUrl('/main/home/contact-book/feedback');
-            break;
-          case 8:
-            this.route.navigateByUrl('/main/home/study/home-work');
-            break;
-        }
-        console.log(this.noti.notification);
+        // switch (data.messageType) {
+        //   case '5':
+        //     this.route.navigateByUrl('/main/home/study/timetable');
+        //     break;
+        //   case 6:
+        //     this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
+        //     break;
+        //   case 7:
+        //     this.route.navigateByUrl('/main/home/contact-book/feedback');
+        //     break;
+        //   case 8:
+        //     this.route.navigateByUrl('/main/home/study/home-work');
+        //     break;
+        // }
 
         alert('Push action performed: ' + JSON.stringify(notification));
       }

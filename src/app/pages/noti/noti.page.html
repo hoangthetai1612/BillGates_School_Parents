@@ -11,7 +11,7 @@
   <ion-row>
     <ion-col size="12">
       <div class="noti-item" *ngFor="let item of listNotification | async" (click)="routeTo(item)"
-        [style.backgroundColor]=" item.Status === 2 ? '#fff8f8' : '#fff' ">
+        [style.backgroundColor]=" item.Status === 1 ? '#fff8f8' : '#fff' ">
         <img src="{{item.MediaURL}}" alt="">
         <div class="noti-item-text">
           <h3>{{item.Title}}</h3>

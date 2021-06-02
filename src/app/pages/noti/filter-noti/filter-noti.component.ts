@@ -47,9 +47,10 @@ export class FilterNotiComponent implements OnInit {
       console.log(listdata);
 
     } else if (item === null) {
-      const listdata = this.data.filter((x) => x.AnnouncementId);
-      this.popoverController.dismiss(listdata);
-      console.log(listdata);
+      this.keyword = ''
+      this.notiService.getAllNotification(this.keyword).subscribe(res => {
+        this.popoverController.dismiss(res);
+      })
     } else {
       const listdata = this.data.filter((x) => x.AnnouncementId !== 0);
       this.popoverController.dismiss(listdata);

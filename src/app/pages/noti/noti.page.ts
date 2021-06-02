@@ -50,28 +50,46 @@ export class NotiPage implements OnInit {
   }
   routeTo(item) {
     if (item.NotificationId) {
-      this.notiService.updateStatusNoti(item.NotificationId).subscribe(res => {
+      this.notiService.updateStatusNoti(item.NotificationId).subscribe((res) => {
+        switch (item.Type) {
+          case 5:
+            this.route.navigateByUrl('/main/home/study/timetable');
+            break;
+          case 6:
+            this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
+            break;
+          case 7:
+            this.route.navigateByUrl('/main/home/contact-book/feedback');
+            break;
+          case 8:
+            this.route.navigateByUrl('/main/home/study/home-work');
+            break;
+        }
+        this.getAllNotification();
       })
     }
     if (item.AnnouncementId) {
-      this.notiService.updateStatusAnnouncementId(item.AnnouncementId).subscribe(res => {
+      this.notiService.updateStatusAnnouncementId(item.AnnouncementId).subscribe((res) => {
+        switch (item.Type) {
+          case 5:
+            this.route.navigateByUrl('/main/home/study/timetable');
+            break;
+          case 6:
+            this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
+            break;
+          case 7:
+            this.route.navigateByUrl('/main/home/contact-book/feedback');
+            break;
+          case 8:
+            this.route.navigateByUrl('/main/home/study/home-work');
+            break;
+        }
+        this.getAllNotification();
+
       })
     }
 
-    switch (item.Type) {
-      case 5:
-        this.route.navigateByUrl('/main/home/study/timetable');
-        break;
-      case 6:
-        this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
-        break;
-      case 7:
-        this.route.navigateByUrl('/main/home/contact-book/feedback');
-        break;
-      case 8:
-        this.route.navigateByUrl('/main/home/study/home-work');
-        break;
-    }
+
   }
 
   async presentPopover(ev: any) {
