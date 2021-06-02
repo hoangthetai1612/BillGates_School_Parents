@@ -11,24 +11,13 @@ import { InputUsernameComponent } from './input-username/input-username.componen
 export class ForgotComponent implements OnInit {
   rootPage: any;
   rootParams;
-  constructor(public modalController: ModalController) {}
+  constructor(public modalController: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
 @NgModule({
   declarations: [ForgotComponent, InputUsernameComponent],
-<<<<<<< HEAD
   imports: [CommonModule, IonicModule, BaseButtonModule],
   exports: [ForgotComponent, InputUsernameComponent],
-=======
-  imports: [
-    CommonModule,
-    IonicModule,
-    BaseButtonModule,
-
-  ],
-  exports: [ForgotComponent, InputUsernameComponent],
-  
->>>>>>> a12213c5e75caf8bb66d8819e2b7624a13b9364d
 })
-export class ForgotModule {}
+export class ForgotModule { }

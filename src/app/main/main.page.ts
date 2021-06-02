@@ -110,7 +110,7 @@ export class MainPage implements OnInit {
         //     break;
         // }
 
-        alert('Push action performed: ' + JSON.stringify(notification));
+        // alert('Push action performed: ' + JSON.stringify(notification));
       }
     );
   }
