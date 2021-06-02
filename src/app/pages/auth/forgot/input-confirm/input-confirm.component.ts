@@ -22,7 +22,7 @@ export class InputConfirmComponent implements OnInit {
     width: '311px',
     cssClass: 'buttonDarkOrange',
     text: 'Xác nhận',
-  }
+  };
   formChangePassword = new FormGroup({
     OldPassword: new FormControl(''),
     NewPassword: new FormControl(''),
