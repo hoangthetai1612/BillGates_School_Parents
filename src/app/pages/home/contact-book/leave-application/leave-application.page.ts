@@ -38,10 +38,17 @@ export class LeaveApplicationPage implements OnInit {
     this.getListAbsence();
   }
   getListAbsence() {
+    let list;
     this.authStoreService.studentId$.subscribe((id) => {
-      this.absenceRequestService.getListAbsenceById(id).subscribe((res) => {
-        this.listCard = res;
-      });
+      this.absenceRequestService.getListAbsenceById(id).subscribe(
+        (res) => {
+          list = res;
+        },
+        (err) => {},
+        () => {
+          this.listCard = list.reverse();
+        }
+      );
     });
   }
   async createLeave() {

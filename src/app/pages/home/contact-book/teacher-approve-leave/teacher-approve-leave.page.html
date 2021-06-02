@@ -2,5 +2,5 @@
 
 <ion-content>
   <app-card-approve-leave [data]="absences" (callback)="viewAbsenceRequestsDetail($event)"
-    (callback)="approveAbsenceRequests($event)"></app-card-approve-leave>
+    (approveEvent)="approveAbsenceRequests($event)"></app-card-approve-leave>
 </ion-content>

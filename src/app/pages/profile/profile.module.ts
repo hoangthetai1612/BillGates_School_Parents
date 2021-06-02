@@ -11,6 +11,7 @@ import { BaseButtonModule } from 'src/app/base/base-button/base-button.component
 import { HeaderModule } from 'src/app/base/header/header.component';
 import { RouterModule } from '@angular/router';
 import { ProfileDetailModule } from './profile-detail/profile-detail.component';
+import { InputConfirmModule } from '../auth/forgot/input-confirm/input-confirm.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ProfileDetailModule } from './profile-detail/profile-detail.component';
     RouterModule,
     RoleDirectiveModule,
     ProfileDetailModule,
+    InputConfirmModule,
   ],
   declarations: [ProfilePage],
 })
-export class ProfilePageModule { }
+export class ProfilePageModule {}

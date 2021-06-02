@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface DetailAbsenceRequest {
-  StudentAbsenceRequestId: number;
+  StudentAbsenceRequestId?: number;
   FromDate: Date;
   ToDate: Date;
   Description: string;
   Type: number;
-  Status: number;
+  Status?: number;
 }

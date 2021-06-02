@@ -21,8 +21,8 @@ export class TeacherApproveLeavePage implements OnInit {
     },
     type: {
       text: 'text',
-      backbutton: 'backbutton'
-    }
+      backbutton: 'backbutton',
+    },
   };
 
   absences = [];
@@ -41,23 +41,25 @@ export class TeacherApproveLeavePage implements OnInit {
     this.getStudentAbsenceRequests();
   }
 
-
   getStudentAbsenceRequests() {
-    this.authStore.classId$.subscribe(res => {
-      this.classId = res;
-      localStorage.setItem('classId', this.classId.toString());
-      this.absenceRequestService.getStudentAbsenceRequests(this.classId).subscribe(res => {
-        this.absences = res;
-      });
+    this.authStore.classId$.subscribe((id) => {
+      localStorage.setItem('classId', id.toString());
+      this.absenceRequestService
+        .getStudentAbsenceRequests(id)
+        .subscribe((res) => {
+          this.absences = res;
+        });
     });
   }
 
   viewAbsenceRequestsDetail(value) {
-    this.router.navigate([`/main/home/contact-book/teacher-approve-leave/${value}`]);
+    this.router.navigate([
+      `/main/home/contact-book/teacher-approve-leave/${value}`,
+    ]);
   }
 
   approveAbsenceRequests(studentAbsenceRequestId) {
-    this.absenceRequest.Status = 2;
+    // this.absenceRequest.Status = 2;
     this.absenceRequestService.approveAbsenceRequests(studentAbsenceRequestId, this.absenceRequest).subscribe(res => {
       this.getStudentAbsenceRequests();
     })
