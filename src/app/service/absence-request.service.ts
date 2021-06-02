@@ -10,7 +10,7 @@ import { BaseApiService } from './base.service';
   providedIn: 'root',
 })
 export class AbsenceRequestService extends BaseApiService<
-  DetailAbsenceRequest[]
+DetailAbsenceRequest[]
 > {
   constructor(protected http: HttpClient) {
     super(http, 'api/StudentAbsenceRequest');
@@ -33,4 +33,9 @@ export class AbsenceRequestService extends BaseApiService<
       .post(`api/StudentAbsenceRequest?StudentId=${studentId}`, data)
       .pipe(map((res: any) => res.Payload));
   }
+
+  approveAbsenceRequests(studentAbsenceRequestId, data): Observable<any> {
+    return this.http.put(`api/StudentAbsenceRequest/${studentAbsenceRequestId}`, data);
+  }
+
 }

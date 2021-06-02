@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 export class CardApproveLeaveComponent implements OnInit {
   @Input() data;
   @Output() callback = new EventEmitter();
-
+  @Output() approveEvent = new EventEmitter();
 
   constructor() { }
 
@@ -23,6 +23,10 @@ export class CardApproveLeaveComponent implements OnInit {
 
   handleRouterLink(value) {
     this.callback.emit(value);
+  }
+
+  handleApprove(value) {
+    this.approveEvent.emit(value);
   }
 
 }

@@ -1,5 +1,6 @@
 <app-header [headerStyle]="header"></app-header>
 
 <ion-content>
-  <app-card-approve-leave [data]="studentAbsenceRequests"></app-card-approve-leave>
+  <app-card-approve-leave [data]="studentAbsenceRequests" (approveEvent)="approveAbsenceRequests($event)">
+  </app-card-approve-leave>
 </ion-content>

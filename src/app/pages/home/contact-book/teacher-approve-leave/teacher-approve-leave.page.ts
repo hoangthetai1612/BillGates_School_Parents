@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TeacherModel } from 'src/app/models/teacher.model';
 import { AbsenceRequestService } from 'src/app/service/absence-request.service';
 import { AuthStoreService } from 'src/app/service/auth.store';
 import { TeacherService } from 'src/app/service/teacher.service';
-
 @Component({
   selector: 'app-teacher-approve-leave',
   templateUrl: './teacher-approve-leave.page.html',
@@ -55,5 +55,16 @@ export class TeacherApproveLeavePage implements OnInit {
     this.router.navigate([
       `/main/home/contact-book/teacher-approve-leave/${value}`,
     ]);
+  }
+
+  approveAbsenceRequests(studentAbsenceRequestId) {
+    const absenceRequest = {
+      Status: 2,
+    };
+    this.absenceRequestService
+      .approveAbsenceRequests(studentAbsenceRequestId, absenceRequest)
+      .subscribe((res) => {
+        this.getStudentAbsenceRequests();
+      });
   }
 }
