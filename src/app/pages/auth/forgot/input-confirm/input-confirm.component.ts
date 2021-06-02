@@ -22,13 +22,12 @@ export class InputConfirmComponent implements OnInit {
     width: '311px',
     cssClass: 'buttonDarkOrange',
     text: 'Xác nhận',
-  };
-  userName = '';
+  }
   formChangePassword = new FormGroup({
     OldPassword: new FormControl(''),
     NewPassword: new FormControl(''),
     ConfirmPassword: new FormControl(''),
-    UserName: new FormControl(this.userName),
+    UserName: new FormControl(''),
   });
   constructor(
     // private nav: IonNav,
@@ -39,7 +38,7 @@ export class InputConfirmComponent implements OnInit {
 
   ngOnInit() {
     this.authStoreService.userName$.subscribe((res) => {
-      this.userName = res;
+      this.formChangePassword.get('UserName').setValue(res);
     });
   }
   async closeModal(data?) {
