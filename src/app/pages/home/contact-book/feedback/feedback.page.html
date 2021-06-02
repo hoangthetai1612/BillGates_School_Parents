@@ -27,7 +27,7 @@
             </ion-card-content>
         </ion-card>
         <div class="action">
-            <button [style.backgroundColor]="'#D6D6D6'">Hủy bỏ</button>
+            <button [style.backgroundColor]="'#D6D6D6'"(click)="cancelReview()">Hủy bỏ</button>
             <button [style.backgroundColor]="'#FF9569'"
                     (click)="createReview()">Lưu</button>
         </div>
