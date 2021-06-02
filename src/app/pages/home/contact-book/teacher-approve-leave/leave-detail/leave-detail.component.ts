@@ -64,13 +64,21 @@ export class LeaveDetailComponent implements OnInit {
           StudentMediaURL: item.StudentMediaURL,
           Status: item.Status,
           isDetail: true,
+          StudentAbsenceRequestId: item.StudentAbsenceRequestId
         }
       });
 
     });
   }
 
-
+  approveAbsenceRequests(studentAbsenceRequestId) {
+    let absenceRequest = {
+      Status: 2
+    };
+    this.absenceRequestService.approveAbsenceRequests(studentAbsenceRequestId, absenceRequest).subscribe(res => {
+      this.getStudentAbsenceRequests();
+    });
+  }
 
 
 }
