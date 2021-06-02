@@ -21,6 +21,9 @@ import { APIInterceptor } from './base/util/interceptors/api.interceptor';
 import { AuthGuard } from './base/util/guards/auth.guard';
 import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
+import { LoaderService } from './base/util/service/loader.service';
+import { LoaderModule } from './base/loader/loader.component';
+import { LoaderInterceptor } from './base/util/interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,9 +44,11 @@ import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
         useFactory: () => { },
       }
     ),
+    LoaderModule
   ],
   providers: [
     AuthGuard,
+    LoaderService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: DatePipe
@@ -57,11 +62,11 @@ import { AuthInterceptor } from './base/util/interceptors/auth.interceptor';
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
     IonNav,
   ],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 <app-header [headerStyle]="header"></app-header>
 
 <ion-content>
-  <app-card-approve-leave [data]="absences" (callback)="viewAbsenceRequestsDetail($event)"></app-card-approve-leave>
+  <app-card-approve-leave [data]="absences" (callback)="viewAbsenceRequestsDetail($event)"
+    (approveEvent)="approveAbsenceRequests($event)"></app-card-approve-leave>
 </ion-content>
