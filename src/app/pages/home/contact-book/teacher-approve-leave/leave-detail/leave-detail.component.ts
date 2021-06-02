@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { StudentModel } from 'src/app/models/student.model';
@@ -26,16 +28,15 @@ export class LeaveDetailComponent implements OnInit {
     },
     type: {
       text: 'text',
-      backbutton: 'backbutton'
-    }
+      backbutton: 'backbutton',
+    },
   };
-
 
   constructor(
     private routerActive: ActivatedRoute,
     private teacherService: TeacherService,
     private studentService: StudentService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.studentId = this.routerActive.snapshot.params.studentId;
@@ -44,29 +45,29 @@ export class LeaveDetailComponent implements OnInit {
   }
 
   getStudent() {
-    this.studentService.getStudentsByClass(this.classId).subscribe(res => {
-      this.student = res.find(student => student.StudentId == this.studentId);
+    this.studentService.getStudentsByClass(this.classId).subscribe((res) => {
+      this.student = res.find(
+        (student) => student.StudentId === this.studentId
+      );
       this.header.iconCenter.text = `${this.student.LastName} (${this.student.ClassName})`;
     });
   }
 
   getStudentAbsenceRequests() {
-    this.teacherService.getStudentAbsenceRequest(this.studentId).subscribe((res: any) => {
-      this.studentAbsenceRequests = res.map(item => {
-        return {
-          CreatedOn: item.CreatedOn,
-          FromDate: item.FromDate,
-          ToDate: item.ToDate,
-          Description: item.Description,
-          StudentMediaURL: item.StudentMediaURL,
-          Status: item.Status,
-          isDetail: true,
-        }
+    this.teacherService
+      .getStudentAbsenceRequest(this.studentId)
+      .subscribe((res: any) => {
+        this.studentAbsenceRequests = res.map((item) => {
+          return {
+            CreatedOn: item.CreatedOn,
+            FromDate: item.FromDate,
+            ToDate: item.ToDate,
+            Description: item.Description,
+            StudentMediaURL: item.StudentMediaURL,
+            Status: item.Status,
+            isDetail: true,
+          };
+        });
       });
-
-    });
   }
-
-
-
 }

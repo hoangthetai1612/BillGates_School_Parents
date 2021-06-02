@@ -1,12 +1,18 @@
-<ion-card class="card-container" *ngFor="let card of data">
+<ion-card class="card-container"
+          *ngFor="let card of data">
 
-  <ion-item lines="none" [style.fontSize.px]="14">
+  <ion-item lines="none"
+            [style.fontSize.px]="14">
     <div class="date text">
       {{card.CreatedOn | date: "dd/MM/yyyy"}}
     </div>
   </ion-item>
-  <ion-item *ngIf="!card.isDetail" lines="none" [style.fontSize.px]="14">
-    <img class="image" src="{{card.StudentMediaURL}}" alt="">
+  <ion-item *ngIf="!card.isDetail"
+            lines="none"
+            [style.fontSize.px]="14">
+    <img class="image"
+         src="{{card.StudentMediaURL}}"
+         alt="">
     &nbsp;
     &nbsp;
     <div class="text">
@@ -17,19 +23,24 @@
     </div>
 
   </ion-item>
-  <ion-item lines="none" [style.fontSize.px]="14">
+  <ion-item lines="none"
+            [style.fontSize.px]="14">
     <div>Nghỉ từ:</div>
-    <div slot="end" class="date">
+    <div slot="end"
+         class="date">
       {{card.FromDate | date: "h:mm, dd/MM/yyyy"}}
     </div>
   </ion-item>
-  <ion-item lines="none" [style.fontSize.px]="14">
+  <ion-item lines="none"
+            [style.fontSize.px]="14">
     <div>Đến:</div>
-    <div slot="end" class="date">
+    <div slot="end"
+         class="date">
       {{card.ToDate | date: "h:mm, dd/MM/yyyy"}}
     </div>
   </ion-item>
-  <ion-item lines="none" [style.fontSize.px]="14">
+  <ion-item lines="none"
+            [style.fontSize.px]="14">
     <div>Lý do:</div>
   </ion-item>
   <ion-item [style.fontSize.px]="12">
@@ -39,8 +50,10 @@
   </ion-item>
   <ion-item lines="none">
     <div class="action-btn">
-      <button *ngIf="card.Status === 1" class="approved-btn large-btn">Đã phê duyệt</button>
-      <button *ngIf="card.Status === 2" class="approve-btn large-btn">Phê duyệt</button>
+      <button *ngIf="card.Status === 2"
+              class="approved-btn large-btn">Đã phê duyệt</button>
+      <button *ngIf="card.Status === 1"
+              class="approve-btn large-btn">Phê duyệt</button>
       <button class="chat-btn large-btn">Nhắn tin</button>
     </div>
   </ion-item>

@@ -20,12 +20,12 @@ export class AppComponent {
       if (localStorage.getItem('role') === 'parents') {
         this.authStoreService.set({ ClassId: res[0].ClassId });
         this.authStoreService.set({ StudentId: res[0].StudentId });
+        this.authStoreService.set({ UserName: res[0].UserName });
       } else {
         this.authStoreService.set({ ClassId: res.ClassId });
         this.authStoreService.set({ StudentId: res.StudentId });
+        this.authStoreService.set({ UserName: res.UserName });
       }
-
-
     });
   }
 }

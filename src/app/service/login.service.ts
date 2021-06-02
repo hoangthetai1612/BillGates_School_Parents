@@ -11,9 +11,6 @@ export class LoginService {
   postDevice(data): Observable<any> {
     return this.http.post(`api/postdevice`, data);
   }
-  deleteDevice(data): Observable<any> {
-    return this.http.delete(`api/postdevice`, data);
-  }
   public login(data: Login): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ProfileModel } from 'src/app/models/profile.model';
 import { LoginService } from 'src/app/service/login.service';
@@ -40,20 +40,18 @@ export class ProfilePage implements OnInit {
     private routerOutlet: IonRouterOutlet,
     private router: Router,
     private profileService: ProfileService,
-    private loginService: LoginService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
     this.getProfile();
     this.getProfileTeacher();
-
   }
   getProfile() {
-    this.profileService.getProfile().subscribe(res => {
-      this.profile = res[0]
+    this.profileService.getProfile().subscribe((res) => {
+      this.profile = res[0];
       console.log(this.profile);
-
-    })
+    });
   }
   getProfileTeacher() {
     this.profileService.getDetailProfileTeacher().subscribe((res) => {

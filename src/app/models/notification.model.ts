@@ -4,5 +4,6 @@ export interface NotificationModel {
     Title: string;
     Content: string;
     CreatedOn: string;
-    MediaURL: string
+    MediaURL: string;
+    Status: number;
 }

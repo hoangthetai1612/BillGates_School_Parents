@@ -9,20 +9,18 @@ import { InputOtpComponent } from '../input-otp/input-otp.component';
 })
 export class InputUsernameComponent implements OnInit {
   buttonStyle = {
-    width: "311px",
-    cssClass: "buttonDarkOrange",
-    text: "Gửi mã xác nhận",
-  }
-  constructor(private modalController: ModalController, private nav: IonNav) { }
+    width: '311px',
+    cssClass: 'buttonDarkOrange',
+    text: 'Gửi mã xác nhận',
+  };
+  constructor(private modalController: ModalController, private nav: IonNav) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   openInputOtp() {
-    this.nav.push(InputOtpComponent, {
-    })
+    this.nav.push(InputOtpComponent, {});
   }
   async closeModal(data?) {
     await this.modalController.dismiss(data);
   }
-
 }
