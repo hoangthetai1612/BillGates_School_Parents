@@ -34,7 +34,7 @@ DetailAbsenceRequest[]
       .pipe(map((res: any) => res.Payload));
   }
 
-  approveAbsenceRequests(studentAbsenceRequestId, data) {
+  approveAbsenceRequests(studentAbsenceRequestId, data): Observable<any> {
     return this.http.put(`api/StudentAbsenceRequest/${studentAbsenceRequestId}`, data);
   }
 
