@@ -6,11 +6,11 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
-import { PushNotifications, } from '@capacitor/push-notifications';
+import { PushNotifications } from '@capacitor/push-notifications';
 import { IonicModule, IonRouterOutlet, ModalController } from '@ionic/angular';
 import { throwError } from 'rxjs';
 import { catchError, concatMap, tap } from 'rxjs/operators';
@@ -68,9 +68,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   login() {
     this.loginService
@@ -81,7 +79,6 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('access_token', JSON.stringify(res));
           localStorage.setItem('token', res.access_token);
           this.router.navigate(['/main/home']);
-
 
           if (res.Role === 'Parent') {
             localStorage.setItem('role', 'parents');
@@ -97,9 +94,11 @@ export class LoginComponent implements OnInit {
           if (localStorage.getItem('role') === 'parents') {
             this.authStoreService.set({ ClassId: res[0].ClassId });
             this.authStoreService.set({ StudentId: res[0].StudentId });
+            this.authStoreService.set({ UserName: res[0].UserName });
           } else {
             this.authStoreService.set({ ClassId: res.ClassId });
             this.authStoreService.set({ StudentId: res.StudentId });
+            this.authStoreService.set({ UserName: res.UserName });
           }
         }),
         catchError((err) => {
@@ -136,4 +135,4 @@ export class LoginComponent implements OnInit {
   ],
   exports: [LoginComponent],
 })
-export class LoginModule { }
+export class LoginModule {}

@@ -8,4 +8,5 @@ import { ProfileModel } from '../models/profile.model';
 export class AuthStoreService extends RxState<ProfileModel> {
   classId$ = this.select('ClassId');
   studentId$ = this.select('StudentId');
+  userName$ = this.select('UserName');
 }
