@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { PushNotifications, } from '@capacitor/push-notifications';
 import { LoginService } from '../service/login.service';
@@ -37,8 +38,10 @@ export class MainPage implements OnInit {
     },
   ];
   data
+  noti;
   constructor(
     private loginService: LoginService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -62,8 +65,6 @@ export class MainPage implements OnInit {
     // On success, we should be able to receive notifications
     PushNotifications.addListener('registration',
       (token) => {
-        console.log(token);
-        alert('Push registration success, token: ' + token.value);
         localStorage.setItem('device', token.value);
         const GUID = token.value;
         const username = JSON.parse(localStorage.getItem('access_token')).username;
@@ -86,13 +87,31 @@ export class MainPage implements OnInit {
     // Show us the notification payload if the app is open on our device
     PushNotifications.addListener('pushNotificationReceived',
       (notification) => {
-        alert('Push received: ' + JSON.stringify(notification));
+
       }
     );
 
     // Method called when tapping on a notification
     PushNotifications.addListener('pushNotificationActionPerformed',
       (notification) => {
+        this.noti = JSON.stringify(notification);
+        const data = this.noti.notification.data
+        switch (data.messageType2) {
+          case '5':
+            this.route.navigateByUrl('/main/home/study/timetable');
+            break;
+          case 6:
+            this.route.navigateByUrl('/main/home/contact-book/teacher-approve-leave');
+            break;
+          case 7:
+            this.route.navigateByUrl('/main/home/contact-book/feedback');
+            break;
+          case 8:
+            this.route.navigateByUrl('/main/home/study/home-work');
+            break;
+        }
+        console.log(this.noti.notification);
+
         alert('Push action performed: ' + JSON.stringify(notification));
       }
     );
