@@ -13,4 +13,10 @@ export class NotificationService {
       .get(`/api/announcement/combine?keyword=${keyword}`)
       .pipe(map((res: any) => res.Payload));
   }
+  updateStatusNoti(NotificationId): Observable<NotificationModel> {
+    return this.http.put(`/api/Notification/Status/${NotificationId}`, '').pipe(map((res: any) => res.Payload))
+  }
+  updateStatusAnnouncementId(AnnouncementId): Observable<NotificationModel> {
+    return this.http.put(`/api/Announcement/Status/${AnnouncementId}`, '').pipe(map((res: any) => res.Payload))
+  }
 }
