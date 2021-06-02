@@ -28,7 +28,8 @@ export class ForgotComponent implements OnInit {
     BaseButtonModule,
 
   ],
-  exports: [ForgotComponent, InputUsernameComponent]
+  exports: [ForgotComponent, InputUsernameComponent],
+  
 })
 export class ForgotModule {
 

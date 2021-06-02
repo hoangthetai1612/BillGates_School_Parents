@@ -80,7 +80,7 @@ export class ProfileDetailComponent implements OnInit {
   changePhoto() {
     this.photoService.addNewToGallery().then(() => {
       this.arrImgae = this.photoService.photos;
-      this.avt = this.arrImgae[0].base64;
+      this.avt = this.arrImgae[0].base64;      
     });
   }
 }

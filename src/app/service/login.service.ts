@@ -7,7 +7,7 @@ import { Login } from '../models/login.model';
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   postDevice(data): Observable<any> {
     return this.http.post(`api/postdevice`, data);
   }
@@ -22,5 +22,8 @@ export class LoginService {
     };
     const body = `grant_type=${data.grant_type}&username=${data.username}&password=${data.password}`;
     return this.http.post<any>(`Token`, body, httpOptions);
+  }
+  changePassWord(data): Observable<any> {
+    return this.http.post(`api/Account/ChangePassword`, data).pipe();
   }
 }
