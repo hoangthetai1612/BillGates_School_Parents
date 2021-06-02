@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ProfileModel } from 'src/app/models/profile.model';
 import { LoginService } from 'src/app/service/login.service';
@@ -41,7 +41,7 @@ export class ProfilePage implements OnInit {
     private router: Router,
     private profileService: ProfileService,
     private loginService: LoginService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getProfile();
@@ -77,10 +77,11 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  logOut() {
-    const device = JSON.parse(localStorage.getItem('access_token')).device;
-    this.loginService.postDevice(device).subscribe((res) => {});
-    localStorage.clear();
+  async logOut() {
+    const GUID = localStorage.getItem('device');
+    await this.loginService.postDevice(GUID).subscribe(res => {
+    })
+    await localStorage.clear();
     this.router.navigate(['index/auth/login']);
   }
 }

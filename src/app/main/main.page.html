@@ -1,16 +1,10 @@
 <ion-tabs class="app-tabs-style">
-  <ion-tab-bar id="myTabBar"
-               slot="bottom"
-               (ionTabsWillChange)="test($event)">
-    <ion-tab-button layout="icon-center"
-                    [tab]="item.link"
-                    (click)="checked=i"
-                    *ngFor="let item of tabConfig; let i=index"
-                    [class]="checked==i && checked!=2? 'active' : i==2? 'couser-ware-icon': ''"
-                    >
-                    
-      <img [src]="item.imgPath"
-           alt="" />
+  <ion-tab-bar id="myTabBar" slot="bottom">
+    <ion-tab-button layout="icon-center" [tab]="item.link" (click)="checked=i"
+      *ngFor="let item of tabConfig; let i=index"
+      [class]="checked==i && checked!=2? 'active' : i==2? 'couser-ware-icon': ''">
+
+      <img [src]="item.imgPath" alt="" />
       <span *ngIf="checked==i">{{item.label}}</span>
     </ion-tab-button>
   </ion-tab-bar>

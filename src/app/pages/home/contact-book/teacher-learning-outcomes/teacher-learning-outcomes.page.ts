@@ -43,6 +43,7 @@ export class TeacherLearningOutcomesPage implements OnInit {
   }
 
   async openDetailResult(item) {
+    localStorage.setItem('studentId', item.StudentId);
     const modal = await this.modalController.create({
       component: LearningOutcomesPage,
       componentProps: { data: item }

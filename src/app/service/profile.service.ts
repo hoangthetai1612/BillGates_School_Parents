@@ -16,7 +16,7 @@ export class ProfileService {
         .pipe(map((res: any) => res.Payload));
     } else {
       return this.http
-        .get(`api/teacher/username/parent`)
+        .get(`api/teacher/username`)
         .pipe(map((res: any) => res.Payload));
     }
   }
