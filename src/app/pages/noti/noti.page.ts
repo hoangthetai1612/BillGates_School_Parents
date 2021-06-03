@@ -45,7 +45,7 @@ export class NotiPage implements OnInit {
   getAllNotification() {
     this.keyword = '';
     this.listNotification = this.queryField.valueChanges
-      .pipe(startWith(''), distinctUntilChanged(), debounceTime(300), switchMap((keyword: string) =>
+      .pipe(startWith(''), distinctUntilChanged(), debounceTime(500), switchMap((keyword: string) =>
         this.notiService.getAllNotification(keyword)));
   }
   routeTo(item) {
@@ -65,7 +65,6 @@ export class NotiPage implements OnInit {
             this.route.navigateByUrl('/main/home/study/home-work');
             break;
         }
-        this.getAllNotification();
       })
     }
     if (item.AnnouncementId) {
@@ -84,7 +83,6 @@ export class NotiPage implements OnInit {
             this.route.navigateByUrl('/main/home/study/home-work');
             break;
         }
-        this.getAllNotification();
 
       })
     }

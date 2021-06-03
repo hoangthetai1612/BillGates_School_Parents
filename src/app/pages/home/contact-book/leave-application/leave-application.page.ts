@@ -32,7 +32,7 @@ export class LeaveApplicationPage implements OnInit {
     public modalController: ModalController,
     private absenceRequestService: AbsenceRequestService,
     private authStoreService: AuthStoreService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getListAbsence();
@@ -42,12 +42,9 @@ export class LeaveApplicationPage implements OnInit {
     this.authStoreService.studentId$.subscribe((id) => {
       this.absenceRequestService.getListAbsenceById(id).subscribe(
         (res) => {
-          list = res;
+          this.listCard = res;
         },
-        (err) => {},
-        () => {
-          this.listCard = list.reverse();
-        }
+        (err) => { },
       );
     });
   }
