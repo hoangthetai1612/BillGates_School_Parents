@@ -55,7 +55,7 @@ export class LeaveDetailComponent implements OnInit {
 
   getStudentAbsenceRequests() {
     this.teacherService.getStudentAbsenceRequest(this.studentId).subscribe((res: any) => {
-      this.studentAbsenceRequests = res.map(item => {
+      this.studentAbsenceRequests = res.reverse().map(item => {
         return {
           CreatedOn: item.CreatedOn,
           FromDate: item.FromDate,
