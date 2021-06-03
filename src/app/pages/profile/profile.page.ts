@@ -41,7 +41,7 @@ export class ProfilePage implements OnInit {
     private router: Router,
     private profileService: ProfileService,
     private loginService: LoginService
-  ) { }
+  ) { this.getProfile(); }
 
   ngOnInit() {
     this.getProfile();
@@ -82,6 +82,7 @@ export class ProfilePage implements OnInit {
     await this.loginService.postDevice(GUID).subscribe(res => {
     })
     await localStorage.clear();
+    window.location.reload();
     this.router.navigate(['index/auth/login']);
   }
 }

@@ -6,6 +6,7 @@ import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { MenuService } from 'src/app/service/menu.service';
+import { AuthStoreService } from 'src/app/service/auth.store';
 
 @Component({
   selector: 'app-menu',
@@ -35,11 +36,18 @@ export class MenuComponent implements OnInit {
   dayValue = -1;
   indexWeek = 0;
   focusWeek = 0;
-  dishMenus =[];
-
-  constructor(private menuService: MenuService, public datepipe: DatePipe) { }
+  dishMenus = [];
+  classId;
+  constructor(
+    private menuService: MenuService,
+    private authService: AuthStoreService,
+    public datepipe: DatePipe) { }
 
   ngOnInit() {
+    this.authService.classId$.subscribe((res) => {
+      this.classId = res;
+    });
+
     this.startWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
     this.endWeek = new Date(
       this.startWeek.getFullYear(),
@@ -89,12 +97,13 @@ export class MenuComponent implements OnInit {
     this.indexWeek--;
   }
   getDishMenu(dayValue) {
-    this.dayValue = dayValue-1;
+    this.dayValue = dayValue - 1;
     this.focusWeek = this.indexWeek;
+
     let req = {
       FromDate: this.datepipe.transform(this.startWeek, "yyyy-MM-dd'T'HH:mm:ss"),
       ToDate: this.datepipe.transform(this.endWeek, "yyyy-MM-dd'T'HH:mm:ss"),
-      ClassId: 25,
+      ClassId: this.classId,
       DayValue: dayValue
     }
     this.menuService.getDishMenuByTimePeriod(req).subscribe(res => {
@@ -110,7 +119,7 @@ export class MenuComponent implements OnInit {
     HeaderModule
   ],
   exports: [MenuComponent],
-  providers: [DatePipe, ],
+  providers: [DatePipe,],
   entryComponents: [MenuComponent],
 })
 export class MenuModule {

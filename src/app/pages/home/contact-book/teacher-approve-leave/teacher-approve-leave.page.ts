@@ -46,7 +46,7 @@ export class TeacherApproveLeavePage implements OnInit {
       this.absenceRequestService
         .getStudentAbsenceRequests(id)
         .subscribe((res) => {
-          this.absences = res;
+          this.absences = res.reverse();
         });
     });
   }
