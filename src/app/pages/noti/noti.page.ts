@@ -39,7 +39,6 @@ export class NotiPage implements OnInit {
   ) { }
   listNotification: Observable<NotificationModel[]>;
   ngOnInit() {
-
     this.getAllNotification();
   }
 
@@ -50,6 +49,15 @@ export class NotiPage implements OnInit {
         this.notiService.getAllNotification(keyword)));
   }
   routeTo(item) {
+    if (item.NotificationId) {
+      this.notiService.updateStatusNoti(item.NotificationId).subscribe(res => {
+      })
+    }
+    if (item.AnnouncementId) {
+      this.notiService.updateStatusAnnouncementId(item.AnnouncementId).subscribe(res => {
+      })
+    }
+
     switch (item.Type) {
       case 5:
         this.route.navigateByUrl('/main/home/study/timetable');
