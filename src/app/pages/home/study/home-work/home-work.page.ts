@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import {
   debounceTime,
@@ -36,8 +37,9 @@ export class HomeWorkPage implements OnInit {
 
   constructor(
     private homeworkService: HomeWorkService,
-    private authStoreService: AuthStoreService
-  ) {}
+    private authStoreService: AuthStoreService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.authStoreService.classId$.subscribe((res) => {
@@ -51,5 +53,8 @@ export class HomeWorkPage implements OnInit {
         this.homeworkService.getListHomeWork(this.classId, term)
       )
     );
+  }
+  routeTo(item) {
+    this.router.navigateByUrl(`/main/home/study/home-work/detail/${item.HomeworkId}`)
   }
 }

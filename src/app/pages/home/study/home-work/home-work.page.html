@@ -1,28 +1,20 @@
 <ion-header>
-  <app-header
-    [headerStyle]="header"
-    [defaultHref]="'main/home/study'"
-  ></app-header>
+  <app-header [headerStyle]="header" [defaultHref]="'main/home/study'"></app-header>
 </ion-header>
-<ion-searchbar
-  placeholder="Tìm kiếm"
-  showClearButton="never"
-  mode="ios"
-  #searchBox
-  [formControl]="search"
-></ion-searchbar>
+<ion-searchbar placeholder="Tìm kiếm" showClearButton="never" mode="ios" #searchBox [formControl]="search">
+</ion-searchbar>
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="home-work-card" *ngIf="listHomeWork$">
-        <ion-row *ngFor="let item of listHomeWork$ | async">
+        <ion-row *ngFor="let item of listHomeWork$ | async" (click)="routeTo(item)">
           <ion-col size="2">
             <img [src]="item.MediaURL" alt="" />
           </ion-col>
           <ion-col size="10" class="card-content">
             <div class="title">{{item.Title}}</div>
             <div class="time">{{item.CreatedOn | date: 'HH:MM, dd-MM-yyyy'}}</div>
-            <img src="assets/svg/show-more-button.svg" alt="" />
+            <!-- <img src="assets/svg/show-more-button.svg" alt="" /> -->
           </ion-col>
         </ion-row>
       </ion-col>

@@ -1,0 +1,14 @@
+<ion-header>
+  <app-header [headerStyle]="header"></app-header>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col size="12">
+      <div class="homework-item">
+        <h1>{{data?.Title}}</h1>
+        <p>{{data?.Description}}</p>
+        <img src="{{data?.MediaURL}}" alt="">
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

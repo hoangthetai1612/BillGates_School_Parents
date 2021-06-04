@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/member-ordering */
-import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, NgModule, OnChanges, OnInit } from '@angular/core';
-import { FormControl, FormsModule } from '@angular/forms';
+
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule, PopoverController } from '@ionic/angular';
-import { from, Observable, of } from 'rxjs';
+import { PopoverController } from '@ionic/angular';
+import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
 import { NotificationModel } from 'src/app/models/notification.model';
 import { NotificationService } from 'src/app/service/notification.service';
@@ -34,7 +32,6 @@ export class NotiPage implements OnInit {
   constructor(
     public popoverController: PopoverController,
     private notiService: NotificationService,
-    private cd: ChangeDetectorRef,
     private route: Router
   ) { }
   listNotification: Observable<NotificationModel[]>;
@@ -49,6 +46,7 @@ export class NotiPage implements OnInit {
         this.notiService.getAllNotification(keyword)));
   }
   routeTo(item) {
+
     if (item.NotificationId) {
       this.notiService.updateStatusNoti(item.NotificationId).subscribe((res) => {
         switch (item.Type) {
@@ -67,9 +65,15 @@ export class NotiPage implements OnInit {
         }
       })
     }
-    if (item.AnnouncementId) {
+    if (item.AnnouncementId >= 0) {
       this.notiService.updateStatusAnnouncementId(item.AnnouncementId).subscribe((res) => {
         switch (item.Type) {
+          case 1:
+            this.route.navigateByUrl(`/main/noti/detail/${item.AnnouncementId}`);
+            break;
+          case 2:
+            this.route.navigateByUrl(`/main/noti/detail/${item.AnnouncementId}`);
+            break;
           case 5:
             this.route.navigateByUrl('/main/home/study/timetable');
             break;
