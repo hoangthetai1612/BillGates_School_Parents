@@ -66,9 +66,6 @@ export class LeaveDetailComponent implements OnInit {
           StudentAbsenceRequestId: item.StudentAbsenceRequestId
         }
       });
-      console.log(this.studentAbsenceRequests);
-
-
     });
   }
 
