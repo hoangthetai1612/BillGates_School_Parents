@@ -1,41 +1,40 @@
 {
   "project_info": {
-    "project_number": "889494156873",
-    "firebase_url": "https://pushnotification-d4250.firebaseio.com",
-    "project_id": "pushnotification-d4250",
-    "storage_bucket": "pushnotification-d4250.appspot.com"
+    "project_number": "266519185877",
+    "project_id": "bustracker-21973",
+    "storage_bucket": "bustracker-21973.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:889494156873:android:82ed4860edff2ca3d53198",
+        "mobilesdk_app_id": "1:266519185877:android:325b9ae9fbf9a9cd32555c",
         "android_client_info": {
           "package_name": "com.bustrackerapp.www"
         }
       },
       "oauth_client": [
         {
-          "client_id": "889494156873-u4ba9eq3t4cqmfmgfrkgg20i6a40604j.apps.googleusercontent.com",
+          "client_id": "266519185877-q23h26485o55resgc57oggrudhht2i4u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAvnWwyryYmpMHd8zhStzKmLaciKmy_7YQ"
+          "current_key": "AIzaSyAdApICBMeVwCt6qtwKP8ovu0Zag94Mugk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "889494156873-u4ba9eq3t4cqmfmgfrkgg20i6a40604j.apps.googleusercontent.com",
+              "client_id": "266519185877-q23h26485o55resgc57oggrudhht2i4u.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "889494156873-lcad5r5svqb83ih41l4kr0sqdb66akct.apps.googleusercontent.com",
+              "client_id": "266519185877-7777r06vniocn4fhipg1b4c935ukpo6c.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "io.schoolerp.app"
+                "bundle_id": "com.bustrackerapp.www"
               }
             }
           ]
@@ -44,70 +43,34 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:889494156873:android:b991364238ec9c13d53198",
-        "android_client_info": {
-          "package_name": "com.example.pushnotification"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "889494156873-u4ba9eq3t4cqmfmgfrkgg20i6a40604j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAvnWwyryYmpMHd8zhStzKmLaciKmy_7YQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "889494156873-u4ba9eq3t4cqmfmgfrkgg20i6a40604j.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "889494156873-lcad5r5svqb83ih41l4kr0sqdb66akct.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "io.schoolerp.app"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:889494156873:android:ff1076f035b60324d53198",
+        "mobilesdk_app_id": "1:266519185877:android:1ba2739a7d3a340b32555c",
         "android_client_info": {
           "package_name": "io.schoolerp.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "889494156873-u4ba9eq3t4cqmfmgfrkgg20i6a40604j.apps.googleusercontent.com",
+          "client_id": "266519185877-q23h26485o55resgc57oggrudhht2i4u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAvnWwyryYmpMHd8zhStzKmLaciKmy_7YQ"
+          "current_key": "AIzaSyAdApICBMeVwCt6qtwKP8ovu0Zag94Mugk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "889494156873-u4ba9eq3t4cqmfmgfrkgg20i6a40604j.apps.googleusercontent.com",
+              "client_id": "266519185877-q23h26485o55resgc57oggrudhht2i4u.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "889494156873-lcad5r5svqb83ih41l4kr0sqdb66akct.apps.googleusercontent.com",
+              "client_id": "266519185877-7777r06vniocn4fhipg1b4c935ukpo6c.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "io.schoolerp.app"
+                "bundle_id": "com.bustrackerapp.www"
               }
             }
           ]
